@@ -1,6 +1,7 @@
-#root{
+#root {
     margin: 0;
-    background-color:#d3d3d3;
+    background: linear-gradient(90deg, #000 0%, #fff 120%);
+    background-color: #484848;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

@@ -2,21 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import {
-  Navigation,
-  Home,
-  Sidebar,
-  Products,
-  Footer,
-  About,
-  Cart,
-} from "./components";
+import { Navigation, Home, Footer, About, Postform } from "./components";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
+
+// CHODIKAR_USEPOLLING=true npm run start
 
 const App = () => {
   return (
@@ -25,20 +19,14 @@ const App = () => {
         <Navigation />
         <Footer />
         <Switch>
-          <Route path="/Products">
-            <Products />
-          </Route>
           <Route path="/Home">
             <Home />
-          </Route>
-          <Route path="/Sidebar">
-            <Sidebar />
           </Route>
           <Route path="/About">
             <About />
           </Route>
-          <Route path="/Cart">
-            <Cart />
+          <Route path="/Postform">
+            <Postform />
           </Route>
         </Switch>
       </div>

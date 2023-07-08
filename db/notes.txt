@@ -1,0 +1,38 @@
+//   $push is an array update operator which adds an element to an array.   $push: { comments: NEW_COMMENT }
+//  $set: { "comments.$.text": NEW_CONTENT }    
+// https://www.codementor.io/@prasadsaya/working-with-arrays-in-mongodb-16s303gkd3
+
+5. Delete an Array Element
+The user changed his mind and wanted to delete the comment, and then add a new one.
+
+db.posts.updateOne( 
+  { _id" : ObjectId("5ec55af811ac5e2e2aafb2b9") },
+  { $pull: { comments: { user: "Database Rebel" } } }
+)
+
+//////////////////////////////////////////////////////////////////////////////////
+4. Update an Array Element
+Let's update the comment posted by "Database Rebel" with modified text field :
+NEW_CONTENT = "Thank you, please look for updates - updated the post".
+
+db.posts.updateOne( 
+  { _id : ObjectId("5ec55af811ac5e2e2aafb2b9"), "comments.user": "Database Rebel" },
+  { $set: { "comments.$.text": NEW_CONTENT } }
+)
+
+
+
+///////////////////////////////////////////////
+3. Add an Array Element
+Let's add a comment for this post, by a user "DB Learner":
+
+NEW_COMMENT = {
+  user: "DB Learner",
+  text: "Nice post, can I know more about the arrays in MongoDB?",
+  updated: ISODate()
+}
+
+db.posts.updateOne( 
+  { _id : ObjectId("5ec55af811ac5e2e2aafb2b9") },
+  { $push: { comments: NEW_COMMENT } }
+)

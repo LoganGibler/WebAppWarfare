@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import "./myStyles.css";
+import "../css/myStyles.css";
 
 const Navigation = () => {
   const history = useHistory();
@@ -17,7 +17,7 @@ const Navigation = () => {
                 history.push("/Home");
               }}
             >
-              Ecommerce Template
+              WebAppWarfare
             </Nav.Link>
           </Navbar.Brand>
           <Nav>
@@ -28,7 +28,7 @@ const Navigation = () => {
                 history.push("/Products");
               }}
             >
-              Products
+              {/* Recommended VMs */}
             </Nav.Link>
             <Nav.Link
               id="link_buttons"
@@ -37,16 +37,25 @@ const Navigation = () => {
                 history.push("/About");
               }}
             >
-              About Us
+              About Me
             </Nav.Link>
             <Nav.Link
               id="link_buttons"
               type="submit"
               onClick={() => {
-                history.push("/Cart");
+                history.push("/Profile");
               }}
             >
-              View Cart
+              View Profile
+            </Nav.Link>
+            <Nav.Link
+              id="link_buttons"
+              type="submit"
+              onClick={() => {
+                history.push("/Postform");
+              }}
+            >
+              New Post
             </Nav.Link>
           </Nav>
         </Container>
