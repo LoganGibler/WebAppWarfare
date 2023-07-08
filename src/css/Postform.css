@@ -57,6 +57,7 @@
 } */
 
 .post-form-button{
+    margin-left: 5%;
     border-radius: 5px;
     color: black;
     margin-top: 1%;
@@ -64,5 +65,12 @@
     cursor: pointer;
     /* width: 20%;
     height: 1vmin; */
+    box-shadow: 5px 4px 5px;
+}
+
+.create-post-pic{
+    color: black;
+    margin-left: 19%;
+    width: 60%;
     box-shadow: 5px 4px 5px;
 }

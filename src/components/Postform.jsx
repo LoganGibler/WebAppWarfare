@@ -12,7 +12,29 @@ const Postform = () => {
 
   return (
     <div>
-      <form className="createPostform" onSubmit={() => {}}>
+      <form
+        className="createPostform"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          try {
+            // api call
+            // const data = await createPost(vmtitle, hostedby, description, picture)
+            // console.log("data on front end after createPost, data")
+            // if (!data){
+            // alert("Blog creation failed!")
+            // } else{
+            //              alert("Blog post created!")
+            // }
+            // setvmtitle("")
+            // setHostedBy("")
+            // setDescription("")
+            // setPicture("")
+          } catch (error) {
+            console.error("error in front end Postform.jsx", error);
+            throw error;
+          }
+        }}
+      >
         <div className="form-div">
           <div className="header-title-div">
             <h3 className="header-title">Start a new blog!</h3>
@@ -33,9 +55,13 @@ const Postform = () => {
               placeholder="Please enter a brief description of what to expect when hacking this box. OS, active directory, webapp pentesting, etc."
             ></textarea>
           </div>
-          {/* <div className="post-form-button-div"> */}
-          <button className="post-form-button">Submit</button>
-          {/* </div> */}
+          <div className="post-form-button-div">
+            <button className="post-form-button">Submit</button>
+            <input
+              className="create-post-pic"
+              placeholder="Have a pic for the VM? Paste img link here!"
+            ></input>
+          </div>
         </div>
       </form>
     </div>
