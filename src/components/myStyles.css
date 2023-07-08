@@ -1,0 +1,19 @@
+.footer{
+    background:#37434b;
+    color: white;
+    padding: 1em;
+    margin-top: auto;
+}
+
+/* navbar */
+#main_nav{
+    background: #37434b;
+}
+
+#main_button{
+    color: white;
+}
+
+#link_buttons{
+    color: white;
+}
