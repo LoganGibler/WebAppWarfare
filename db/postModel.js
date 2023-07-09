@@ -4,7 +4,6 @@ const postSchema = mongoose.Schema({
   vmtitle: {
     type: String,
     required: [true, "Please enter the title of this vm."],
-    ee,
   },
   hostedby: {
     type: String,
@@ -18,9 +17,13 @@ const postSchema = mongoose.Schema({
     type: String,
     required: [true, "Please provide a fitting picture"],
   },
-  steps: {
-    type: [],
-  },
+  steps: [
+    {
+      body: String,
+      date: Date,
+    },
+  ],
+
   published: {
     type: Boolean,
   },

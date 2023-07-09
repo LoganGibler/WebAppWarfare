@@ -17,3 +17,9 @@
 #link_buttons{
     color: white;
 }
+
+#link_buttons:hover {
+    color: black;
+    background-color: white;
+    border-radius: 15px;
+}

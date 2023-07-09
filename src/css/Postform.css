@@ -11,7 +11,7 @@
     color: white;
 }
 .header-title{
-  
+    margin-top: 25%;
     margin-left: 16%;
 }
 
@@ -25,7 +25,7 @@
     width: 45%;
     padding: 3px;
     border-radius: 5px;
-    box-shadow: 5px 4px 5px;
+    /* box-shadow: 5px 4px 5px; */
 }
 
 .host-title{
@@ -33,7 +33,7 @@
     width: 45%;
     padding: 1px;
     border-radius: 5px;
-    box-shadow: 5px 4px 5px;
+    /* box-shadow: 5px 4px 5px; */
 }
 
 .description-div{
@@ -41,7 +41,7 @@
     width: 92%;
     padding: 1px;
     border-radius: 5px;
-    box-shadow: 5px 3px 5px;
+    /* box-shadow: 5px 3px 5px; */
 }
 
 .description-box{
@@ -63,14 +63,20 @@
     margin-top: 1%;
     border: none;
     cursor: pointer;
-    /* width: 20%;
-    height: 1vmin; */
-    box-shadow: 5px 4px 5px;
+    /* box-shadow: 5px 4px 5px; */
+}
+
+.post-form-button:hover {
+    color: black;
+    background-color: white;
+    border-radius: 15px;
 }
 
 .create-post-pic{
     color: black;
-    margin-left: 19%;
+    margin-left: 15%;
     width: 60%;
-    box-shadow: 5px 4px 5px;
+    padding: 1px;
+    border-radius: 5px;
+    /* box-shadow: 5px 4px 5px; */
 }
