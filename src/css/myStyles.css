@@ -1,25 +1,50 @@
-.footer{
+/* .footer{
     background:#0f0e17;
     color: white;
     padding: 1em;
     margin-top: auto;
-}
-/* #37434b */
-/* navbar */
-#main_nav{
-    background: #0f0e17;
+} */
+
+.main-nav-div{
+    /* display: flex; */
 }
 
-#main_button{
+.nav-container{
+    text-align: center;
+    display: flex;
+}
+
+.nav-branding-div{
+    margin-left: 18%;
+}
+.nav-branding{
+    display: flex;
+    text-align: center;
     color: white;
 }
-
-#link_buttons{
+.brand-text{
+    margin: 10%;
     color: white;
+    font-size: 24px;
 }
 
-#link_buttons:hover {
-    color: black;
-    background-color: white;
-    border-radius: 15px;
+.nav-links{
+    display: flex;
+    margin-left: 37%;
+    /* width: 80%; */
+}
+
+.nav-link-container{
+    width: 45vmin;
+    display: flex;
+    text-align: center;
+}
+
+.nav-button{
+    margin-top: 5%;
+    width: 70%;
+    font-size: 18px;
+    /* margin: 2%; */
+    color: white;
+    
 }

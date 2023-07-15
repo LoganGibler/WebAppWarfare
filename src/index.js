@@ -37,7 +37,7 @@ const App = () => {
     <Router>
       <div id="App">
         <Navigation />
-        <Footer />
+        {/* <Footer /> */}
         <Switch>
           <Route path="/Home">
             <Home allPublishedBlogs={allPublishedBlogs}/>
