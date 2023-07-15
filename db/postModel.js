@@ -17,13 +17,7 @@ const postSchema = mongoose.Schema({
     type: String,
     required: [true, "Please provide a fitting picture"],
   },
-  steps: [
-    {
-      body: String,
-      date: Date,
-    },
-  ],
-
+  steps: [],
   published: {
     type: Boolean,
   },

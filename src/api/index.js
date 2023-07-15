@@ -1,8 +1,14 @@
 import axios from "axios";
 import { storeToken, StoreUser } from "../auth";
+import { async } from "q";
 const BASE = "http://localhost:8000/";
 
-export async function createPost(vmtitle, published, description, picture) {
+export async function createPost(
+  vmtitle,
+  hostedby,
+  description,
+  picture,
+) {
   let published = false;
   try {
     const { data } = await axios.post("http://localhost:8000/createPost", {
@@ -10,6 +16,7 @@ export async function createPost(vmtitle, published, description, picture) {
       hostedby: hostedby,
       description: description,
       picture: picture,
+      published: published,
     });
 
     // console.log("this is data after frontend api", data);
@@ -19,18 +26,25 @@ export async function createPost(vmtitle, published, description, picture) {
   }
 }
 
-export async function addStep() {
-  let stepData =
-    "This is the next step That i did. this got me here. now i can run scripts and stuff. gonna open a python term with root privs.";
-
+export async function addStep(_id, step) {
   try {
     const { data } = await axios.post("http://localhost:8000/addstep", {
-      stepData: stepData,
+      _id: _id,
+      step: step,
     });
 
     console.log("this is data after frontend api", data);
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function getAllBlogs(){
+  try {
+    const {data} = await axios.get("http://localhost:8000/allblogs")
+    return data
+  } catch (error) {
+    throw error
   }
 }

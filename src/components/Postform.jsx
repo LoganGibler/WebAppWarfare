@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 // import { createPost } from "../api";
 import "../css/Postform.css";
 import { getUser } from "../auth";
+import { createPost } from "../api";
 
 const Postform = () => {
   let [vmtitle, setvmtitle] = useState("");
