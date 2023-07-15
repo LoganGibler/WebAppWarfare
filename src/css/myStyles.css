@@ -5,46 +5,85 @@
     margin-top: auto;
 } */
 
-.main-nav-div{
+.main-nav-div {
     /* display: flex; */
 }
 
-.nav-container{
+.nav-container {
     text-align: center;
     display: flex;
 }
 
-.nav-branding-div{
+.nav-branding-div {
     margin-left: 18%;
 }
-.nav-branding{
+
+.nav-branding {
     display: flex;
     text-align: center;
     color: white;
 }
-.brand-text{
+
+.brand-text {
     margin: 10%;
     color: white;
     font-size: 24px;
 }
 
-.nav-links{
+.brand-text:link{
+    text-decoration: none;
+}
+.brand-text:visited{
+    text-decoration: none;
+}
+.brand-text:hover{
+    text-decoration: none;
+    color: grey
+    
+}
+.brand-text:active{
+    text-decoration: none;
+}
+
+.nav-links {
     display: flex;
     margin-left: 37%;
     /* width: 80%; */
 }
 
-.nav-link-container{
+.nav-link-container {
     width: 45vmin;
     display: flex;
     text-align: center;
 }
 
-.nav-button{
-    margin-top: 5%;
-    width: 70%;
+.nav-button {
+    align-self: center;
+    margin-left: 5%;
+    /* width: 40%; */
     font-size: 18px;
     /* margin: 2%; */
     color: white;
-    
+    border-radius: 30px;
+    padding: 5px;
 }
+
+.nav-button:link {
+    text-decoration: none;
+}
+
+.nav-button:visited {
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+}
+
+.nav-button:active {
+    /* background-color: ; */
+    text-decoration: none;
+}
+
