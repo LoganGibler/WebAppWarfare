@@ -77,19 +77,68 @@ app.get("/allblogs", async (req, res) => {
   }
 });
 
-app.get("/allPublishedBlogs", async (req, res)=>{
+app.get("/allPublishedBlogs", async (req, res) => {
   try {
-    const allPublishedBlogs = await Post.find({Published: true})
+    const allPublishedBlogs = await Post.find({ published: true });
 
-    if (allPublishedBlogs){
-      res.status(200).json({message: "/allPublishedblogs request successful", allPublishedBlogs})
-    } else{
-      res.status(500).json({message: "/allPublishedBlogs request failed serverside."})
+    if (allPublishedBlogs) {
+      res.status(200).json({
+        message: "/allPublishedblogs request successful",
+        allPublishedBlogs,
+      });
+    } else {
+      res
+        .status(500)
+        .json({ message: "/allPublishedBlogs request failed serverside." });
     }
   } catch (error) {
-    throw error
+    throw error;
   }
-})
+});
+
+app.post("/publishPost", async (req, res) => {
+  let filter = { _id: req.body._id };
+  let update = { published: true };
+  try {
+    const updatedPost = await Post.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+
+    if (updatedPost.published) {
+      res
+        .status(200)
+        .json({ message: "/publishPost request successful.", updatedPost });
+    } else {
+      res.status(500).json({ message: "/publishPost request successful." });
+    }
+  } catch (error) {
+    throw error;
+  }
+});
+
+app.post("/unpublishPost", async (req, res) => {
+  let filter = { _id: req.body._id };
+  let update = { published: false };
+  try {
+    const updatedPost = await Post.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+
+    if (updatedPost.published === false) {
+      res
+        .status(200)
+        .json({ message: "/unpublishPost request successful.", updatedPost });
+    } else {
+      res
+        .status(500)
+        .json({
+          message: "/unpublishPost request unsuccessful on serverside.",
+        });
+    }
+  } catch (error) {
+    throw error;
+  }
+});
 
 mongoose
   .connect(uri)

@@ -1,13 +1,13 @@
 .footer{
-    background:#37434b;
+    background:#0f0e17;
     color: white;
     padding: 1em;
     margin-top: auto;
 }
-
+/* #37434b */
 /* navbar */
 #main_nav{
-    background: #181818;
+    background: #0f0e17;
 }
 
 #main_button{

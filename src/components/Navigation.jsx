@@ -10,7 +10,7 @@ const Navigation = () => {
       <Navbar fixed="top" id="main_nav">
         <Container>
           <Navbar.Brand>
-          <Nav.Link
+            <Nav.Link
               id="main_button"
               type="submit"
               onClick={() => {
@@ -22,13 +22,13 @@ const Navigation = () => {
           </Navbar.Brand>
           <Nav>
             <Nav.Link
-              id="link_buttons"
+              id="main_button"
               type="submit"
               onClick={() => {
-                history.push("/Products");
+                history.push("/Home");
               }}
             >
-              {/* Recommended VMs */}
+              Public Writeups
             </Nav.Link>
             <Nav.Link
               id="link_buttons"

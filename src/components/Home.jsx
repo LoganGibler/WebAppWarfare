@@ -1,16 +1,34 @@
 import React, { useState, useEffect } from "react";
+import "../css/home.css";
 
-
-const Home = () => {
-    return(
-        <div>
-            <h3> PLEASE WORK</h3>
-            <h1>home component</h1>
-            <h1>home component</h1>
-            <h1>home component</h1>
-            <h1>home component</h1>
+const Home = ({ allPublishedBlogs }) => {
+  return (
+    <div className="main-blogs-div">
+      <div className="center-me-div">
+        <div className="middle-content-div">
+          <div className="search-bar-div">
+            <input className="search-bar" placeholder="Search blog(s)"></input>
+          </div>
+          <div className="main-blog-div">
+            <div className="blog-container">
+            {allPublishedBlogs.length
+              ? allPublishedBlogs.map((blog) => {
+                  console.log(blog);
+                  return (
+                    <div className="blog-div" key={blog._id}>
+                      <h3>{blog.vmtitle}</h3>
+                      <p>{blog.hostedby}</p>
+                      <p>{blog.description}</p>
+                    </div>
+                  );
+                })
+              : null}
+            </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Home
+export default Home;

@@ -1,8 +1,9 @@
 #root {
     margin: 0;
-    background: linear-gradient(90deg, #000 0%, #fff 120%);
-    background-color: #484848;
+    /* background: linear-gradient(90deg, #000 0%, #fff 120%); */
+    background-color: #16161a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: Georgia, serif;
 }
