@@ -10,7 +10,7 @@ const { JWT_SECRET = "neverTell" } = process.env;
 app.use(morgan("dev"));
 app.use(express.json());
 
-const uri = "mongodb://localhost:27017/"
+const uri = "mongodb://localhost:27017/";
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 const { ObjectId } = require("bson");
@@ -129,24 +129,32 @@ app.post("/unpublishPost", async (req, res) => {
         .status(200)
         .json({ message: "/unpublishPost request successful.", updatedPost });
     } else {
-      res
-        .status(500)
-        .json({
-          message: "/unpublishPost request unsuccessful on serverside.",
-        });
+      res.status(500).json({
+        message: "/unpublishPost request unsuccessful on serverside.",
+      });
     }
   } catch (error) {
     throw error;
   }
 });
 
-app.post("/getPostById", async (req, res) => {
-try {
-  let filter = { _id: req.body._id };
-} catch (error) {
-  throw error
-}
-})
+app.post("/getBlogById", async (req, res) => {
+  try {
+    let filter = { _id: req.body._id };
+    console.log("this is req.body._id:", req.body._id);
+    let blog = await Post.findOne(filter);
+    // console.log("this is blog:", blog);
+    if (blog) {
+      res
+        .status(200)
+        .json({ message: "/getBlogById request successful.", blog });
+    } else {
+      res.status(500).json({ message: "/getBlogById request failed." });
+    }
+  } catch (error) {
+    throw error;
+  }
+});
 
 mongoose
   .connect(uri)

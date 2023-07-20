@@ -1,0 +1,14 @@
+.main-individual-blog-div{
+    display: flex;
+    background-color: #72757e;
+    margin-top: 2%;
+}
+
+.main-blog-container1{
+    margin-left: 50%;
+    margin: auto;
+    background-color: white;
+    width: 100vh;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    padding: 12px;
+}

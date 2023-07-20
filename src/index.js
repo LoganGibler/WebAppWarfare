@@ -49,7 +49,7 @@ const App = () => {
             <Postform />
           </Route>
           <Route path="/blog/:id">
-           <Guide />
+           <Guide allPublishedBlogs={allPublishedBlogs}/>
           </Route>
         </Switch>
       </div>

@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getBlogById } from "../api";
+import "../css/guide.css";
 
+const Guide = ({ allPublishedBlogs }) => {
+  const [blog, setBlog] = useState({});
+  let { id } = useParams();
+  console.log(allPublishedBlogs);
+  async function getBlog(id) {
+    const calledBlog = allPublishedBlogs.map((element) => {
+      if (element._id === id) {
+        return setBlog(element);
+      }
+    });
+  }
 
-const Cart = () => {
-    // get params for id, then do a fetch request to get the blog with that id
-    // render the whole blog below, title, author, date created, description, picture, steps
-    let { id } = useParams();
-    // api call sending id, getting back blog
-    return(
-        <div>
-            <h1>Cart</h1>
-        </div>
-    )
-}
+  useEffect(() => {
+    getBlog(id);
+  }, [id]);
 
-export default Cart
+  console.log("this is blog front end", blog);
+  return (
+    <div className="main-individual-blog-div">
+      <div className="main-blog-container1">
+        <h2>{blog.vmtitle}</h2>
+
+        <p>{blog.hostedby}</p>
+        <p>{blog.description}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Guide;

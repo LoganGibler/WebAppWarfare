@@ -15,7 +15,7 @@ const Home = ({ allPublishedBlogs }) => {
             <div className="blog-container">
               {allPublishedBlogs.length
                 ? allPublishedBlogs.map((blog) => {
-                    console.log(blog);
+                    // console.log(blog);
                     return (
                       <div className="blog-div" id="blog-d" key={blog._id} onClick={()=>{
                         history.push(`/blog/${blog._id}`);
