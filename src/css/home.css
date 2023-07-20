@@ -1,16 +1,18 @@
 .main-blogs-div {
     /* margin-top: 5%; */
-    background-color: #72757e;
+    /* background-color: #72757e; */
     display: flex;
+    background-color: #72757e;
 }
 
 .center-me-div {
     /* background-color: #0f0e17; */
+    /* display: flex; */
     background-color: white;
     margin-left: 50%;
     margin: auto;
-    height: 100vmin;
-    width: 86vh;
+    /* height: 100vmin; */
+    width: 88vh;
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 

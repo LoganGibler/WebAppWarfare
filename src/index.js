@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Navigation, Home, Footer, About, Postform } from "./components";
+import { Navigation, Home, Footer, About, Postform, Guide} from "./components";
 import {
   BrowserRouter as Router,
   Route,
@@ -47,6 +47,9 @@ const App = () => {
           </Route>
           <Route path="/Postform">
             <Postform />
+          </Route>
+          <Route path="/blog/:id">
+           <Guide />
           </Route>
         </Switch>
       </div>

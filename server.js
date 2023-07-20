@@ -10,7 +10,7 @@ const { JWT_SECRET = "neverTell" } = process.env;
 app.use(morgan("dev"));
 app.use(express.json());
 
-const uri = "mongodb://localhost:27017";
+const uri = "mongodb://localhost:27017/"
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 const { ObjectId } = require("bson");
@@ -140,6 +140,14 @@ app.post("/unpublishPost", async (req, res) => {
   }
 });
 
+app.post("/getPostById", async (req, res) => {
+try {
+  let filter = { _id: req.body._id };
+} catch (error) {
+  throw error
+}
+})
+
 mongoose
   .connect(uri)
   .then(() => {
@@ -148,6 +156,6 @@ mongoose
     });
     console.log("connected to mongodb");
   })
-  .catch(() => {
-    consolelog(error);
+  .catch((error) => {
+    console.log(error);
   });

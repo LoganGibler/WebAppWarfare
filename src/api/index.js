@@ -58,3 +58,14 @@ export async function addStep(_id, step) {
     throw error;
   }
 }
+
+export async function getBlogById(id) {
+  try {
+    const { data } = await axios.post("http://localhost:8000/getBlogById", {
+      id: id,
+    });
+    return data
+  } catch (error) {
+    throw error;
+  }
+}
