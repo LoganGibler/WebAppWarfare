@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Navigation, Home, Footer, About, Postform, Guide} from "./components";
+import { Navigation, Home, Footer, About, Postform, Guide, Register, Login} from "./components";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +16,6 @@ import { getAllBlogs, getAllPublishedBlogs } from "./api";
 const App = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [allPublishedBlogs, setAllPublishedBlogs] = useState("");
-
 
   async function fetchAllBlogs() {
     const data = await getAllBlogs();
@@ -40,7 +39,7 @@ const App = () => {
         {/* <Footer /> */}
         <Switch>
           <Route path="/Home">
-            <Home allPublishedBlogs={allPublishedBlogs}/>
+            <Home allPublishedBlogs={allPublishedBlogs} />
           </Route>
           <Route path="/About">
             <About />
@@ -49,7 +48,13 @@ const App = () => {
             <Postform />
           </Route>
           <Route path="/blog/:id">
-           <Guide allPublishedBlogs={allPublishedBlogs}/>
+            <Guide allPublishedBlogs={allPublishedBlogs} />
+          </Route>
+          <Route path="/Register">
+            <Register />
+          </Route>
+          <Route path="/Login">
+            <Login />
           </Route>
         </Switch>
       </div>

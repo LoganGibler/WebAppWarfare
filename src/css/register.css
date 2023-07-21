@@ -1,0 +1,45 @@
+.main-form-div {
+    min-height: 100vmax;
+    background-color: #72757e;
+}
+
+/* .form-div {
+    background-color: #72757e;
+    padding: 20px;
+    display: flex;
+}
+
+.register-form {
+    background-color: white;
+    margin: auto;
+    margin-left: 40%;
+    padding: 10px;
+    width: 45vmin;
+    align-items: center;
+
+}
+
+.username-input-register-div {
+   margin-left: 50%;
+   margin: auto;
+  
+}
+
+.username-input-register {}
+
+.password-input-register-div {
+    margin-top: 5%;
+    margin: 3%;
+
+}
+
+.password-input-register {}
+
+.register-button {} */
+
+.register-form{
+    width: 50%;
+    margin: auto;
+    background-color: grey;
+    display: block;
+}
