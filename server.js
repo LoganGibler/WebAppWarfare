@@ -13,7 +13,6 @@ app.use(express.json());
 const uri = "mongodb://localhost:27017/";
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
-const { ObjectId } = require("bson");
 
 app.use((_, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -153,6 +152,61 @@ app.post("/getBlogById", async (req, res) => {
     }
   } catch (error) {
     throw error;
+  }
+});
+///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
+app.post("/Register", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    // console.log("this is req.body", req.body);
+    if (!username || !password) {
+      res.status(404).json({
+        message: "Please provide valid email, username, and password",
+      });
+    }
+
+    const user_check = await User.findOne({ username });
+    // console.log("this is usercheck", user_check)
+    if (!user_check) {
+      const user = await User.create(req.body);
+      // console.log("this is raw user", user);
+      const token = jwt.sign({ username: user.username }, JWT_SECRET, {
+        expiresIn: "1w",
+      });
+      res
+        .status(200)
+        .json({ message: "Account creation successful.", user, token });
+    } else {
+      res.status(500).json({ message: "Username Taken" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+app.post("/Login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    console.log("username: ", username, "password: ", password);
+    if (!username || !password) {
+      res
+        .status(500)
+        .json({ message: "Please provide username and password." });
+    } else {
+      const user = await User.findOne({ username, password });
+      if (user) {
+        const token = jwt.sign({ username: user.username }, JWT_SECRET, {
+          expiresIn: "3w",
+        });
+        res.status(200).json({ message: "Login successful", user, token });
+      } else {
+        res
+          .status(500)
+          .json({ message: "Username or password was incorrect." });
+      }
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Login Failed." });
   }
 });
 

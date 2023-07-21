@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: [true, "Please enter email"],
-  },
   username: {
     type: String,
     unique: true,
@@ -19,7 +14,6 @@ const userSchema = mongoose.Schema({
   admin: {
     type: Boolean
   }
-  // need to add followers as a number first, then who is actually following who?
 });
 
 const User = mongoose.model("User", userSchema);

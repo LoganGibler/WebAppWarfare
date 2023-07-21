@@ -64,7 +64,33 @@ export async function getBlogById(id) {
     const { data } = await axios.post("http://localhost:8000/getBlogById", {
       id: id,
     });
-    return data
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// user api calls/////////////////////////////////////
+
+export async function registerUser(username, password) {
+  try {
+    const { data } = await axios.post("http://localhost:8000/Register", {
+      username: username,
+      password: password,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function loginUser(username, password) {
+  try {
+    const { data } = await axios.post("http://localhost:8000/Login", {
+      username: username,
+      password: password,
+    });
+    return data;
   } catch (error) {
     throw error;
   }
