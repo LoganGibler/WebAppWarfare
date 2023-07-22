@@ -2,7 +2,16 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Navigation, Home, Footer, About, Postform, Guide, Register, Login} from "./components";
+import {
+  Navigation,
+  Home,
+  Footer,
+  About,
+  Postform,
+  Guide,
+  Register,
+  Login,
+} from "./components";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +25,8 @@ import { getAllBlogs, getAllPublishedBlogs } from "./api";
 const App = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [allPublishedBlogs, setAllPublishedBlogs] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState("");
+  const loggedIn = window.localStorage.getItem("isLoggedin");
 
   async function fetchAllBlogs() {
     const data = await getAllBlogs();
@@ -35,7 +46,11 @@ const App = () => {
   return (
     <Router>
       <div id="App">
-        <Navigation />
+        <Navigation
+          loggedIn={loggedIn}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+        />
         {/* <Footer /> */}
         <Switch>
           <Route path="/Home">

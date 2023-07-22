@@ -5,14 +5,11 @@
     margin-top: auto;
 } */
 
-.main-nav-div {
-    /* display: flex; */
-    background-color: #0f0e17;
-}
 
 .nav-container {
-    text-align: center;
+    /* text-align: center; */
     display: flex;
+    background-color: #0f0e17;
 }
 
 .nav-branding-div {
@@ -31,42 +28,40 @@
     font-size: 24px;
 }
 
-.brand-text:link{
+.brand-text:link {
     text-decoration: none;
 }
-.brand-text:visited{
+
+.brand-text:visited {
     text-decoration: none;
 }
-.brand-text:hover{
+
+.brand-text:hover {
     text-decoration: none;
     color: grey
-    
 }
-.brand-text:active{
+
+.brand-text:active {
     text-decoration: none;
 }
 
 .nav-links {
     display: flex;
-    margin-left: 37%;
-    /* width: 80%; */
-}
-
-.nav-link-container {
-    width: 45vmin;
-    display: flex;
-    text-align: center;
+    /* background-color: white; */
+    padding: 10px;
+    max-width: 45%;
+    min-width: 10%;
+    align-items: center;
+    margin-left: 25%;
 }
 
 .nav-button {
-    align-self: center;
-    margin-left: 5%;
-    /* width: 40%; */
     font-size: 18px;
-    /* margin: 2%; */
     color: white;
-    border-radius: 30px;
+    white-space: nowrap;
+    margin-left: 5%;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .nav-button:link {
@@ -84,7 +79,6 @@
 }
 
 .nav-button:active {
-    /* background-color: ; */
+    background-color: white; 
     text-decoration: none;
 }
-
