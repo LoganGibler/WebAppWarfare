@@ -16,21 +16,25 @@ const Login = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            const { user } = await loginUser(username, password);
-            console.log("this is user");
-            if (user) {
+            if (!username || !password){
+                alert("Please enter username and password.")
+            }
+            const data = await loginUser(username, password);
+            console.log("Token: ", data.token)
+            console.log("user: ", data.user)
+            if (data.user) {
               window.localStorage.setItem("isLoggedin", true);
-              storeUser(user);
-              storeToken(user);
+              storeUser(data.user);
+              storeToken(data.token);
               setPassword("");
               setUsername("");
-              history.push("/Home")
+              history.push("/Home");
               location.reload();
-            }else{
-                alert("Sign in failed.")
-                setUsername("")
-                setPassword("")
-                location.reload()
+            } else {
+              alert("Sign in failed.");
+              setUsername("");
+              setPassword("");
+              location.reload();
             }
           } catch (error) {
             throw error;

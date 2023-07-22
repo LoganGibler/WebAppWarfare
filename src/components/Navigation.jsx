@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import "../css/myStyles.css";
+import "../css/navigation.css";
 
 const Navigation = ({ loggedIn }) => {
   const history = useHistory();
@@ -14,14 +14,57 @@ const Navigation = ({ loggedIn }) => {
           </a>
         </div>
       </div>
-      <div className="nav-links">
+      {loggedIn ? (
+        <div className="nav-links-loggedin">
+          <a href="/Home" className="nav-button">
+            Guides
+          </a>
+          <a href="/PostForm" className="nav-button">
+            Create Guide
+          </a>
+          <a href="About" className="nav-button">
+            About
+          </a>
+          <a href="Profile" className="nav-button">
+            Profile
+          </a>
+          <a
+            href="/Login"
+            className="nav-button"
+            onClick={async () => {
+              window.localStorage.removeItem("isLoggedIn", false);
+              alert("Successfully Logged out.");
+              localStorage.clear();
+            }}
+          >
+            Sign out
+          </a>
+        </div>
+      ) : (
+        <div className="nav-links-loggedout">
+          <a href="/Home" className="nav-button">
+            Guides
+          </a>
+          <a href="About" className="nav-button">
+            About
+          </a>
+          <a
+            className="nav-button" href="/Login"
+          >
+            Sign In
+          </a>
+        </div>
+      )}
+      {/* <div className="nav-links">
         <a href="/Home" className="nav-button">
           Guides
         </a>
-        <a href="/Postform" className="nav-button">
-          Create Guide
-        </a>
 
+        {loggedIn ? (
+          <a href="/Postform" className="nav-button">
+            Create Guide
+          </a>
+        ) : null}
         <a href="/About" className="nav-button">
           About
         </a>
@@ -58,7 +101,7 @@ const Navigation = ({ loggedIn }) => {
             Sign In
           </a>
         )}
-      </div>
+      </div> */}
     </nav>
   );
 };

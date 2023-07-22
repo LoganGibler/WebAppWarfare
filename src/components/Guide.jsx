@@ -6,7 +6,7 @@ import "../css/guide.css";
 const Guide = ({ allPublishedBlogs }) => {
   const [blog, setBlog] = useState({});
   let { id } = useParams();
-  console.log(allPublishedBlogs);
+  // console.log(allPublishedBlogs);
   async function getBlog(id) {
     const calledBlog = allPublishedBlogs.map((element) => {
       if (element._id === id) {
@@ -19,7 +19,7 @@ const Guide = ({ allPublishedBlogs }) => {
     getBlog(id);
   }, [id]);
 
-  console.log("this is blog front end", blog);
+  // console.log("this is blog front end", blog);
   return (
     <div className="main-individual-blog-div">
       <div className="main-blog-container1">
