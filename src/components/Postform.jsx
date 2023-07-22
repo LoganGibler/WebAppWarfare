@@ -11,6 +11,8 @@ const Postform = () => {
   let [description, setDescription] = useState("");
   let [picture, setPicture] = useState("");
 
+  let author = getUser();
+
   return (
     <div>
       <form
@@ -18,11 +20,13 @@ const Postform = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
+            console.log(author);
             const data = await createPost(
               vmtitle,
               hostedby,
               description,
-              picture
+              picture,
+              author
             );
             console.log("data on front end after createPost, data");
             if (!data) {

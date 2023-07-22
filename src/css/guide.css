@@ -12,3 +12,15 @@
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
     padding: 12px;
 }
+
+.date-guide{
+    /* display: inline; */
+    /* margin-left: 10%; */
+    font-size: 12px;
+}
+
+.author-guide{
+    /* display: inline; */
+    /* margin-left: 10%; */
+    font-size: 12px;
+}

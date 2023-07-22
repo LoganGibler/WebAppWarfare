@@ -54,6 +54,7 @@
     align-items: center;
     margin-left: 25%;
 }
+
 .nav-links-loggedout {
     display: flex;
     /* background-color: white; */
@@ -88,6 +89,6 @@
 }
 
 .nav-button:active {
-    background-color: white; 
+    background-color: white;
     text-decoration: none;
 }

@@ -18,3 +18,7 @@ export function getUser(){
     const myUser = JSON.parse(localStorage.getItem('user'));
     return myUser;
 }
+
+export function logStatus(status){
+    window.localStorage.setItem("isLoggedin", status);
+}

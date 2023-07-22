@@ -21,6 +21,12 @@ const postSchema = mongoose.Schema({
   published: {
     type: Boolean,
   },
+  author: {
+    type: String
+  },
+  date: {
+    type: String
+  }
   //   should have a date, and a finalized button.
 });
 

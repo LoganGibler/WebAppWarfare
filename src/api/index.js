@@ -3,8 +3,17 @@ import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
 const BASE = "http://localhost:8000/";
 
-export async function createPost(vmtitle, hostedby, description, picture) {
+export async function createPost(vmtitle, hostedby, description, picture, author) {
+
   let published = false;
+  let preformattedDate = new Date()
+  let day = preformattedDate.getDate()
+  let month = preformattedDate.getMonth() + 1
+  let year = preformattedDate.getFullYear()
+
+  let date = `${month}-${day}-${year}`
+  console.log("THis IS DATE",date)
+
   try {
     const { data } = await axios.post("http://localhost:8000/createPost", {
       vmtitle: vmtitle,
@@ -12,6 +21,8 @@ export async function createPost(vmtitle, hostedby, description, picture) {
       description: description,
       picture: picture,
       published: published,
+      author: author,
+      date: date
     });
 
     // console.log("this is data after frontend api", data);

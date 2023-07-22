@@ -54,6 +54,21 @@ h3 {
     font-size: 21px;
 }
 
+
+.date-createdby-div{
+    /* display: inline; */
+}
+.createdby-home{
+    font-size: 12px;
+    display: inline;
+}
+
+.date-home{
+    display: inline;
+    margin-left: 10%;
+    font-size: 12px;
+}
+
 /* 
  background: #0f0e17
  headline: #fffffe

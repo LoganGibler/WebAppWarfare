@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { loginUser, registerUser } from "../api";
-import { storeToken, storeUser } from "../auth";
+import { storeToken, storeUser, logStatus } from "../auth";
 import "../css/login.css";
 
 const Login = () => {
@@ -16,15 +16,16 @@ const Login = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            if (!username || !password){
-                alert("Please enter username and password.")
+            if (!username || !password) {
+              alert("Please enter username and password.");
             }
             const data = await loginUser(username, password);
-            console.log("Token: ", data.token)
-            console.log("user: ", data.user)
+            // console.log("Token: ", data.token)
+            // console.log("user: ", data.user.username)
             if (data.user) {
-              window.localStorage.setItem("isLoggedin", true);
-              storeUser(data.user);
+              //   window.localStorage.setItem("isLoggedin", true);
+              logStatus(true);
+              storeUser(data.user.username);
               storeToken(data.token);
               setPassword("");
               setUsername("");
