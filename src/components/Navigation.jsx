@@ -21,12 +21,20 @@ const Navigation = ({ loggedIn }) => {
         <a href="/Postform" className="nav-button">
           Create Guide
         </a>
-        <a href="/profile" className="nav-button">
-          Profile
-        </a>
+
         <a href="/About" className="nav-button">
           About
         </a>
+        {loggedIn ? (
+          <a
+            className="nav-button"
+            onClick={async () => {
+              history.push("/Profile");
+            }}
+          >
+            Profile
+          </a>
+        ) : null}
         {loggedIn ? (
           <a
             className="nav-button"

@@ -5,8 +5,6 @@ import { storeToken, storeUser } from "../auth";
 import "../css/register.css";
 
 const Register = () => {
-  // storeuser and token
-  // automatically run login function on passed credentials
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
@@ -28,7 +26,7 @@ const Register = () => {
                 console.log("this is active user", activeUser);
                 storeUser(activeUser);
                 storeToken(activeUser);
-                setIsLoggedIn(true);
+                // setIsLoggedIn(true);
                 setUsername("");
                 setPassword("");
                 history.push("/Home");

@@ -1,15 +1,73 @@
 import React, { useState, useEffect } from "react";
-
+import { useHistory } from "react-router-dom";
+import { loginUser, registerUser } from "../api";
+import { storeToken, storeUser } from "../auth";
+import "../css/login.css";
 
 const Login = () => {
-    return(
-        <div>
-            <h1>Login component</h1>
-            <h1>Login component</h1>
-            <h1>Login component</h1>
-            <h1>Login component</h1>
-        </div>
-    )
-}
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  let history = useHistory();
 
-export default Login
+  return (
+    <div className="main-form-div">
+      <form
+        className="login-form"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          try {
+            const { user } = await loginUser(username, password);
+            console.log("this is user");
+            if (user) {
+              window.localStorage.setItem("isLoggedin", true);
+              storeUser(user);
+              storeToken(user);
+              setPassword("");
+              setUsername("");
+              history.push("/Home")
+              location.reload();
+            }else{
+                alert("Sign in failed.")
+                setUsername("")
+                setPassword("")
+                location.reload()
+            }
+          } catch (error) {
+            throw error;
+          }
+        }}
+      >
+        <div className="username-input-login-div">
+          <input
+            className="username-input-login"
+            placeholder="Username"
+            type="text"
+            value={username}
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+          ></input>
+        </div>
+        <div className="password-input-login-div">
+          <input
+            className="password-input-login"
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          ></input>
+        </div>
+        <div>
+          <button className="login-button">Sign in</button>
+        </div>
+        <div className="signin-login-div">
+          <a className="signin-login-link">Need an account?</a>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
