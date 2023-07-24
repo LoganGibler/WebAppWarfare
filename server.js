@@ -161,7 +161,7 @@ app.post("/Register", async (req, res) => {
     // console.log("this is req.body", req.body);
     if (!username || !password) {
       res.status(404).json({
-        message: "Please provide valid email, username, and password",
+        message: "Please provide valid username and password",
       });
     }
 

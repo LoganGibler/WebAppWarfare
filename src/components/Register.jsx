@@ -21,6 +21,7 @@ const Register = () => {
               console.log("this is token", token);
               alert("Registration successful.");
               const activeUser = await loginUser(username, password);
+              console.log("this is active user", activeUser);
               if (activeUser) {
                 window.localStorage.setItem("isLoggedin", true);
                 console.log("this is active user", activeUser);
@@ -69,7 +70,7 @@ const Register = () => {
         <div>
           <button className="register-button">Create Account</button>
         </div>
-        <div className="signin-div">
+        <div className="signin-div" href="/Login">
           <a className="signin-link">Already have an account?</a>
         </div>
       </form>
