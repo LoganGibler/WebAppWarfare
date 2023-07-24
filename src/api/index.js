@@ -3,16 +3,21 @@ import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
 const BASE = "http://localhost:8000/";
 
-export async function createPost(vmtitle, hostedby, description, picture, author) {
+export async function createPost(
+  vmtitle,
+  hostedby,
+  description,
+  picture,
+  author
+) {
+  let published = true;
+  let preformattedDate = new Date();
+  let day = preformattedDate.getDate();
+  let month = preformattedDate.getMonth() + 1;
+  let year = preformattedDate.getFullYear();
 
-  let published = false;
-  let preformattedDate = new Date()
-  let day = preformattedDate.getDate()
-  let month = preformattedDate.getMonth() + 1
-  let year = preformattedDate.getFullYear()
-
-  let date = `${month}-${day}-${year}`
-  console.log("THis IS DATE",date)
+  let date = `${month}-${day}-${year}`;
+  console.log("THis IS DATE", date);
 
   try {
     const { data } = await axios.post("http://localhost:8000/createPost", {
@@ -22,7 +27,7 @@ export async function createPost(vmtitle, hostedby, description, picture, author
       picture: picture,
       published: published,
       author: author,
-      date: date
+      date: date,
     });
 
     // console.log("this is data after frontend api", data);
@@ -81,6 +86,19 @@ export async function getBlogById(id) {
   }
 }
 
+export async function getUserIDByUsername(username) {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:8000/getUserIDByUsername",
+      {
+        username: username,
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
 // user api calls/////////////////////////////////////
 
 export async function registerUser(username, password) {

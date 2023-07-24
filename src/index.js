@@ -11,6 +11,7 @@ import {
   Guide,
   Register,
   Login,
+  Profile,
 } from "./components";
 import {
   BrowserRouter as Router,
@@ -70,6 +71,9 @@ const App = () => {
           </Route>
           <Route path="/Login">
             <Login />
+          </Route>
+          <Route path="/Profile">
+            <Profile />
           </Route>
         </Switch>
       </div>

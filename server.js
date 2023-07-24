@@ -10,7 +10,7 @@ const { JWT_SECRET = "neverTell" } = process.env;
 app.use(morgan("dev"));
 app.use(express.json());
 
-const uri = "mongodb://localhost:27017/";
+const uri = "mongodb://localhost:27017";
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 
@@ -207,6 +207,18 @@ app.post("/Login", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: "Login Failed." });
+  }
+});
+
+app.post("/getUserIDByUsername", async (req, res) => {
+  try {
+    const { username } = req.body;
+    const user = await User.findOne({ username });
+    if (user) {
+      res.status(200).json({ message: "getUserIDByUsername successful.", user });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "getUserIDByUsername failed." });
   }
 });
 

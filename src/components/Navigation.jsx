@@ -48,60 +48,11 @@ const Navigation = ({ loggedIn }) => {
           <a href="About" className="nav-button">
             About
           </a>
-          <a
-            className="nav-button" href="/Login"
-          >
+          <a className="nav-button" href="/Login">
             Sign In
           </a>
         </div>
       )}
-      {/* <div className="nav-links">
-        <a href="/Home" className="nav-button">
-          Guides
-        </a>
-
-        {loggedIn ? (
-          <a href="/Postform" className="nav-button">
-            Create Guide
-          </a>
-        ) : null}
-        <a href="/About" className="nav-button">
-          About
-        </a>
-        {loggedIn ? (
-          <a
-            className="nav-button"
-            onClick={async () => {
-              history.push("/Profile");
-            }}
-          >
-            Profile
-          </a>
-        ) : null}
-        {loggedIn ? (
-          <a
-            className="nav-button"
-            onClick={async () => {
-              window.localStorage.removeItem("isLoggedIn", false);
-              alert("Successfully Logged out.");
-              history.push("/Login");
-              localStorage.clear();
-              location.reload();
-            }}
-          >
-            Logout
-          </a>
-        ) : (
-          <a
-            className="nav-button"
-            onClick={async () => {
-              history.push("/Login");
-            }}
-          >
-            Sign In
-          </a>
-        )}
-      </div> */}
     </nav>
   );
 };
