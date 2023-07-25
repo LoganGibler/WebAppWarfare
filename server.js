@@ -154,6 +154,24 @@ app.post("/getBlogById", async (req, res) => {
     throw error;
   }
 });
+
+app.post("/getBlogsByAuthor", async (req, res) => {
+  try {
+    let filter = { author: req.body.author };
+    console.log("this is req.body.author:", req.body.author);
+    let blogs = await Post.find(filter);
+    console.log("this is blogs:", blogs);
+    if (blogs) {
+      res
+        .status(200)
+        .json({ message: "/getBlogByAuthor request successful.", blogs });
+    } else {
+      res.status(500).json({ message: "/getBlogByAuthor request failed." });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
   try {
@@ -215,7 +233,9 @@ app.post("/getUserIDByUsername", async (req, res) => {
     const { username } = req.body;
     const user = await User.findOne({ username });
     if (user) {
-      res.status(200).json({ message: "getUserIDByUsername successful.", user });
+      res
+        .status(200)
+        .json({ message: "getUserIDByUsername successful.", user });
     }
   } catch (error) {
     res.status(500).json({ message: "getUserIDByUsername failed." });

@@ -12,6 +12,7 @@ import {
   Register,
   Login,
   Profile,
+  EditGuide,
 } from "./components";
 import {
   BrowserRouter as Router,
@@ -19,15 +20,17 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { getAllBlogs, getAllPublishedBlogs } from "./api";
-
+import { getAllBlogs, getAllPublishedBlogs, getBlogsByUsername } from "./api";
+import { getUser } from "./auth";
 // CHODIKAR_USEPOLLING=true npm run start
 
 const App = () => {
   const [allBlogs, setAllBlogs] = useState([]);
   const [allPublishedBlogs, setAllPublishedBlogs] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState("");
+  const [userBlogs, setUserBlogs] = useState([]);
   const loggedIn = window.localStorage.getItem("isLoggedin");
+  const activeUser = getUser();
 
   async function fetchAllBlogs() {
     const data = await getAllBlogs();
@@ -39,10 +42,17 @@ const App = () => {
     setAllPublishedBlogs(data.data.allPublishedBlogs);
   }
 
+  async function getUserBlogs(activeUser) {
+    const blogs = await getBlogsByUsername(activeUser);
+    // console.log("This is user blogs.", blogs.blogs);
+    setUserBlogs(blogs.blogs);
+  }
+
   useEffect(() => {
     fetchAllBlogs();
     fetchAllPublishedBlogs();
-  }, []);
+    getUserBlogs(activeUser);
+  }, [activeUser]);
 
   return (
     <Router>
@@ -73,7 +83,10 @@ const App = () => {
             <Login />
           </Route>
           <Route path="/Profile">
-            <Profile />
+            <Profile userBlogs={userBlogs} />
+          </Route>
+          <Route path="/userguides/:id">
+            <EditGuide userBlogs={userBlogs}/>
           </Route>
         </Switch>
       </div>

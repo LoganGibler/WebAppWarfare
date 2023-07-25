@@ -1,0 +1,16 @@
+.editguide-main-div{
+    display: flex;
+    background-color: #0f0e17;
+    margin-top: 2%;
+}
+
+.editguide-main-container{
+    margin-left: 50%;
+    margin: auto;
+    background-color: #0f0e17;
+    width: 100vh;
+    padding: 50px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px 5px 0px 1px  #FFFFFF inset;
+}

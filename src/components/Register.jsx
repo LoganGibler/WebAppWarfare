@@ -25,8 +25,9 @@ const Register = () => {
               if (activeUser) {
                 window.localStorage.setItem("isLoggedin", true);
                 console.log("this is active user", activeUser);
-                storeUser(activeUser);
-                storeToken(activeUser);
+                logStatus(true);
+                storeUser(data.user.username);
+                storeToken(data.token);
                 // setIsLoggedIn(true);
                 setUsername("");
                 setPassword("");

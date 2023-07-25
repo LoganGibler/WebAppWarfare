@@ -1,33 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
 import "../css/profile.css";
 import { getUser } from "../auth";
-import { getUserIDByUsername } from "../api";
+import { getBlogsByUsername } from "../api";
 
-const Profile = () => {
-  let [userBlogs, setUsernameBlogs] = useState([]);
+const Profile = ({ userBlogs }) => {
   let [user, setUser] = useState("");
   const activeUser = getUser();
+  let history = useHistory();
   // need to do a post request to the backend to get the user's blogs
   // add a button to delete the blog
   // add a button to edit the blog
   // add a button to create a new blog form this page as well
   // add a button to view the blog
-  async function getUserBlogs(activeUser) {
-    const user = await getUserIDByUsername(activeUser);
-    setUser(user.user.id)
-    console.log("user:", user.user._id);
-  }
-
-  useEffect(() => {
-    getUserBlogs(activeUser);
-  }, [activeUser]);
+  // console.log("this is user blogs", userBlogs);
 
   return (
-    <div>
-      <h2>Welcome, {activeUser}</h2>
-      <h2>ID: {user}</h2>
-      <div></div>
+    <div className="main-profile-div">
+      <div className="main-profile-container">
+        <h4> Welcome to WebAppWarfare, {activeUser}!</h4>
+        {userBlogs.length ? (
+          <p>
+            Looks like you already have some created guides! You can add and
+            edit steps of your guides here. Remember to publish your guide when
+            you are all finished!
+          </p>
+        ) : null}
+        {userBlogs.length
+          ? userBlogs.map((blog) => {
+              // console.log(blog);
+              return (
+                <div
+                  className="blog-profile-div"
+                  key={blog._id}
+                  onClick={() => {
+                    history.push(`/userguides/${blog._id}`);
+                  }}
+                >
+                  <div className="title-date-div">
+                    <h3>{blog.vmtitle}</h3>
+                    <p className="date-profile">Created on: {blog.date}</p>
+                  </div>
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 };

@@ -29,12 +29,14 @@
 }
 
 .step-div{
-    background-color: white;
+    /* background-color: white; */
+    background-color: #0f0e17;
     padding: 5px;
     margin-top: 5%;
     font-size: 14px;
-    color: black;
+    color: white;
     border-radius: 10px;
+    box-shadow: 5px 5px 0px 1px  #FFFFFF;
 }
 
 .step-element{

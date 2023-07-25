@@ -99,6 +99,18 @@ export async function getUserIDByUsername(username) {
     throw error;
   }
 }
+
+
+export async function getBlogsByUsername(author){
+  try {
+    const {data} = await axios.post("http://localhost:8000/getBlogsByAuthor", {
+      author: author,
+    })
+    return data
+  } catch (error) {
+    throw error
+  }
+}
 // user api calls/////////////////////////////////////
 
 export async function registerUser(username, password) {
