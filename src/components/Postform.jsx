@@ -9,12 +9,12 @@ const Postform = () => {
   let [vmtitle, setvmtitle] = useState("");
   let [hostedby, setHostedBy] = useState("");
   let [description, setDescription] = useState("");
-  let [picture, setPicture] = useState("");
+  // let [picture, setPicture] = useState("");
 
   let author = getUser();
 
   return (
-    <div>
+    <div className="main-createpost-div">
       <form
         className="createPostform"
         onSubmit={async (e) => {
@@ -25,7 +25,7 @@ const Postform = () => {
               vmtitle,
               hostedby,
               description,
-              picture,
+              // picture,
               author
             );
             console.log("data on front end after createPost, data");
@@ -37,7 +37,7 @@ const Postform = () => {
             setvmtitle("");
             setHostedBy("");
             setDescription("");
-            setPicture("");
+            // setPicture("");
           } catch (error) {
             console.error("error in front end Postform.jsx", error);
             throw error;
@@ -46,45 +46,49 @@ const Postform = () => {
       >
         <div className="form-div">
           <div className="header-title-div">
-            <h3 className="header-title">Start a new blog!</h3>
+            <h4 className="header-title">Start a new blog!</h4>
           </div>
-          <div className="title-title-div">
-            <input
-              className="create-post-title"
-              placeholder="Enter VM name"
-              maxLength="24"
-              value={vmtitle}
-              type="text"
-              onChange={(e) => {
-                setvmtitle(e.target.value);
-              }}
-            ></input>
-            <input
-              className="host-title"
-              placeholder="Where did you find this VM? ex: TryHackMe"
-              maxLength="28"
-              value={hostedby}
-              type="text"
-              onChange={(e) => {
-                setHostedBy(e.target.value);
-              }}
-            ></input>
-          </div>
-          <div className="description-div">
-            <textarea
-              className="description-box"
-              placeholder="Please enter a brief description of what to expect when hacking this box. OS, active directory, webapp pentesting, etc."
-              maxLength="220"
-              value={description}
-              type="text"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            ></textarea>
+          <div className="main-input-div">
+            <div className="create-post-title-div">
+              <input
+                className="create-post-title"
+                placeholder="Enter VM name"
+                maxLength="24"
+                value={vmtitle}
+                type="text"
+                onChange={(e) => {
+                  setvmtitle(e.target.value);
+                }}
+              ></input>
+            </div>
+            <div className="create-post-hostedby-div">
+              <input
+                className="host-title"
+                placeholder="Where did you find this VM? ex: TryHackMe"
+                maxLength="28"
+                value={hostedby}
+                type="text"
+                onChange={(e) => {
+                  setHostedBy(e.target.value);
+                }}
+              ></input>
+            </div>
+            <div className="description-div">
+              <textarea
+                className="description-box"
+                placeholder="Please enter a brief description of what to expect when hacking this box. OS, active directory, webapp pentesting, etc."
+                maxLength="220"
+                value={description}
+                type="text"
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              ></textarea>
+            </div>
           </div>
           <div className="post-form-button-div">
             <button className="post-form-button">Submit</button>
-            <input
+            {/* <input
               className="create-post-pic"
               placeholder="Have a pic for the VM? Paste img link here!"
               value={picture}
@@ -92,7 +96,7 @@ const Postform = () => {
               onChange={(e) => {
                 setPicture(e.target.value);
               }}
-            ></input>
+            ></input> */}
           </div>
         </div>
       </form>

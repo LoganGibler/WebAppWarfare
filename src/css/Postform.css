@@ -1,82 +1,77 @@
-.createPostform{
-    width: 55%;
-    margin: auto;
-    margin-top: 5%;
-    font-family: Arial, Helvetica, sans-serif;
-    display: block;
+.main-createpost-div {
+    display: flex;
 }
-.header-title-div{
+
+.createPostform {
+    margin-left: 50%;
+    margin: auto;
+    background-color: #0f0e17;
+    padding: 12px;
     width: 50%;
-    margin: auto;
-    color: white;
-}
-.header-title{
-    margin-top: 25%;
-    margin-left: 16%;
-}
-
-.title-title-div{
     display: flex;
 }
 
-.create-post-title{
-    margin-top: 1.2%;
-    margin-right: 10px;
-    width: 45%;
-    padding: 3px;
-    border-radius: 5px;
-    /* box-shadow: 5px 4px 5px; */
-}
-
-.host-title{
-    margin-top: 1.2%;
-    width: 45%;
-    padding: 1px;
-    border-radius: 5px;
-    /* box-shadow: 5px 4px 5px; */
-}
-
-.description-div{
-    margin-top: 1.3%;
-    width: 92%;
-    padding: 1px;
-    border-radius: 5px;
-    /* box-shadow: 5px 3px 5px; */
-}
-
-.description-box{
-    padding: 7px;
-    border-radius: 15px;
+.form-div {
+    /* margin-left: 50%;
+    margin: auto; */
     width: 100%;
-    height: 23vh;
+    background-color: #0f0e17;
+    box-shadow: 5px 5px 0px 1px  #FFFFFF inset;
+    padding: 5px;
 }
 
-/* .post-form-button-div{
-    display: flex;
-    
-} */
+.main-input-div {
+    margin-left: 50%;
+    margin: auto;
+}
 
-.post-form-button{
-    margin-left: 5%;
+.create-post-title-div {
+    padding: 10px;
+    box-shadow: 8px 0.01px 0px #FFFFFF;
+}
+
+.create-post-title {
+    text-indent: 5px;
+    width: 90%;
+    margin-left: 7%;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.create-post-hostedby-div {
+    padding: 10px;
+    margin-top: 3%;
+    box-shadow: 8px 0.09px 0px #FFFFFF;
+}
+
+.host-title {
+    width: 90%;
+    text-indent: 5px;
+    margin-left: 7%;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.description-div {
+    padding: 10px;
+    margin-top: 4%;
+    box-shadow: 8px 0.09px 0px #FFFFFF;
+}
+
+.description-box {
+    margin-left: 7%;
+    width: 90%;
+    height: 50vmin;
+    text-indent: 5px;
+    padding: 5px;
     border-radius: 5px;
-    color: black;
-    margin-top: 1%;
-    border: none;
-    cursor: pointer;
-    /* box-shadow: 5px 4px 5px; */
 }
 
-.post-form-button:hover {
-    color: black;
-    background-color: white;
-    border-radius: 15px;
+.post-form-button-div {
+    margin-top: 4%;
+    box-shadow: 5px 5px 0px 1px  #FFFFFF;
 }
 
-.create-post-pic{
-    color: black;
-    margin-left: 15%;
-    width: 60%;
-    padding: 1px;
-    border-radius: 5px;
-    /* box-shadow: 5px 4px 5px; */
+.post-form-button {
+    margin-left: 9%;
 }
