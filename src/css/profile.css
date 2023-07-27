@@ -1,10 +1,10 @@
-.main-profile-div{
+.main-profile-div {
     background-color: #0f0e17;
     display: flex;
     color: white;
 }
 
-.main-profile-container{
+.main-profile-container {
     margin-left: 50%;
     margin: auto;
     background-color: #0f0e17;
@@ -12,18 +12,18 @@
     padding: 20px;
     border-radius: 10px;
     color: white;
-    box-shadow: 5px 5px 0px 1px  #FFFFFF inset;
+    box-shadow: 5px 5px 0px 1px #FFFFFF inset;
     margin-top: 2%;
 }
 
-.blog-profile-div{
-    box-shadow: 5px 5px 0px 1px  #FFFFFF;
+.blog-profile-div {
+    box-shadow: 5px 5px 0px 1px #FFFFFF;
     /* display: flex; */
     margin: 10px;
     margin-top: 5%;
 }
 
-.date-profile{
+.date-profile {
     font-size: 12px;
     margin-top: 1.5%;
     margin-left: 43%;
@@ -31,11 +31,18 @@
     position: absolute;
 }
 
-.title-date-div{
+.title-date-div {
     display: flex;
+    padding-bottom: 15px;
+    padding-top: 10px;
 }
-.guide-description-profile{
+
+.guide-description-profile {
     font-size: 14px;
     margin-left: 10%;
     margin-top: 2%;
+}
+
+.vmtitle-profile {
+    text-indent: 20px;
 }

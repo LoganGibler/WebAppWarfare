@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory,useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "../css/profile.css";
 import { getUser } from "../auth";
 import { getBlogsByUsername } from "../api";
@@ -18,33 +18,43 @@ const Profile = ({ userBlogs }) => {
   return (
     <div className="main-profile-div">
       <div className="main-profile-container">
-        <h4> Welcome to WebAppWarfare, {activeUser}!</h4>
         {userBlogs.length ? (
-          <p>
-            Looks like you already have some created guides! You can add and
-            edit steps of your guides here. Remember to publish your guide when
-            you are all finished!
-          </p>
+          <div>
+            <h4> Welcome back, {activeUser}!</h4>
+            <p>
+              Looks like you already have some created guides! You can add and
+              edit steps of your guides here by clicking on the blog you want to
+              edit. Remember to publish your guide when you are all finished!
+            </p>
+          </div>
         ) : null}
-        {userBlogs.length
-          ? userBlogs.map((blog) => {
-              // console.log(blog);
-              return (
-                <div
-                  className="blog-profile-div"
-                  key={blog._id}
-                  onClick={() => {
-                    history.push(`/userguides/${blog._id}`);
-                  }}
-                >
-                  <div className="title-date-div">
-                    <h3>{blog.vmtitle}</h3>
-                    <p className="date-profile">Created on: {blog.date}</p>
-                  </div>
+        {userBlogs.length ? (
+          userBlogs.map((blog) => {
+            // console.log(blog);
+            return (
+              <div
+                className="blog-profile-div"
+                key={blog._id}
+                onClick={() => {
+                  history.push(`/userguides/${blog._id}`);
+                }}
+              >
+                <div className="title-date-div">
+                  <h3 className="vmtitle-profile">{blog.vmtitle}</h3>
+                  <p className="date-profile">Created on: {blog.date}</p>
                 </div>
-              );
-            })
-          : null}
+              </div>
+            );
+          })
+        ) : (
+          <div>
+            <h4> Welcome to WebAppWarfare, {activeUser}!</h4>
+            <p>
+              Looks like you don't have any created guides! Click here to create
+              one:
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

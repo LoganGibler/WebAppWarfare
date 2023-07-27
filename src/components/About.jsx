@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 const About = () => {
-    return(
+    return (
         <div>
             <h1>AboutUs component</h1>
             <h1>AboutUs component</h1>

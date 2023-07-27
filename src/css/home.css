@@ -24,7 +24,7 @@
 .search-bar-div {
     background-color: #0f0e17;
     display: flex;
-    
+
 }
 
 .search-bar {
@@ -42,7 +42,7 @@
 .blog-container {
     /* display: block; */
     background-color: #0f0e17;
-    box-shadow: 5px 5px 0px 5px  #FFFFFF inset;
+    box-shadow: 5px 5px 0px 5px #FFFFFF inset;
 }
 
 .blog-div {
@@ -57,15 +57,16 @@
 
 
 
-.date-createdby-div{
+.date-createdby-div {
     /* display: inline; */
 }
-.createdby-home{
+
+.createdby-home {
     font-size: 12px;
     display: inline;
 }
 
-.date-home{
+.date-home {
     display: inline;
     margin-left: 10%;
     font-size: 12px;
@@ -78,3 +79,8 @@
  buttontext: #fffffe
 button: #ff8906
 */
+
+
+.error-on-blogs-header {
+    color: white;
+}

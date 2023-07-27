@@ -22,10 +22,10 @@ const Navigation = ({ loggedIn }) => {
           <a href="/PostForm" className="nav-button">
             Create Guide
           </a>
-          <a href="About" className="nav-button">
+          <a href="/About" className="nav-button">
             About
           </a>
-          <a href="Profile" className="nav-button">
+          <a href="/Profile" className="nav-button">
             Profile
           </a>
           <a

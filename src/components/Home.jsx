@@ -13,31 +13,31 @@ const Home = ({ allPublishedBlogs }) => {
           </div>
           <div className="main-blog-div">
             <div className="blog-container">
-              {allPublishedBlogs.length
+              {allPublishedBlogs.length > 2
                 ? allPublishedBlogs.map((blog) => {
-                    // console.log(blog);
-                    return (
-                      <div
-                        className="blog-div"
-                        id="blog-d"
-                        key={blog._id}
-                        onClick={() => {
-                          history.push(`/blog/${blog._id}`);
-                        }}
-                      >
-                        <h3>{blog.vmtitle}</h3>
-                        <p>{blog.hostedby}</p>
-                        <p>{blog.description}</p>
-                        <div className="date-createdby-div">
-                          <p className="createdby-home">
-                            Created By: {blog.author}
-                          </p>
-                          <p className="date-home">On: {blog.date}</p>
-                        </div>
+                  // console.log(blog);
+                  return (
+                    <div
+                      className="blog-div"
+                      id="blog-d"
+                      key={blog._id}
+                      onClick={() => {
+                        history.push(`/blog/${blog._id}`);
+                      }}
+                    >
+                      <h3>{blog.vmtitle}</h3>
+                      <p>{blog.hostedby}</p>
+                      <p>{blog.description}</p>
+                      <div className="date-createdby-div">
+                        <p className="createdby-home">
+                          Created By: {blog.author}
+                        </p>
+                        <p className="date-home">On: {blog.date}</p>
                       </div>
-                    );
-                  })
-                : null}
+                    </div>
+                  );
+                })
+                : <h2>Failed to fetch blogs</h2>}
             </div>
           </div>
         </div>
