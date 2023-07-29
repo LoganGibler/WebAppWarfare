@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { loginUser, registerUser } from "../api";
-import { storeToken, storeUser } from "../auth";
+import { storeToken, storeUser, logStatus } from "../auth";
 import "../css/register.css";
 
 const Register = () => {
@@ -26,8 +26,8 @@ const Register = () => {
                 window.localStorage.setItem("isLoggedin", true);
                 console.log("this is active user", activeUser);
                 logStatus(true);
-                storeUser(data.user.username);
-                storeToken(data.token);
+                storeUser(activeUser.user.username);
+                storeToken(activeUser.token);
                 // setIsLoggedIn(true);
                 setUsername("");
                 setPassword("");
@@ -71,8 +71,10 @@ const Register = () => {
         <div>
           <button className="register-button">Create Account</button>
         </div>
-        <div className="signin-div" href="/Login">
-          <a className="signin-link">Already have an account?</a>
+        <div className="signin-div">
+          <a className="signin-link" href="/Login">
+            Already have an account?
+          </a>
         </div>
       </form>
     </div>

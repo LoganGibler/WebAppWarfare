@@ -8,13 +8,13 @@ const Home = ({ allPublishedBlogs }) => {
     <div className="main-blogs-div">
       <div className="center-me-div">
         <div className="middle-content-div">
-          <div className="search-bar-div">
+          {/* <div className="search-bar-div">
             <input className="search-bar" placeholder="Search blog(s)"></input>
-          </div>
+          </div> */}
           <div className="main-blog-div">
             <div className="blog-container">
-              {allPublishedBlogs.length > 2
-                ? allPublishedBlogs.map((blog) => {
+              {allPublishedBlogs.length ? (
+                allPublishedBlogs.map((blog) => {
                   // console.log(blog);
                   return (
                     <div
@@ -26,8 +26,15 @@ const Home = ({ allPublishedBlogs }) => {
                       }}
                     >
                       <h3>{blog.vmtitle}</h3>
-                      <p>{blog.hostedby}</p>
-                      <p>{blog.description}</p>
+                      <div className="hostedby-difficulty-div">
+                        <p>{blog.hostedby}</p>
+                        <p className="blog-difficulty-home">
+                          Rating: {blog.difficulty}
+                        </p>
+                      </div>
+                      <p className="blog-description-home">
+                        {blog.description}
+                      </p>
                       <div className="date-createdby-div">
                         <p className="createdby-home">
                           Created By: {blog.author}
@@ -37,7 +44,9 @@ const Home = ({ allPublishedBlogs }) => {
                     </div>
                   );
                 })
-                : <h2>Failed to fetch blogs</h2>}
+              ) : (
+                <h2 className="error-on-blogs-header">Failed to fetch blogs</h2>
+              )}
             </div>
           </div>
         </div>

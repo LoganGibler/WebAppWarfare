@@ -1,23 +1,38 @@
 .main-createpost-div {
     display: flex;
+    background-color: #DCDCDC;
 }
 
 .createPostform {
     margin-left: 50%;
     margin: auto;
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     padding: 12px;
     width: 50%;
     display: flex;
+    border-radius: 10px;
+}
+
+.header-title-div {
+    margin-top: 5%;
+    display: flex;
+}
+
+.header-title {
+    margin-left: 50%;
+    margin: auto;
 }
 
 .form-div {
     /* margin-left: 50%;
     margin: auto; */
+    margin-top: 5%;
     width: 100%;
-    background-color: #0f0e17;
-    box-shadow: 5px 5px 0px 1px  #FFFFFF inset;
-    padding: 5px;
+    background-color: white;
+    /* box-shadow: 5px 5px 0px 1px #0f0e17 inset; */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: rgba(14, 3, 3, 0.397) 5px 5px 200px;
 }
 
 .main-input-div {
@@ -26,52 +41,81 @@
 }
 
 .create-post-title-div {
+    margin-top: 3%;
     padding: 10px;
-    box-shadow: 8px 0.01px 0px #FFFFFF;
+    /* box-shadow: 8px 0.01px 0px #FFFFFF; */
 }
 
 .create-post-title {
     text-indent: 5px;
     width: 90%;
-    margin-left: 7%;
+    margin-left: 6%;
     padding: 5px;
-    border-radius: 8px;
+    /* border-radius: 8px; */
+    border-left: 8px solid #0f0e17;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
 .create-post-hostedby-div {
     padding: 10px;
-    margin-top: 3%;
-    box-shadow: 8px 0.09px 0px #FFFFFF;
+    margin-top: 1%;
+    /* box-shadow: 8px 0.09px 0px #FFFFFF; */
+    display: flex;
 }
 
 .host-title {
-    width: 90%;
+    width: 80%;
     text-indent: 5px;
-    margin-left: 7%;
+    margin-left: 6%;
     padding: 5px;
-    border-radius: 8px;
+    /* border-radius: 8px; */
+    border-left: 8px solid #0f0e17;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+}
+
+.postform-difficulty-select {
+    text-overflow: ellipsis;
+    /* border-radius: 7px; */
+    margin-left: 1%;
+    margin-right: 4%;
+    width: 18%;
+    border: 1px solid #0f0e17;
+    text-indent: 6px;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
 .description-div {
     padding: 10px;
-    margin-top: 4%;
-    box-shadow: 8px 0.09px 0px #FFFFFF;
+    margin-top: 1%;
+    /* box-shadow: 8px 0.09px 0px #FFFFFF; */
+
+
 }
 
 .description-box {
-    margin-left: 7%;
+    margin-left: 6%;
     width: 90%;
     height: 50vmin;
     text-indent: 5px;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 10px;
+    /* border-radius: 5px; */
+    border-left: 8px solid #0f0e17;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
 .post-form-button-div {
-    margin-top: 4%;
-    box-shadow: 5px 5px 0px 1px  #FFFFFF;
+    display: flex;
+    /* box-shadow: 5px 5px 0px 1px #FFFFFF; */
 }
 
 .post-form-button {
-    margin-left: 9%;
+    margin-left: 90%;
+    border-radius: 10px;
+    background-color: #DCDCDC;
+    color: black;
+}
+
+.post-form-button:hover {
+    background-color: #0f0e17;
+    color: white;
 }

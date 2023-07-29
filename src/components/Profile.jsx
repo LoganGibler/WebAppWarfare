@@ -23,8 +23,8 @@ const Profile = ({ userBlogs }) => {
             <h4> Welcome back, {activeUser}!</h4>
             <p>
               Looks like you already have some created guides! You can add and
-              edit steps of your guides here by clicking on the blog you want to
-              edit. Remember to publish your guide when you are all finished!
+              edit steps of your guides here by clicking on the guide you want
+              to edit. Remember to publish your guide so others can see it!
             </p>
           </div>
         ) : null}
@@ -53,6 +53,7 @@ const Profile = ({ userBlogs }) => {
               Looks like you don't have any created guides! Click here to create
               one:
             </p>
+            <a href="/Postform"> Click here to create a Guide</a>
           </div>
         )}
       </div>

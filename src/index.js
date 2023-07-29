@@ -13,6 +13,7 @@ import {
   Login,
   Profile,
   EditGuide,
+  Sample,
 } from "./components";
 import {
   BrowserRouter as Router,
@@ -26,7 +27,7 @@ import { getUser } from "./auth";
 
 const App = () => {
   const [allBlogs, setAllBlogs] = useState([]);
-  const [allPublishedBlogs, setAllPublishedBlogs] = useState("");
+  const [allPublishedBlogs, setAllPublishedBlogs] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState("");
   const [userBlogs, setUserBlogs] = useState([]);
   const loggedIn = window.localStorage.getItem("isLoggedin");
@@ -86,7 +87,10 @@ const App = () => {
             <Profile userBlogs={userBlogs} />
           </Route>
           <Route path="/userguides/:id">
-            <EditGuide userBlogs={userBlogs}/>
+            <EditGuide userBlogs={userBlogs} />
+          </Route>
+          <Route>
+            <Sample />
           </Route>
         </Switch>
       </div>

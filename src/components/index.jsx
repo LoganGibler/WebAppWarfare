@@ -6,5 +6,6 @@ export { default as Postform } from "./Postform";
 export { default as Guide } from "./Guide";
 export { default as Register } from "./Register";
 export { default as Login } from "./Login";
-export {default as Profile } from "./Profile";
-export {default as EditGuide } from "./EditGuide";
+export { default as Profile } from "./Profile";
+export { default as EditGuide } from "./EditGuide";
+export { default as Sample } from "./Sample";

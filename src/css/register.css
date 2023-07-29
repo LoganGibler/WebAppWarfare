@@ -1,11 +1,10 @@
-
-.main-form-div{
+.main-form-div {
     display: flex;
     margin-top: 10%;
     height: 40vmin;
 }
 
-.register-form{
+.register-form {
     height: 100%;
     width: 30%;
     margin: auto;
@@ -15,12 +14,13 @@
     border-radius: 5px;
 }
 
-.username-input-register-div{
+.username-input-register-div {
     display: flex;
     margin-left: 19%;
     margin-top: 15%;
 }
-.username-input-register{
+
+.username-input-register {
     margin-top: 2%;
     width: 80%;
     border-radius: 10px;
@@ -29,12 +29,12 @@
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
-.password-input-register-div{
+.password-input-register-div {
     display: flex;
     margin-left: 19%;
 }
 
-.password-input-register{
+.password-input-register {
     margin-top: 7%;
     width: 80%;
     border-radius: 10px;
@@ -43,7 +43,7 @@
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
-.register-button{
+.register-button {
     color: white;
     background-color: #0f0e17;
     margin-top: 5%;
@@ -51,10 +51,11 @@
     border-radius: 10px;
 }
 
-.signin-div{
+.signin-div {
     margin-top: 3%;
 }
-.signin-link{
+
+.signin-link {
     margin-left: 19%;
     font-size: 14px;
 }

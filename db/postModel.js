@@ -13,10 +13,13 @@ const postSchema = mongoose.Schema({
     type: String,
     required: [true, "Please provide a description of this vm."],
   },
-  picture: {
+  difficulty: {
     type: String,
-    required: [true, "Please provide a fitting picture"],
   },
+  // picture: {
+  //   type: String,
+  //   required: [true, "Please provide a fitting picture"],
+  // },
   steps: [],
   published: {
     type: Boolean,

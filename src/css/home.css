@@ -1,7 +1,7 @@
 .main-blogs-div {
     /* margin-top: 5%; */
     /* background-color: #72757e; */
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     display: flex;
 }
 
@@ -9,9 +9,10 @@
     /* background-color: #0f0e17; */
     /* display: flex; */
     /* background-color: white; */
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     margin-left: 50%;
     margin: auto;
+    margin-top: 1%;
     /* height: 100vmin; */
     width: 88vh;
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
@@ -22,7 +23,7 @@
 }
 
 .search-bar-div {
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     display: flex;
 
 }
@@ -41,24 +42,40 @@
 
 .blog-container {
     /* display: block; */
-    background-color: #0f0e17;
-    box-shadow: 5px 5px 0px 5px #FFFFFF inset;
+    background-color: white;
+    /* box-shadow: 5px 5px 0px 5px #DCDCDC inset; */
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
 .blog-div {
     font-size: 14px;
     margin: 2%;
-    color: white;
-    background-color: #0f0e17;
-    box-shadow: 2px 2px 1px #FFFFFF;
+    color: black;
+    background-color: white;
+    box-shadow: 2px 2px 1px #DCDCDC;
     padding: 3%;
+    border-left: 8px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 4px;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
 }
 
-
-
+.blog-div:hover {
+    cursor: pointer;
+    background-color: #0f0e17;
+    color: white;
+}
 
 .date-createdby-div {
     /* display: inline; */
+}
+
+.blog-difficulty-home {
+    margin-left: 7%;
+}
+
+.hostedby-difficulty-div {
+    display: flex;
 }
 
 .createdby-home {
@@ -83,4 +100,9 @@ button: #ff8906
 
 .error-on-blogs-header {
     color: white;
+}
+
+.blog-description-home {
+    flex-wrap: wrap;
+    text-overflow: clip;
 }

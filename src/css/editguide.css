@@ -1,16 +1,105 @@
-.editguide-main-div{
+.editguide-main-div {
     display: flex;
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     margin-top: 2%;
+
 }
 
-.editguide-main-container{
+.editguide-main-container {
     margin-left: 50%;
     margin: auto;
-    background-color: #0f0e17;
+    background-color: white;
     width: 100vh;
     padding: 50px;
     border-radius: 10px;
+    color: black;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+}
+
+.step-div {
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 10px 10px;
+}
+
+.editstep-button {
+    border-radius: 10px;
+    margin-left: 95%;
+    background-color: white;
+}
+
+.editstep-button:hover {
     color: white;
-    box-shadow: 5px 5px 0px 1px  #FFFFFF inset;
+    background-color: black;
+}
+
+.edit-description-button {
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+}
+
+.edit-description-button:hover {
+    background-color: white;
+    color: black;
+}
+
+
+.newstep-div {
+    margin-top: 5%;
+    padding: 10px;
+    display: flex;
+}
+
+#step-area {
+    padding: 10px;
+    margin-left: 50%;
+    margin: auto;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 10px 10px;
+    width: 100%;
+    height: 35vmin;
+    border-radius: 5px;
+    border-bottom: 4px solid black;
+    border-left: 8px solid black;
+    text-indent: 10px;
+}
+
+
+.submit-step-button-div {}
+
+.step-button-submit {
+    margin-left: 85%;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+}
+
+
+.publish-editguide-button-div {
+    display: flex;
+    margin-top: 5%;
+}
+
+.added-step-button {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+}
+
+.added-step-button:hover {
+    color: black;
+    background-color: white;
+}
+
+.publish-editguide-button {
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+}
+
+.publish-editguide-button:hover {
+    color: black;
+    background-color: white;
 }

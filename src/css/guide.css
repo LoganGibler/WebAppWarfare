@@ -1,45 +1,56 @@
-.main-individual-blog-div{
+.main-individual-blog-div {
     display: flex;
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     margin-top: 2%;
+
 }
 
-.main-blog-container1{
+.main-blog-container1 {
     margin-left: 50%;
     margin: auto;
-    background-color: #0f0e17;
+    background-color: white;
     width: 100vh;
-    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
     padding: 50px;
-    border-radius: 10px;
-    color: white;
-    box-shadow: 5px 5px 0px 1px  #FFFFFF inset;
+    border-radius: 5px;
+    color: black;
+    /* box-shadow: 5px 5px 0px 1px #FFFFFF inset; */
 }
 
-.date-guide{
+.date-guide {
     /* display: inline; */
     /* margin-left: 10%; */
     font-size: 12px;
 }
 
-.author-guide{
+.author-guide {
     /* display: inline; */
     /* margin-left: 10%; */
     font-size: 12px;
 }
 
-.step-div{
+.step-div {
     /* background-color: white; */
-    background-color: #0f0e17;
+    background-color: #DCDCDC;
     padding: 5px;
     margin-top: 5%;
     font-size: 14px;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 5px 5px 0px 1px  #FFFFFF;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0px 1px #FFFFFF;
+    border-bottom: 2px solid black;
+    border-left: 8px solid black;
 }
 
-.step-element{
+.step-element {
     border-radius: 10px;
     padding: 10px;
+}
+
+.hostedby-difficulty-div-guide {
+    display: flex;
+}
+
+.difficulty-guide {
+    margin-left: 5%;
 }

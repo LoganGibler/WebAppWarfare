@@ -9,9 +9,15 @@ const Postform = () => {
   let [vmtitle, setvmtitle] = useState("");
   let [hostedby, setHostedBy] = useState("");
   let [description, setDescription] = useState("");
+  let [difficulty, setDifficulty] = useState("");
   // let [picture, setPicture] = useState("");
 
   let author = getUser();
+  function getCategoryOption() {
+    let selectElement = document.querySelector("#dropdown_difficulty");
+    let output = selectElement.options[selectElement.selectedIndex].value;
+    return output;
+  }
 
   return (
     <div className="main-createpost-div">
@@ -20,15 +26,18 @@ const Postform = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            console.log(author);
+            console.log(
+              "right before diff is passed into createPost:",
+              difficulty
+            );
             const data = await createPost(
               vmtitle,
               hostedby,
               description,
-              // picture,
-              author
+              author,
+              difficulty
             );
-            console.log("data on front end after createPost, data");
+            console.log("data on front end after createPost", data);
             if (!data) {
               alert("Blog creation failed!");
             } else {
@@ -37,6 +46,7 @@ const Postform = () => {
             setvmtitle("");
             setHostedBy("");
             setDescription("");
+            // setDifficulty("");
             // setPicture("");
           } catch (error) {
             console.error("error in front end Postform.jsx", error);
@@ -46,14 +56,14 @@ const Postform = () => {
       >
         <div className="form-div">
           <div className="header-title-div">
-            <h4 className="header-title">Start a new blog!</h4>
+            <h4 className="header-title">Create Guide Form</h4>
           </div>
           <div className="main-input-div">
             <div className="create-post-title-div">
               <input
                 className="create-post-title"
                 placeholder="Enter VM name"
-                maxLength="24"
+                maxLength="40"
                 value={vmtitle}
                 type="text"
                 onChange={(e) => {
@@ -65,19 +75,41 @@ const Postform = () => {
               <input
                 className="host-title"
                 placeholder="Where did you find this VM? ex: TryHackMe"
-                maxLength="28"
+                maxLength="45"
                 value={hostedby}
                 type="text"
                 onChange={(e) => {
                   setHostedBy(e.target.value);
                 }}
               ></input>
+              <select
+                className="postform-difficulty-select"
+                name="difficulty"
+                defaultValue={difficulty}
+                id="dropdown_difficulty"
+                onChange={async () => {
+                  let selected_difficulty1 = await getCategoryOption();
+                  setDifficulty(selected_difficulty1);
+                  console.log(
+                    "this is selected_difficulty1",
+                    selected_difficulty1
+                  );
+                }}
+              >
+                <option disabled={true} value="">
+                  Difficulty
+                </option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+                <option value="Insane">Insane</option>
+              </select>
             </div>
             <div className="description-div">
               <textarea
                 className="description-box"
                 placeholder="Please enter a brief description of what to expect when hacking this box. OS, active directory, webapp pentesting, etc."
-                maxLength="220"
+                maxLength="1350"
                 value={description}
                 type="text"
                 onChange={(e) => {

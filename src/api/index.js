@@ -7,8 +7,8 @@ export async function createPost(
   vmtitle,
   hostedby,
   description,
-  picture,
-  author
+  author,
+  difficulty
 ) {
   let published = true;
   let preformattedDate = new Date();
@@ -24,10 +24,10 @@ export async function createPost(
       vmtitle: vmtitle,
       hostedby: hostedby,
       description: description,
-      picture: picture,
       published: published,
       author: author,
       date: date,
+      difficulty: difficulty,
     });
 
     // console.log("this is data after frontend api", data);
@@ -62,12 +62,14 @@ export async function getAllPublishedBlogs() {
 }
 
 export async function addStep(_id, step) {
+  console.log("_id on api:", _id)
+  console.log("step on api:", step)
   try {
     const { data } = await axios.post("http://localhost:8000/addstep", {
       _id: _id,
       step: step,
     });
-
+    
     console.log("this is data after frontend api", data);
     return data;
   } catch (error) {
