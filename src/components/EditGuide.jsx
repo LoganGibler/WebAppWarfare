@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { addStep } from "../api";
+import { addStep, getBlogsByUsername } from "../api";
+import { getUser } from "../auth";
 import "../css/editguide.css";
 
 const EditGuide = ({ userBlogs }) => {
   let [html, setHtml] = useState(null);
   const [blog, setBlog] = useState({});
-  let [newStep, setNewStep] = useState("");
   let { id } = useParams();
   let counter = 0;
+  const activeUser = getUser();
 
   function renderStepBox(id) {
     try {
@@ -51,20 +52,22 @@ const EditGuide = ({ userBlogs }) => {
   }
 
   async function getBlog(id) {
+    console.log("id", id);
     const calledBlog = userBlogs.map((element) => {
       if (element._id === id) {
-        return setBlog(element);
+        setBlog(element);
       }
     });
   }
 
   useEffect(() => {
+    console.log("ID", id);
     getBlog(id);
   }, [id]);
 
-  // console.log("THIS IS CLICKED ON BLOG", blog);
+  console.log("this should be clicked on blog:", blog);
   let steppies = blog.steps;
-  // console.log("steppies:", steppies);
+  console.log("steppies", steppies);
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
@@ -102,7 +105,11 @@ const EditGuide = ({ userBlogs }) => {
           >
             Add Step
           </button>
-          <button className="publish-editguide-button">Publish Guide</button>
+          {blog.published ? (
+            <button className="publish-editguide-button">Hide Guide</button>
+          ) : (
+            <button className="publish-editguide-button">Publish Guide</button>
+          )}
         </div>
       </div>
     </div>
