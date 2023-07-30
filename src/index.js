@@ -87,7 +87,7 @@ const App = () => {
             <Profile userBlogs={userBlogs} />
           </Route>
           <Route path="/userguides/:id">
-            <EditGuide userBlogs={userBlogs}/>
+            <EditGuide userBlogs={userBlogs} />
           </Route>
           <Route>
             <Sample />

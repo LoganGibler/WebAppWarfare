@@ -24,14 +24,17 @@
     /* display: flex; */
     margin: 10px;
     margin-top: 3%;
+    display: absolute;
 }
 
 .date-profile {
     font-size: 12px;
-    margin-top: 1.5%;
-    margin-left: 43%;
-    align-self: center;
-    position: absolute;
+    margin-top: 3%;
+    margin-left: 77%;
+    /* align-self: center; */
+    font-weight: bold;
+    display: inline;
+    /* position: relative; */
 }
 
 .title-date-div {
@@ -57,4 +60,5 @@
 .vmtitle-profile {
     text-indent: 20px;
     margin-top: 1%;
+    position: absolute;
 }

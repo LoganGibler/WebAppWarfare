@@ -41,7 +41,7 @@ const Profile = ({ userBlogs }) => {
               >
                 <div className="title-date-div">
                   <h3 className="vmtitle-profile">{blog.vmtitle}</h3>
-                  <p className="date-profile">Created on: {blog.date}</p>
+                  <p className="date-profile">Created: {blog.date}</p>
                 </div>
               </div>
             );

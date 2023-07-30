@@ -29,7 +29,7 @@ const Home = ({ allPublishedBlogs }) => {
                       <div className="hostedby-difficulty-div">
                         <p>{blog.hostedby}</p>
                         <p className="blog-difficulty-home">
-                          Rating: {blog.difficulty}
+                          Difficulty: {blog.difficulty}
                         </p>
                       </div>
                       <p className="blog-description-home">

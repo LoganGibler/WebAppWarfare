@@ -22,7 +22,7 @@
 
 .editstep-button {
     border-radius: 10px;
-    margin-left: 95%;
+    margin-left: 93%;
     background-color: white;
 }
 
@@ -67,7 +67,7 @@
 .submit-step-button-div {}
 
 .step-button-submit {
-    margin-left: 85%;
+    margin-left: 80%;
     border-radius: 10px;
     color: white;
     background-color: black;
@@ -102,4 +102,26 @@
 .publish-editguide-button:hover {
     color: black;
     background-color: white;
+}
+
+.editguide-description-div {
+    margin-top: 5%;
+    padding: 10px;
+}
+
+.editguide-description-textarea{
+    width: 100%;
+    height: 35vmin;
+    border-radius: 5px;
+    border-bottom: 4px solid black;
+    border-left: 8px solid black;
+    text-indent: 10px;
+}
+
+.update-description-button{
+    margin-left: 72%;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
 }

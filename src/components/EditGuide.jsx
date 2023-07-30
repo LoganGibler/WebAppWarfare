@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { addStep, getBlogsByUsername } from "../api";
+import { addStep, getBlogsByUsername, updateDescription } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
 
 const EditGuide = ({ userBlogs }) => {
+  let history = useHistory();
   let [html, setHtml] = useState(null);
+  let [description_html, setDescription_html] = useState(null);
+  let [editStep_html, setEditStep_html] = useState(null);
   const [blog, setBlog] = useState({});
   let { id } = useParams();
   let counter = 0;
@@ -16,7 +19,7 @@ const EditGuide = ({ userBlogs }) => {
       async function getStepData() {
         let newStepData = document.getElementById("step-area").value;
         // setNewStep(newStepData);
-        console.log("this should be new step data:", newStepData);
+        // console.log("this should be new step data:", newStepData);
         let addedSteppie = await addStep(id, newStepData);
         return addedSteppie;
       }
@@ -37,13 +40,82 @@ const EditGuide = ({ userBlogs }) => {
               className="step-button-submit"
               onClick={async () => {
                 const data = await getStepData();
-                console.log(data, "!!!!!!!!");
+                // console.log(data, "!!!!!!!!");
                 location.reload();
               }}
             >
               Submit Step
             </button>
           </div>
+        </div>
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  function renderDescriptionBox(id) {
+    try {
+      // console.log("!!!!", id);
+      async function getDescriptionData() {
+        let newDescriptionData = document.getElementById(
+          "editguide-description-textarea"
+        ).value;
+
+        // console.log("this should be newDescriptionData:", newDescriptionData);
+        let updatedDescription = await updateDescription(
+          id,
+          newDescriptionData
+        );
+        return updatedDescription;
+      }
+      return (
+        <div className="editguide-description-div">
+          <textarea
+            id="editguide-description-textarea"
+            className="editguide-description-textarea"
+            type="text"
+            max-length="2000"
+          >
+            {blog.description}
+          </textarea>
+          <button
+            className="update-description-button"
+            onClick={() => {
+              // console.log("This is blog_id, passed to db", blog._id);
+              getDescriptionData();
+            }}
+          >
+            Update Description
+          </button>
+        </div>
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  function renderEditStepBox(id, index) {
+    try {
+      async function getNewStepData() {
+        let newStepData = document.getElementById(
+          "editguide-step-textarea"
+        ).value;
+        console.log("this should be new step data:", newStepData);
+        let newStep = await updateSteppie(id, index, newStepData);
+        console.log("This is new step", newStep);
+        return newStep;
+      }
+      return (
+        <div>
+          {/* //{blog.steps.index} */}
+          <textarea id="editguide-step-textarea"></textarea>
+          <button
+            className="editguide-editstep-button"
+            onClick={() => {
+              // getNewStepData(id, index, newdata);
+            }}
+          ></button>
         </div>
       );
     } catch (error) {
@@ -61,13 +133,13 @@ const EditGuide = ({ userBlogs }) => {
   }
 
   useEffect(() => {
-    console.log("ID", id);
+    // console.log("ID", id);
     getBlog(id);
   }, [id]);
 
-  console.log("this should be clicked on blog:", blog);
+  // console.log("this should be clicked on blog:", blog);
   let steppies = blog.steps;
-  console.log("steppies", steppies);
+  // console.log("steppies", steppies);
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
@@ -76,7 +148,16 @@ const EditGuide = ({ userBlogs }) => {
         <p className="date-guide">Published on: {blog.date}</p>
         <p>{blog.hostedby}</p>
         <p>{blog.description}</p>
-        <button className="edit-description-button"> Edit Description</button>
+        {description_html}
+        <button
+          className="edit-description-button"
+          onClick={() => {
+            setDescription_html(renderDescriptionBox(id));
+          }}
+        >
+          {" "}
+          Edit Description
+        </button>
         {steppies ? (
           steppies.map((step) => {
             counter = counter + 1;
@@ -85,7 +166,9 @@ const EditGuide = ({ userBlogs }) => {
                 <p className="step-element">
                   Step {counter}: {step.step}
                 </p>
-                <button className="editstep-button">Edit</button>
+                <button className="editstep-button" onClick={() => {}}>
+                  Edit
+                </button>
               </div>
             );
           })

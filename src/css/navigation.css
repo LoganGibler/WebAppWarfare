@@ -49,10 +49,13 @@
     display: flex;
     /* background-color: white; */
     padding: 10px;
-    max-width: 45%;
-    min-width: 10%;
+    /* max-width: 45%;
+    min-width: 10%; */
+    /* background-color: white; */
+    width: 10vmax;
+    margin-left: 30%;
     align-items: center;
-    margin-left: 35%;
+    
 }
 
 .nav-links-loggedout {

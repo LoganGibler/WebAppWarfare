@@ -172,6 +172,24 @@ app.post("/getBlogsByAuthor", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+app.post("/updateDescription", async (req, res) => {
+  try {
+    const {id, description} = req.body;
+    const filter = { _id: id };
+    const update = { description: description };
+    const updatedGuide = await Post.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+    if (!updatedGuide){
+      res.status(500).json({ message: "/updateDescription failed." });
+    } else{
+      res.status(200).json({ message: "/updateDescription successful.", updatedGuide });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "/updateDescription failed." });
+  }
+});
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
   try {
@@ -241,6 +259,8 @@ app.post("/getUserIDByUsername", async (req, res) => {
     res.status(500).json({ message: "getUserIDByUsername failed." });
   }
 });
+
+
 
 mongoose
   .connect(uri)

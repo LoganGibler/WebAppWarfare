@@ -10,7 +10,7 @@ export async function createPost(
   author,
   difficulty
 ) {
-  let published = true;
+  let published = false;
   let preformattedDate = new Date();
   let day = preformattedDate.getDate();
   let month = preformattedDate.getMonth() + 1;
@@ -62,14 +62,14 @@ export async function getAllPublishedBlogs() {
 }
 
 export async function addStep(_id, step) {
-  console.log("_id on api:", _id)
-  console.log("step on api:", step)
+  console.log("_id on api:", _id);
+  console.log("step on api:", step);
   try {
     const { data } = await axios.post("http://localhost:8000/addstep", {
       _id: _id,
       step: step,
     });
-    
+
     console.log("this is data after frontend api", data);
     return data;
   } catch (error) {
@@ -102,15 +102,32 @@ export async function getUserIDByUsername(username) {
   }
 }
 
-
-export async function getBlogsByUsername(author){
+export async function getBlogsByUsername(author) {
   try {
-    const {data} = await axios.post("http://localhost:8000/getBlogsByAuthor", {
-      author: author,
-    })
+    const { data } = await axios.post(
+      "http://localhost:8000/getBlogsByAuthor",
+      {
+        author: author,
+      }
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function updateDescription(id, description) {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:8000/updateDescription",
+      {
+        id: id,
+        description: description,
+      }
+    );
     return data
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 // user api calls/////////////////////////////////////
