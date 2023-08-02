@@ -84,6 +84,7 @@ const EditGuide = ({ userBlogs }) => {
             onClick={() => {
               // console.log("This is blog_id, passed to db", blog._id);
               getDescriptionData();
+              location.reload();
             }}
           >
             Update Description
@@ -96,11 +97,12 @@ const EditGuide = ({ userBlogs }) => {
   }
 
   function renderEditStepBox(id, index) {
+    console.log("id:", id);
+    console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById(
-          "editguide-step-textarea"
-        ).value;
+        let newStepData = document.getElementById("editguide-step-textarea")
+          .value;
         console.log("this should be new step data:", newStepData);
         let newStep = await updateSteppie(id, index, newStepData);
         console.log("This is new step", newStep);
@@ -113,7 +115,7 @@ const EditGuide = ({ userBlogs }) => {
           <button
             className="editguide-editstep-button"
             onClick={() => {
-              // getNewStepData(id, index, newdata);
+              getNewStepData();
             }}
           ></button>
         </div>
@@ -166,7 +168,15 @@ const EditGuide = ({ userBlogs }) => {
                 <p className="step-element">
                   Step {counter}: {step.step}
                 </p>
-                <button className="editstep-button" onClick={() => {}}>
+                {editStep_html}
+                <button
+                  className="editstep-button"
+                  onClick={() => {
+                    counter = counter - 1;
+                    setEditStep_html(renderEditStepBox(blog._id, counter));
+                    counter = counter + 1;
+                  }}
+                >
                   Edit
                 </button>
               </div>

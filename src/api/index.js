@@ -130,6 +130,18 @@ export async function updateDescription(id, description) {
     throw error;
   }
 }
+
+export async function updateSteppie(id, index, newStepData){
+  try {
+    const {data} = await axios.post("http://localhost:8000/updateStep", {
+      id: id,
+      index: index,
+      newStepData: newStepData
+    })
+  } catch (error) {
+    throw error
+  }
+}
 // user api calls/////////////////////////////////////
 
 export async function registerUser(username, password) {

@@ -175,19 +175,43 @@ app.post("/getBlogsByAuthor", async (req, res) => {
 
 app.post("/updateDescription", async (req, res) => {
   try {
-    const {id, description} = req.body;
+    const { id, description } = req.body;
     const filter = { _id: id };
     const update = { description: description };
     const updatedGuide = await Post.findOneAndUpdate(filter, update, {
       new: true,
     });
-    if (!updatedGuide){
+    if (!updatedGuide) {
       res.status(500).json({ message: "/updateDescription failed." });
-    } else{
-      res.status(200).json({ message: "/updateDescription successful.", updatedGuide });
+    } else {
+      res
+        .status(200)
+        .json({ message: "/updateDescription successful.", updatedGuide });
     }
   } catch (error) {
     res.status(500).json({ message: "/updateDescription failed." });
+  }
+});
+
+app.post("/updateStep", async (req, res) => {
+  try {
+    const { id, index, newStepData } = req.body;
+    // const filter = { _id: id };
+    // // const steppies = "steps." + index + ".step"
+    // const update = { steps: newStepData };
+    const updatedStep = await Post.findOneAndUpdate(filter, {
+      "$set": {"steps.$[2]": newStepData}
+    });
+    console.log("This is updatedStep DB:", updatedStep);
+    if (!updatedStep) {
+      res.status(500).json({ message: "/updateStep failed on DB.." });
+    } else {
+      res
+        .status(200)
+        .json({ message: "/updateStep was successful", updatedStep });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "/updateStep failed on DB." });
   }
 });
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
@@ -259,8 +283,6 @@ app.post("/getUserIDByUsername", async (req, res) => {
     res.status(500).json({ message: "getUserIDByUsername failed." });
   }
 });
-
-
 
 mongoose
   .connect(uri)
