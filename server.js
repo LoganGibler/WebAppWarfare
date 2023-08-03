@@ -196,12 +196,18 @@ app.post("/updateDescription", async (req, res) => {
 app.post("/updateStep", async (req, res) => {
   try {
     const { id, index, newStepData } = req.body;
+    console.log(id, index, newStepData)
     // const filter = { _id: id };
-    // // const steppies = "steps." + index + ".step"
     // const update = { steps: newStepData };
-    const updatedStep = await Post.findOneAndUpdate(filter, {
-      "$set": {"steps.$[2]": newStepData}
-    });
+    const updatedStep = await Post.findOneAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          "steps.8.step": newStepData,
+        },
+      },
+      {new: true}
+    );
     console.log("This is updatedStep DB:", updatedStep);
     if (!updatedStep) {
       res.status(500).json({ message: "/updateStep failed on DB.." });

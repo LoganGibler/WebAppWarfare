@@ -178,14 +178,10 @@ const EditGuide = ({ userBlogs }) => {
                   onClick={() => {
                     setRenderEditBox(index);
                     setEditStep_html(renderEditStepBox(blog._id, index));
-                    console.log(editStep_html);
-                    console.log(index);
-                    console.log(renderEditBox);
                   }}
                 >
                   Edit
                 </button>
-                {console.log(editStep_html)}
                 {renderEditBox === index ? editStep_html : null}
               </div>
             );
