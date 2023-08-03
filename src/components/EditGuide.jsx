@@ -10,12 +10,11 @@ const EditGuide = ({ userBlogs }) => {
   let [description_html, setDescription_html] = useState(null);
   let [editStep_html, setEditStep_html] = useState(null);
   const [blog, setBlog] = useState({});
+  let [renderEditBox, setRenderEditBox] = useState(null);
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
   let steppies = blog.steps;
-  let index = 0;
-  let active = false;
 
   function renderStepBox(id) {
     try {
@@ -100,13 +99,12 @@ const EditGuide = ({ userBlogs }) => {
   }
 
   function renderEditStepBox(id, index) {
-    console.log("id:", id);
-    console.log("index:", index);
+    // console.log("id:", id);
+    // console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById(
-          "editguide-step-textarea"
-        ).value;
+        let newStepData = document.getElementById("editguide-step-textarea")
+          .value;
         console.log("this should be new step data:", newStepData);
         // let newStep = await updateSteppie(id, index, newStepData);
         // console.log("This is new step", newStep);
@@ -114,17 +112,17 @@ const EditGuide = ({ userBlogs }) => {
       }
       return (
         <div className="update-editstep-main-div">
-          {/* //{blog.steps.index} */}
           <textarea id="editguide-step-textarea">
             This is sample text, when you click edit this should pop up.
           </textarea>
           <button
             className="editguide-editstep-button"
             onClick={() => {
-              getNewStepData();
-              // set active to false
+              // getNewStepData();
             }}
-          ></button>
+          >
+            Update
+          </button>
         </div>
       );
     } catch (error) {
@@ -169,6 +167,7 @@ const EditGuide = ({ userBlogs }) => {
         {steppies ? (
           steppies.map((step) => {
             counter = counter + 1;
+            let index = counter - 1;
             return (
               <div key={counter} className="step-div">
                 <p className="step-element">
@@ -177,12 +176,17 @@ const EditGuide = ({ userBlogs }) => {
                 <button
                   className="editstep-button"
                   onClick={() => {
+                    setRenderEditBox(index);
                     setEditStep_html(renderEditStepBox(blog._id, index));
+                    console.log(editStep_html);
+                    console.log(index);
+                    console.log(renderEditBox);
                   }}
-                > 
+                >
                   Edit
                 </button>
-                {editStep_html}
+                {console.log(editStep_html)}
+                {renderEditBox === index ? editStep_html : null}
               </div>
             );
           })
