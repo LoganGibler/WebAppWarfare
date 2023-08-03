@@ -13,6 +13,9 @@ const EditGuide = ({ userBlogs }) => {
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
+  let steppies = blog.steps;
+  let index = 0;
+  let active = false;
 
   function renderStepBox(id) {
     try {
@@ -101,21 +104,25 @@ const EditGuide = ({ userBlogs }) => {
     console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById("editguide-step-textarea")
-          .value;
+        let newStepData = document.getElementById(
+          "editguide-step-textarea"
+        ).value;
         console.log("this should be new step data:", newStepData);
-        let newStep = await updateSteppie(id, index, newStepData);
-        console.log("This is new step", newStep);
-        return newStep;
+        // let newStep = await updateSteppie(id, index, newStepData);
+        // console.log("This is new step", newStep);
+        // return newStep;
       }
       return (
-        <div>
+        <div className="update-editstep-main-div">
           {/* //{blog.steps.index} */}
-          <textarea id="editguide-step-textarea"></textarea>
+          <textarea id="editguide-step-textarea">
+            This is sample text, when you click edit this should pop up.
+          </textarea>
           <button
             className="editguide-editstep-button"
             onClick={() => {
               getNewStepData();
+              // set active to false
             }}
           ></button>
         </div>
@@ -140,7 +147,6 @@ const EditGuide = ({ userBlogs }) => {
   }, [id]);
 
   // console.log("this should be clicked on blog:", blog);
-  let steppies = blog.steps;
   // console.log("steppies", steppies);
   return (
     <div className="editguide-main-div">
@@ -168,17 +174,15 @@ const EditGuide = ({ userBlogs }) => {
                 <p className="step-element">
                   Step {counter}: {step.step}
                 </p>
-                {editStep_html}
                 <button
                   className="editstep-button"
                   onClick={() => {
-                    counter = counter - 1;
-                    setEditStep_html(renderEditStepBox(blog._id, counter));
-                    counter = counter + 1;
+                    setEditStep_html(renderEditStepBox(blog._id, index));
                   }}
-                >
+                > 
                   Edit
                 </button>
+                {editStep_html}
               </div>
             );
           })
