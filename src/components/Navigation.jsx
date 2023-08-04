@@ -8,11 +8,9 @@ const Navigation = ({ loggedIn }) => {
   return (
     <nav className="nav-container">
       <div className="nav-branding-div">
-        <div className="nav-branding">
-          <a href="/Home" className="brand-text">
-            WebAppWarfare
-          </a>
-        </div>
+        <a href="/Home" className="brand-text">
+          WebAppWarfare
+        </a>
       </div>
       {loggedIn ? (
         <div className="nav-links-loggedin">

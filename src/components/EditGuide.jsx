@@ -111,9 +111,8 @@ const EditGuide = ({ userBlogs }) => {
     // console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById(
-          "editguide-step-textarea"
-        ).value;
+        let newStepData = document.getElementById("editguide-step-textarea")
+          .value;
         console.log("this should be new step data:", newStepData);
         let newStep = await updateSteppie(id, index, newStepData);
         // console.log("This is new step", newStep);
@@ -201,7 +200,7 @@ const EditGuide = ({ userBlogs }) => {
                   </button>
                 </div>
                 <div className="renderEditBox-div">
-                {renderEditBox === index ? editStep_html : null}
+                  {renderEditBox === index ? editStep_html : null}
                 </div>
               </div>
             );
@@ -223,18 +222,28 @@ const EditGuide = ({ userBlogs }) => {
             Add Step
           </button>
           {blog.published ? (
-            <button className="publish-editguide-button" onClick={async ()=>{
-              await unpublishGuide(blog._id)
-              alert("Guide hidden from public view.")
-              // location.reload()
-            }}>Hide Guide</button>
+            <button
+              className="publish-editguide-button"
+              onClick={async () => {
+                await unpublishGuide(blog._id);
+                alert("Guide hidden from public view.");
+                // location.reload()
+              }}
+            >
+              Hide Guide
+            </button>
           ) : (
-            <button className="publish-editguide-button" onClick={async ()=>{
-              // console.log("blog._id", blog._id)
-              await publishGuide(blog._id)
-              alert("Guide published. Other Users can now see this guide.")
-              // location.reload()
-            }}>Publish Guide</button>
+            <button
+              className="publish-editguide-button"
+              onClick={async () => {
+                // console.log("blog._id", blog._id)
+                await publishGuide(blog._id);
+                alert("Guide published. Other Users can now see this guide.");
+                // location.reload()
+              }}
+            >
+              Publish Guide
+            </button>
           )}
         </div>
       </div>

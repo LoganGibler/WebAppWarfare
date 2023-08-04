@@ -5,27 +5,30 @@
     margin-top: auto;
 } */
 
-
 .nav-container {
     /* text-align: center; */
     display: flex;
     background-color: #0f0e17;
+    text-align: center;
 }
 
 .nav-branding-div {
     margin-left: 18%;
+    display: flex;
+    align-items: center;
 }
 
-.nav-branding {
+/* .nav-branding {
     display: flex;
     text-align: center;
     color: white;
-}
+} */
 
 .brand-text {
-    margin: 10%;
+    /* margin: 5%; */
     color: white;
     font-size: 24px;
+    display: inline;
 }
 
 .brand-text:link {
@@ -38,7 +41,7 @@
 
 .brand-text:hover {
     text-decoration: none;
-    color: grey
+    color: grey;
 }
 
 .brand-text:active {
@@ -52,20 +55,25 @@
     /* max-width: 45%;
     min-width: 10%; */
     /* background-color: white; */
-    width: 10vmax;
-    margin-left: 30%;
+    /* width: 10vmax; */
+    width: 12%;
+    margin-left: 33%;
     align-items: center;
-    
 }
 
 .nav-links-loggedout {
     display: flex;
     /* background-color: white; */
     padding: 10px;
-    max-width: 45%;
-    min-width: 10%;
+    /* max-width: 45%;
+        min-width: 10%; */
+    /* background-color: white; */
+    /* width: 10vmax; */
+    width: 12%;
+    /* margin-left: 50%;
+    margin: auto; */
+    margin-left: 40%;
     align-items: center;
-    margin-left: 45%;
 }
 
 .nav-button {

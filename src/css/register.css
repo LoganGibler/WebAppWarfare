@@ -2,11 +2,12 @@
     display: flex;
     margin-top: 10%;
     height: 40vmin;
+
 }
 
 .register-form {
-    height: 100%;
-    width: 30%;
+    width: 55vb;
+    height: 40vb;
     margin: auto;
     background-color: white;
     padding: 10px;

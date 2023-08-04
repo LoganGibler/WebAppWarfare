@@ -1,0 +1,47 @@
+.about-main-div {
+    display: flex;
+    background-color: #DCDCDC;
+    height: 100vm;
+}
+
+.about-container-div {
+    background-color: white;
+    margin-left: 50%;
+    margin: auto;
+    width: 75vh;
+    color: black;
+    margin-top: 3%;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    border-left: 8px solid black;
+}
+
+.about-links-div {
+    display: flex;
+}
+
+.about-contactme {
+    margin-left: 3.5%;
+}
+
+.about-labintro {
+    margin-left: 14%;
+}
+
+/* .about-labintro:hover {
+    cursor: pointer;
+} */
+
+
+.about-linkedin {
+    margin-left: 14%;
+}
+
+.about-github {
+    margin-left: 14%;
+}
+
+.about-firstparagraph {
+    margin-top: 3%;
+}
