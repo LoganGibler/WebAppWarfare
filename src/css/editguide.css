@@ -23,7 +23,8 @@
 .editstep-button {
     border-radius: 10px;
     margin-left: 93%;
-    background-color: white;
+    color: white;
+    background-color: black;
 }
 
 .editstep-button:hover {
@@ -118,6 +119,10 @@
     text-indent: 10px;
 }
 
+.editguide-description-p{
+    word-wrap: break-word;
+}
+
 .update-description-button {
     margin-left: 72%;
     border-radius: 10px;
@@ -127,7 +132,7 @@
 }
 
 .update-editstep-main-div{
-    
+    margin-top: 4%;
 }
 
 #editguide-step-textarea{
@@ -137,4 +142,20 @@
     border-bottom: 4px solid black;
     border-left: 8px solid black;
     text-indent: 10px;
+}
+
+.editguide-editstep-button{
+    margin-left: 80%;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+}
+
+.editstep-outside-div{
+   
+}
+
+.renderEditBox-div{
+   
 }

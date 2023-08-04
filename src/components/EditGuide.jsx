@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { addStep, getBlogsByUsername, updateDescription } from "../api";
+import {
+  addStep,
+  getBlogsByUsername,
+  updateDescription,
+  updateSteppie,
+} from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
 
@@ -16,6 +21,7 @@ const EditGuide = ({ userBlogs }) => {
   const activeUser = getUser();
   let steppies = blog.steps;
 
+  console.log("this is user blogs", userBlogs);
   function renderStepBox(id) {
     try {
       async function getStepData() {
@@ -103,25 +109,29 @@ const EditGuide = ({ userBlogs }) => {
     // console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById("editguide-step-textarea")
-          .value;
+        let newStepData = document.getElementById(
+          "editguide-step-textarea"
+        ).value;
         console.log("this should be new step data:", newStepData);
-        // let newStep = await updateSteppie(id, index, newStepData);
+        let newStep = await updateSteppie(id, index, newStepData);
         // console.log("This is new step", newStep);
-        // return newStep;
+        return newStep;
       }
+
       return (
         <div className="update-editstep-main-div">
           <textarea id="editguide-step-textarea">
-            This is sample text, when you click edit this should pop up.
+            {blog.steps[index].step}
           </textarea>
           <button
             className="editguide-editstep-button"
             onClick={() => {
-              // getNewStepData();
+              getNewStepData();
+              alert("Step Updated.");
+              location.reload();
             }}
           >
-            Update
+            Update Step
           </button>
         </div>
       );
@@ -153,7 +163,7 @@ const EditGuide = ({ userBlogs }) => {
         <p className="author-guide">Created By: {blog.author}</p>
         <p className="date-guide">Published on: {blog.date}</p>
         <p>{blog.hostedby}</p>
-        <p>{blog.description}</p>
+        <p className="editguide-description-p">{blog.description}</p>
         {description_html}
         <button
           className="edit-description-button"
@@ -166,23 +176,31 @@ const EditGuide = ({ userBlogs }) => {
         </button>
         {steppies ? (
           steppies.map((step) => {
+            console.log(steppies);
+            if (step === null) {
+              return;
+            }
             counter = counter + 1;
             let index = counter - 1;
             return (
-              <div key={counter} className="step-div">
-                <p className="step-element">
-                  Step {counter}: {step.step}
-                </p>
-                <button
-                  className="editstep-button"
-                  onClick={() => {
-                    setRenderEditBox(index);
-                    setEditStep_html(renderEditStepBox(blog._id, index));
-                  }}
-                >
-                  Edit
-                </button>
+              <div className="editstep-outside-div">
+                <div key={counter} className="step-div">
+                  <p className="step-element">
+                    Step {counter}: {step.step}
+                  </p>
+                  <button
+                    className="editstep-button"
+                    onClick={() => {
+                      setRenderEditBox(index);
+                      setEditStep_html(renderEditStepBox(blog._id, index));
+                    }}
+                  >
+                    Edit
+                  </button>
+                </div>
+                <div className="renderEditBox-div">
                 {renderEditBox === index ? editStep_html : null}
+                </div>
               </div>
             );
           })

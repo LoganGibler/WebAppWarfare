@@ -104,5 +104,6 @@ button: #ff8906
 
 .blog-description-home {
     flex-wrap: wrap;
+    word-wrap: break-word;
     text-overflow: clip;
 }
