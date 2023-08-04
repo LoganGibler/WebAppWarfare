@@ -5,6 +5,8 @@ import {
   getBlogsByUsername,
   updateDescription,
   updateSteppie,
+  unpublishGuide,
+  publishGuide,
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
@@ -155,7 +157,7 @@ const EditGuide = ({ userBlogs }) => {
   }, [id]);
 
   // console.log("this should be clicked on blog:", blog);
-  // console.log("steppies", steppies);
+  console.log("this should be blog._id", blog._id);
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
@@ -221,9 +223,18 @@ const EditGuide = ({ userBlogs }) => {
             Add Step
           </button>
           {blog.published ? (
-            <button className="publish-editguide-button">Hide Guide</button>
+            <button className="publish-editguide-button" onClick={async ()=>{
+              await unpublishGuide(blog._id)
+              alert("Guide hidden from public view.")
+              // location.reload()
+            }}>Hide Guide</button>
           ) : (
-            <button className="publish-editguide-button">Publish Guide</button>
+            <button className="publish-editguide-button" onClick={async ()=>{
+              // console.log("blog._id", blog._id)
+              await publishGuide(blog._id)
+              alert("Guide published. Other Users can now see this guide.")
+              // location.reload()
+            }}>Publish Guide</button>
           )}
         </div>
       </div>

@@ -16,6 +16,7 @@
     /* height: 100vmin; */
     width: 88vh;
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    word-wrap: break-word;
 }
 
 .middle-content-div {
@@ -38,6 +39,7 @@
 
 .main-blog-div {
     display: flex;
+    word-wrap: break-word;
 }
 
 .blog-container {
@@ -45,6 +47,7 @@
     background-color: white;
     /* box-shadow: 5px 5px 0px 5px #DCDCDC inset; */
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    word-wrap: break-word;
 }
 
 .blog-div {
@@ -58,6 +61,7 @@
     border-bottom: 1px solid black;
     border-radius: 4px;
     box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    word-wrap: break-word;
 }
 
 .blog-div:hover {
@@ -102,8 +106,9 @@ button: #ff8906
     color: white;
 }
 
-.blog-description-home {
-    flex-wrap: wrap;
-    word-wrap: break-word;
-    text-overflow: clip;
+.blog-description-home-p {
+    display: inline-block;
+word-break: break-word;
+margin-left: 2%;
 }
+

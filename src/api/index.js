@@ -125,21 +125,43 @@ export async function updateDescription(id, description) {
         description: description,
       }
     );
-    return data
+    return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function updateSteppie(id, index, newStepData){
+export async function updateSteppie(id, index, newStepData) {
   try {
-    const {data} = await axios.post("http://localhost:8000/updateStep", {
+    const { data } = await axios.post("http://localhost:8000/updateStep", {
       id: id,
       index: index,
-      newStepData: newStepData
-    })
+      newStepData: newStepData,
+    });
   } catch (error) {
-    throw error
+    throw error;
+  }
+}
+
+export async function publishGuide(_id) {
+  try {
+    const { data } = await axios.post("http://localhost:8000/publishGuide", {
+      _id: _id,
+    });
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function unpublishGuide(_id) {
+  try {
+    const { data } = axios.post("http://localhost:8000/unpublishGuide", {
+      _id: _id,
+    });
+    return data;
+  } catch (error) {
+    throw error;
   }
 }
 // user api calls/////////////////////////////////////

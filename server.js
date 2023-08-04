@@ -95,7 +95,7 @@ app.get("/allPublishedBlogs", async (req, res) => {
   }
 });
 
-app.post("/publishPost", async (req, res) => {
+app.post("/publishGuide", async (req, res) => {
   let filter = { _id: req.body._id };
   let update = { published: true };
   try {
@@ -115,7 +115,7 @@ app.post("/publishPost", async (req, res) => {
   }
 });
 
-app.post("/unpublishPost", async (req, res) => {
+app.post("/unpublishGuide", async (req, res) => {
   let filter = { _id: req.body._id };
   let update = { published: false };
   try {

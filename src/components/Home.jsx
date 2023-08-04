@@ -32,7 +32,7 @@ const Home = ({ allPublishedBlogs }) => {
                           Difficulty: {blog.difficulty}
                         </p>
                       </div>
-                      <p className="blog-description-home">
+                      <p className="blog-description-home-p">
                         {blog.description}
                       </p>
                       <div className="date-createdby-div">
