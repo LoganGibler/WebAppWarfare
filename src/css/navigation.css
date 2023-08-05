@@ -10,6 +10,7 @@
     display: flex;
     background-color: #0f0e17;
     text-align: center;
+    /* border-bottom: 1px solid #dcdcdc; */
 }
 
 .nav-branding-div {
@@ -94,8 +95,7 @@
 }
 
 .nav-button:hover {
-    background-color: white;
-    color: black;
+    color: grey;
     text-decoration: none;
 }
 

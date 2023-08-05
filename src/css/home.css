@@ -1,21 +1,17 @@
 .main-blogs-div {
     /* margin-top: 5%; */
     /* background-color: #72757e; */
-    background-color: #DCDCDC;
+    background-color: #0f0e17;
     display: flex;
 }
 
 .center-me-div {
-    /* background-color: #0f0e17; */
-    /* display: flex; */
-    /* background-color: white; */
-    background-color: #DCDCDC;
+    background-color: #0f0e17;
     margin-left: 50%;
     margin: auto;
     margin-top: 1%;
-    /* height: 100vmin; */
     width: 88vh;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    box-shadow: #dcdcdc 0px 5px 15px;
     word-wrap: break-word;
 }
 
@@ -24,7 +20,7 @@
 }
 
 .search-bar-div {
-    background-color: #DCDCDC;
+    background-color: #0f0e17;
     display: flex;
 
 }
@@ -43,25 +39,18 @@
 }
 
 .blog-container {
-    /* display: block; */
-    background-color: white;
-    /* box-shadow: 5px 5px 0px 5px #DCDCDC inset; */
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    background-color: #0f0e17;
     word-wrap: break-word;
 }
 
 .blog-div {
     font-size: 14px;
     margin: 2%;
-    color: black;
-    background-color: white;
-    box-shadow: 2px 2px 1px #DCDCDC;
+    color: #dcdcdc;
+    background-color: #0f0e17;
     padding: 3%;
-    border-left: 8px solid black;
-    border-bottom: 1px solid black;
-    border-radius: 4px;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
     word-wrap: break-word;
+    border-bottom: #a9a9a9 1px solid;
 }
 
 .blog-div:hover {
@@ -110,5 +99,9 @@ button: #ff8906
     display: inline-block;
 word-break: break-word;
 margin-left: 2%;
+}
+
+.home-guide-title {
+    color: white;
 }
 
