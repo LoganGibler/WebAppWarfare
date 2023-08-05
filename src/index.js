@@ -23,6 +23,7 @@ import {
 } from "react-router-dom";
 import { getAllBlogs, getAllPublishedBlogs, getBlogsByUsername } from "./api";
 import { getUser } from "./auth";
+import "../src/css/about.css"
 // CHODIKAR_USEPOLLING=true npm run start
 
 const App = () => {
@@ -66,7 +67,7 @@ const App = () => {
         {/* <Footer /> */}
         <Switch>
           <Route path="/Home">
-            <Home allPublishedBlogs={allPublishedBlogs} />
+            <Home  />
           </Route>
           <Route path="/About">
             <About />
@@ -75,7 +76,7 @@ const App = () => {
             <Postform />
           </Route>
           <Route path="/blog/:id">
-            <Guide allPublishedBlogs={allPublishedBlogs} />
+            <Guide />
           </Route>
           <Route path="/Register">
             <Register />

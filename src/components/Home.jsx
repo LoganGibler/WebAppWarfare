@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "../css/home.css";
 import { useHistory } from "react-router-dom";
-
-const Home = ({ allPublishedBlogs }) => {
+import { getAllPublishedBlogs } from "../api";
+// { allPublishedBlogs }
+const Home = () => {
+  let [publicBlogs, setPublicBlogs] = useState([]);
   const history = useHistory();
+
+  async function fetchPublicBlogs() {
+    const blogs = await getAllPublishedBlogs();
+    setPublicBlogs(blogs.data.allPublishedBlogs);
+  }
+
+  useEffect(() => {
+    fetchPublicBlogs();
+  }, []);
+
+  console.log(publicBlogs);
   return (
     <div className="main-blogs-div">
       <div className="center-me-div">
@@ -13,8 +26,8 @@ const Home = ({ allPublishedBlogs }) => {
           </div> */}
           <div className="main-blog-div">
             <div className="blog-container">
-              {allPublishedBlogs.length ? (
-                allPublishedBlogs.map((blog) => {
+              {publicBlogs.length ? (
+                publicBlogs.map((blog) => {
                   // console.log(blog);
                   return (
                     <div

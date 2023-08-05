@@ -3,40 +3,34 @@ import { useParams } from "react-router-dom";
 import { getBlogById } from "../api";
 import "../css/guide.css";
 
-const Guide = ({ allPublishedBlogs }) => {
-  // console.log(allPublishedBlogs);
-  const [blog, setBlog] = useState([]);
+const Guide = () => {
+  const [guide, setGuide] = useState([]);
   let { id } = useParams();
   console.log("id:", id);
   let counter = 0;
 
-  async function getBlog(id) {
-    const calledBlog = allPublishedBlogs.map((element) => {
-      if (element._id === id) {
-        return setBlog(element);
-      }
-    });
+  async function fetchGuide(id) {
+    const fetchedGuide = await getBlogById(id);
+    setGuide(fetchedGuide.blog);
   }
+  useEffect(() => {
+    fetchGuide(id);
+  }, []);
 
-  useEffect(async () => {
-    await getBlog(id);
-  }, [id]);
-  // console.log("HTIS IS BLOG:", blog);
-  let steppies = blog.steps;
-  // console.log("steppies:", steppies);
-  // console.log("this is blog front end", blog);
+  let steppies = guide.steps;
+
   return (
     <div className="main-individual-blog-div">
       <div className="main-blog-container1">
-        <h2 className="guide-title">{blog.vmtitle}</h2>
-        <p className="author-guide">Created By: {blog.author}</p>
-        <p className="date-guide">Published on: {blog.date}</p>
+        <h2 className="guide-title">{guide.vmtitle}</h2>
+        <p className="author-guide">Created By: {guide.author}</p>
+        <p className="date-guide">Published on: {guide.date}</p>
         <div className="hostedby-difficulty-div-guide">
-          <p className="guide-hostedby">{blog.hostedby}</p>
-          <p className="difficulty-guide">Rating: {blog.difficulty}</p>
+          <p className="guide-hostedby">{guide.hostedby}</p>
+          <p className="difficulty-guide">Rating: {guide.difficulty}</p>
         </div>
         <div className="guide-description-div">
-          <p className="guide-description-p">{blog.description}</p>
+          <p className="guide-description-p">{guide.description}</p>
         </div>
 
         <div className="guide-main-step-div">
@@ -69,7 +63,6 @@ const Guide = ({ allPublishedBlogs }) => {
             </div>
           )}
         </div>
-        {/* <p>{blog.steps[1]}</p> */}
       </div>
     </div>
   );

@@ -7,27 +7,39 @@ import {
   updateSteppie,
   unpublishGuide,
   publishGuide,
+  getBlogById,
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
-
-const EditGuide = ({ userBlogs }) => {
+//{ userBlogs }
+const EditGuide = () => {
   let history = useHistory();
   let [html, setHtml] = useState(null);
   let [description_html, setDescription_html] = useState(null);
   let [editStep_html, setEditStep_html] = useState(null);
-  const [blog, setBlog] = useState({});
+  // let [blog, setBlog] = useState({});
   let [renderEditBox, setRenderEditBox] = useState(null);
   let [showEditDescButton, setShowEditDescButton] = useState(true);
   let [showEditStepButton, setShowEditStepButton] = useState(true);
   let [showAddStepButton, setShowAddStepButton] = useState(true);
-
+  let [userGuide, setUserGuide] = useState([]);
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
-  let steppies = blog.steps;
+  let steppies = userGuide.steps;
 
-  console.log("this is user blogs", userBlogs);
+  async function fetchUserGuide(id) {
+    let guide = await getBlogById(id);
+    console.log(guide);
+    setUserGuide(guide.blog);
+  }
+
+  useEffect(() => {
+    fetchUserGuide(id);
+  }, [id]);
+
+  // console.log("this is userGuide", userGuide);
+  // console.log("this is steppies:", steppies);
   function renderStepBox(id) {
     try {
       async function getStepData() {
@@ -55,6 +67,11 @@ const EditGuide = ({ userBlogs }) => {
               onClick={async () => {
                 const data = await getStepData();
                 // console.log(data, "!!!!!!!!");
+                if (!data) {
+                  alert("Step Failed to add.");
+                } else {
+                  alert("New Step added!");
+                }
                 location.reload();
               }}
             >
@@ -91,7 +108,7 @@ const EditGuide = ({ userBlogs }) => {
             type="text"
             max-length="2000"
           >
-            {blog.description}
+            {userGuide.description}
           </textarea>
           <button
             className="update-description-button"
@@ -117,7 +134,7 @@ const EditGuide = ({ userBlogs }) => {
       async function getNewStepData() {
         let newStepData = document.getElementById("editguide-step-textarea")
           .value;
-        console.log("this should be new step data:", newStepData);
+        // console.log("this should be new step data:", newStepData);
         let newStep = await updateSteppie(id, index, newStepData);
         // console.log("This is new step", newStep);
         return newStep;
@@ -126,7 +143,7 @@ const EditGuide = ({ userBlogs }) => {
       return (
         <div className="update-editstep-main-div">
           <textarea id="editguide-step-textarea">
-            {blog.steps[index].step}
+            {userGuide.steps[index].step}
           </textarea>
           <button
             className="editguide-editstep-button"
@@ -145,30 +162,14 @@ const EditGuide = ({ userBlogs }) => {
     }
   }
 
-  async function getBlog(id) {
-    console.log("id", id);
-    const calledBlog = userBlogs.map((element) => {
-      if (element._id === id) {
-        setBlog(element);
-      }
-    });
-  }
-
-  useEffect(() => {
-    // console.log("ID", id);
-    getBlog(id);
-  }, [id]);
-
-  // console.log("this should be clicked on blog:", blog);
-  console.log("this should be blog._id", blog._id);
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
-        <h2 className="editguide-title">{blog.vmtitle}</h2>
-        <p className="author-guide">Created By: {blog.author}</p>
-        <p className="date-guide">Published on: {blog.date}</p>
-        <p>{blog.hostedby}</p>
-        <p className="editguide-description-p">{blog.description}</p>
+        <h2 className="editguide-title">{userGuide.vmtitle}</h2>
+        <p className="author-guide">Created By: {userGuide.author}</p>
+        <p className="date-guide">Published on: {userGuide.date}</p>
+        <p>{userGuide.hostedby}</p>
+        <p className="editguide-description-p">{userGuide.description}</p>
         {description_html}
         {showEditDescButton && (
           <button
@@ -185,15 +186,15 @@ const EditGuide = ({ userBlogs }) => {
 
         {steppies ? (
           steppies.map((step) => {
-            console.log(steppies);
+            // console.log(steppies);
             if (step === null) {
               return;
             }
             counter = counter + 1;
             let index = counter - 1;
             return (
-              <div className="editstep-outside-div">
-                <div key={counter} className="editguide-step-div">
+              <div className="editstep-outside-div" key={counter}>
+                <div className="editguide-step-div">
                   <p className="editguide-step-element">
                     Step {counter}: {step.step}
                   </p>
@@ -203,7 +204,9 @@ const EditGuide = ({ userBlogs }) => {
                       onClick={() => {
                         setShowEditStepButton(false);
                         setRenderEditBox(index);
-                        setEditStep_html(renderEditStepBox(blog._id, index));
+                        setEditStep_html(
+                          renderEditStepBox(userGuide._id, index)
+                        );
                       }}
                     >
                       Edit
@@ -227,7 +230,7 @@ const EditGuide = ({ userBlogs }) => {
             <button
               className="added-step-button"
               onClick={() => {
-                console.log("click!");
+                // console.log("click!");
                 setShowAddStepButton(false);
                 setHtml(renderStepBox(id));
               }}
@@ -235,11 +238,11 @@ const EditGuide = ({ userBlogs }) => {
               Add Step
             </button>
           )}
-          {blog.published ? (
+          {userGuide.published ? (
             <button
               className="publish-editguide-button"
               onClick={async () => {
-                await unpublishGuide(blog._id);
+                await unpublishGuide(userGuide._id);
                 alert("Guide hidden from public view.");
                 // location.reload()
               }}
@@ -251,7 +254,7 @@ const EditGuide = ({ userBlogs }) => {
               className="publish-editguide-button"
               onClick={async () => {
                 // console.log("blog._id", blog._id)
-                await publishGuide(blog._id);
+                await publishGuide(userGuide._id);
                 alert("Guide published. Other Users can now see this guide.");
                 // location.reload()
               }}

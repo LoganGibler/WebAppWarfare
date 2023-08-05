@@ -77,10 +77,10 @@ export async function addStep(_id, step) {
   }
 }
 
-export async function getBlogById(id) {
+export async function getBlogById(_id) {
   try {
     const { data } = await axios.post("http://localhost:8000/getBlogById", {
-      id: id,
+      _id: _id,
     });
     return data;
   } catch (error) {
@@ -125,21 +125,22 @@ export async function updateDescription(id, description) {
         description: description,
       }
     );
-    return data;
+    return data
   } catch (error) {
     throw error;
   }
 }
 
-export async function updateSteppie(id, index, newStepData) {
+export async function updateSteppie(id, index, newStepData){
   try {
-    const { data } = await axios.post("http://localhost:8000/updateStep", {
+    const {data} = await axios.post("http://localhost:8000/updateStep", {
       id: id,
       index: index,
-      newStepData: newStepData,
-    });
+      newStepData: newStepData
+    })
+    return data
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 

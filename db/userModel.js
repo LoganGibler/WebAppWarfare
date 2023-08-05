@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
   username: {
     type: String,
+    minlength: 5,
     unique: true,
     required: [true, "Please enter username"],
   },

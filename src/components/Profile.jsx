@@ -32,7 +32,7 @@ const Profile = ({ userBlogs }) => {
           userBlogs.map((blog) => {
             // console.log(blog);
             return (
-              <div className="profile-guide-main-div">
+              <div className="profile-guide-main-div" key={blog._id}>
                 <div
                   className="blog-profile-div"
                   key={blog._id}
