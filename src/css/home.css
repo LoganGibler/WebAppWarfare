@@ -18,20 +18,6 @@
     /* margin-top: .1%; */
 }
 
-.search-bar-div {
-    background-color: #0f0e17;
-    display: flex;
-
-}
-
-.search-bar {
-    margin-left: 50%;
-    margin: auto;
-    width: 40%;
-    border-radius: 30px;
-    padding: 5px;
-}
-
 .main-blog-div {
     display: flex;
     word-wrap: break-word;

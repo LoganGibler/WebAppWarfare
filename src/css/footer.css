@@ -1,12 +1,15 @@
-.main-footer-container{
+.main-footer-container {
     background-color: #0f0e17;
     color: white;
     position: absolute;
-    bottom: 0;
+    bottom: -0;
     width: 100%;
-    height: 8vmin;
+    height: 10vmin;
+    border-top: 2px solid #282828;
 }
 
-.footer-div{
-    
-}
+/*border color: #282828;
+background-color: #0f0e17;
+   highlight color: #dcdcdc; */
+/* text color: #B8B8B8; */
+.footer-div {}

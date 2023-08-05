@@ -1,17 +1,17 @@
-1. do /publish and /unpublish for frontend
-2. Fix the requirment to refresh the page after updating a guide.
-    -implement new useeffect for editGuides? research this.
-3. its time. time to actually do css. or maybe learn a css framework.
-    -Seriously please learn how to actually do css.
-
-4. search bar!
+search bar!
+footer
+implement approval for published guides submitted by users to dev
+post questions- either directly related to the guide, or maybe just random forum
+        for questions and answers. Should there be approval for this? maybe have input
+        sanitization for bad words
+change how we store token, we should have value for token in db
+    for /auth/ functions, we just do requests to db instead of LS.
+    will have to review process of token.
+hash passwords before they are stored in db, possibly bring PTool for
+    hashing algo? might be cool. Will have to review how to deploy flask db.
+    maybe run flask db off of laptop? same with mongodb? 
 
 Stretch Goals:
-  1. Create new Schema for user questions
-      -who made it, when, and users need to be able to comment and answer,
-       possibly post more questions like stackoverflow.
-            SuperStretch: 
-                -maybe have a honor system?
   2. Users should have "likes"? Maybe individual likes on guides? All guides
      sorted by likes on home page?
   3. Have Guides not extend forever down the page, have page1, page2, page3.

@@ -6,12 +6,10 @@
 } */
 
 .nav-container {
-    /* text-align: center; */
     margin-top: 1%;
     display: flex;
     background-color: #0f0e17;
     text-align: center;
-    /* border-bottom: 1px solid #dcdcdc; */
 }
 
 .nav-branding-div {
@@ -20,14 +18,37 @@
     align-items: center;
 }
 
-/* .nav-branding {
+.search-bar-div {
+    background-color: #0f0e17;
+    display: flex;
+
+
+}
+
+.navbar-div {
+    margin-left: 60%;
+}
+
+.search-bar {
+    width: 30vh;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.main-blog-div {
+    display: flex;
+    word-wrap: break-word;
+}
+
+.nav-branding {
     display: flex;
     text-align: center;
     color: white;
-} */
+}
 
 .brand-text {
-    /* margin: 5%; */
+
     color: white;
     font-size: 24px;
     display: inline;
@@ -52,29 +73,18 @@
 
 .nav-links-loggedin {
     display: flex;
-    /* background-color: white; */
-    padding: 10px;
-    /* max-width: 45%;
-    min-width: 10%; */
-    /* background-color: white; */
-    /* width: 10vmax; */
-    width: 12%;
-    margin-left: 33%;
+    width: 40vh;
+    margin-left: 100%;
     align-items: center;
 }
 
 .nav-links-loggedout {
     display: flex;
-    /* background-color: white; */
+
     padding: 10px;
-    /* max-width: 45%;
-        min-width: 10%; */
-    /* background-color: white; */
-    /* width: 10vmax; */
+
     width: 12%;
-    /* margin-left: 50%;
-    margin: auto; */
-    margin-left: 40%;
+
     align-items: center;
 }
 
@@ -85,6 +95,7 @@
     margin-left: 5%;
     padding: 5px;
     border-radius: 5px;
+
 }
 
 .nav-button:link {
@@ -104,3 +115,96 @@
     color: grey;
     text-decoration: none;
 }
+
+.ham_menu {
+
+    margin-left: 50%;
+    align-self: center;
+}
+
+.ham_menu:hover {
+    cursor: pointer;
+}
+
+.this {
+    display: flex;
+    align-items: center;
+    margin-left: 40%;
+}
+
+
+
+
+
+/* loggedin, inactive ham */
+/* ///////////////////////////////////////////////////////////////////////////////// */
+.nav-links-loggedin-linksoff {
+    display: flex;
+    align-items: center;
+}
+
+.there {
+    display: flex;
+    align-items: center;
+    margin-left: 100%;
+}
+
+.must {
+    display: flex;
+    align-items: center;
+    margin-left: 100%;
+}
+
+.be {
+    display: flex;
+    align-items: center;
+    margin-left: 100%;
+}
+
+.a {
+    display: flex;
+    align-items: center;
+    margin-left: 100%;
+}
+
+.better {
+    display: flex;
+    align-items: center;
+    margin-left: 44%;
+    margin-top: 2.2%;
+    position: absolute;
+}
+
+.ham_menu-inactive {
+    margin-left: 22%;
+}
+
+/* loggedout, activeHam */
+
+
+
+
+/* logged in, and on home, and button is expanded */
+/* 
+.nav-container {
+    display: flex;
+    background-color: white
+}
+
+.nav-branding-div {
+    border: 2px solid black;
+}
+
+.brand-text {
+    padding: 10px;
+}
+
+.nav-loggedin-check-yes {
+    display: flex;
+    border: 2px solid black;
+}
+
+.navbar-everythingsuccess {
+    display: flex;
+    border: 2px solid black;
+} */

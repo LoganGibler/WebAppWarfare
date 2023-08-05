@@ -24,7 +24,7 @@ const Profile = ({ userBlogs }) => {
             <p>
               Looks like you already have some created guides! You can add and
               edit steps of your guides here by clicking on the guide you want
-              to edit. Remember to publish your guide so others can see it!
+              to edit. Remember to publish your guide so others can see it!s
             </p>
           </div>
         ) : null}
@@ -41,7 +41,7 @@ const Profile = ({ userBlogs }) => {
                   }}
                 >
                   <div className="title-date-div">
-                    <h3 className="vmtitle-profile">{blog.vmtitle}</h3>
+                    <h4 className="vmtitle-profile">{blog.vmtitle}</h4>
                     <p className="date-profile">Created: {blog.date}</p>
                   </div>
                 </div>

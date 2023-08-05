@@ -16,14 +16,11 @@ const Home = () => {
     fetchPublicBlogs();
   }, []);
 
-  console.log(publicBlogs);
+  // console.log(publicBlogs);
   return (
     <div className="main-blogs-div">
       <div className="center-me-div">
         <div className="middle-content-div">
-          {/* <div className="search-bar-div">
-            <input className="search-bar" placeholder="Search blog(s)"></input>
-          </div> */}
           <div className="main-blog-div">
             <div className="blog-container">
               {publicBlogs.length ? (

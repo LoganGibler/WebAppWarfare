@@ -31,6 +31,7 @@ const App = () => {
   const loggedIn = window.localStorage.getItem("isLoggedin");
   const activeUser = getUser();
 
+  let whereami = document.location.href
   // async function fetchAllBlogs() {
   //   const data = await getAllBlogs();
   //   setAllBlogs(data);
@@ -58,6 +59,7 @@ const App = () => {
       <div id="App">
         <Navigation
           loggedIn={loggedIn}
+          whereami={whereami}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
         />
