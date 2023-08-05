@@ -27,22 +27,19 @@ import "../src/css/about.css"
 // CHODIKAR_USEPOLLING=true npm run start
 
 const App = () => {
-  const [allBlogs, setAllBlogs] = useState([]);
-  const [allPublishedBlogs, setAllPublishedBlogs] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState("");
   const [userBlogs, setUserBlogs] = useState([]);
   const loggedIn = window.localStorage.getItem("isLoggedin");
   const activeUser = getUser();
 
-  async function fetchAllBlogs() {
-    const data = await getAllBlogs();
-    setAllBlogs(data);
-  }
+  // async function fetchAllBlogs() {
+  //   const data = await getAllBlogs();
+  //   setAllBlogs(data);
+  // }
 
-  async function fetchAllPublishedBlogs() {
-    const data = await getAllPublishedBlogs();
-    setAllPublishedBlogs(data.data.allPublishedBlogs);
-  }
+  // async function fetchAllPublishedBlogs() {
+  //   const data = await getAllPublishedBlogs();
+  //   setAllPublishedBlogs(data.data.allPublishedBlogs);
+  // }
 
   async function getUserBlogs(activeUser) {
     const blogs = await getBlogsByUsername(activeUser);
@@ -51,8 +48,8 @@ const App = () => {
   }
 
   useEffect(() => {
-    fetchAllBlogs();
-    fetchAllPublishedBlogs();
+    // fetchAllBlogs();
+    // fetchAllPublishedBlogs();
     getUserBlogs(activeUser);
   }, [activeUser]);
 
