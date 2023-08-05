@@ -10,13 +10,11 @@
     margin-left: 50%;
     margin: auto;
     width: 75vh;
-    color: #f0ffff;
+    color: #dcdcdc;
     margin-top: 3%;
     border-radius: 5px;
     padding: 15px;
-    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
-    /* border-left: 8px solid white;
-    border-top: 8px solid white; */
+    border-bottom: 2px solid #282828;
 }
 
 .about-links-div {
@@ -24,9 +22,7 @@
     margin-top: 15%;
 }
 
-.about-contactme {
-   
-}
+.about-contactme {}
 
 .about-labintro {
     margin-left: 14%;
@@ -38,28 +34,36 @@
 
 
 .about-linkedin {
-    margin-left: 12%;
+    margin-left: 15%;
 }
 
 .about-github {
-    margin-left: 12%;
+    margin-left: 15%;
 }
 
 .about-firstparagraph {
     margin-top: 1%;
+    color: #B8B8B8;
+    font-size: 18px;
 }
 
-.about-header-div{
-   
+.about-secondparagraph {
+    font-size: 18px;
 }
 
-.about-header{
+.about-thirdparagraph {
+    font-size: 18px;
+}
+
+.about-header-div {}
+
+.about-header {
     width: 60%;
 }
 
-.about-paragraph-div{
+.about-paragraph-div {
     background-color: #0f0e17;
-    color: #dcdcdc;
+    color: #B8B8B8;
     margin-top: 3%;
     padding: 20px;
     /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */

@@ -1,6 +1,4 @@
 .main-blogs-div {
-    /* margin-top: 5%; */
-    /* background-color: #72757e; */
     background-color: #0f0e17;
     display: flex;
 }
@@ -11,8 +9,9 @@
     margin: auto;
     margin-top: 1%;
     width: 88vh;
-    box-shadow: #dcdcdc 0px 5px 15px;
     word-wrap: break-word;
+    border-left: 2px solid #282828;
+    border-right: 2px solid #282828;
 }
 
 .middle-content-div {
@@ -46,11 +45,12 @@
 .blog-div {
     font-size: 14px;
     margin: 2%;
-    color: #dcdcdc;
+    /* color: #dcdcdc; */
+    color: #B8B8B8;
     background-color: #0f0e17;
     padding: 3%;
     word-wrap: break-word;
-    border-bottom: #a9a9a9 1px solid;
+    border-bottom: #282828 2px solid;
 }
 
 .blog-div:hover {
@@ -97,11 +97,10 @@ button: #ff8906
 
 .blog-description-home-p {
     display: inline-block;
-word-break: break-word;
-margin-left: 2%;
+    word-break: break-word;
+    margin-left: 2%;
 }
 
 .home-guide-title {
-    color: white;
+    color: #dcdcdc;
 }
-

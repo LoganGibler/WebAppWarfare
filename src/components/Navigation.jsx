@@ -43,7 +43,7 @@ const Navigation = ({ loggedIn }) => {
           <a href="/Home" className="nav-button">
             Guides
           </a>
-          <a href="About" className="nav-button">
+          <a href="/About" className="nav-button">
             About
           </a>
           <a className="nav-button" href="/Login">

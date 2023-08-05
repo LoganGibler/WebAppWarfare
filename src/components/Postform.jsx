@@ -56,7 +56,7 @@ const Postform = () => {
       >
         <div className="form-div">
           <div className="header-title-div">
-            <h4 className="header-title">Create Guide Form</h4>
+            <h4 className="header-title">Create Guide</h4>
           </div>
           <div className="main-input-div">
             <div className="create-post-title-div">
@@ -107,7 +107,7 @@ const Postform = () => {
             </div>
             <div className="description-div">
               <textarea
-                className="description-box"
+                className="guide-form-description-box"
                 placeholder="Please enter a brief description of what to expect when hacking this box. OS, active directory, webapp pentesting, etc."
                 maxLength="1350"
                 value={description}

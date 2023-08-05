@@ -18,14 +18,14 @@ const About = () => {
           </p>
           <p className="about-secondparagraph">
             Now on a lighter note...keep a look out for bugs with the site
-            please! Using the contact form below, let me know any questions,
-            comments, or concerns.
+            please! Using the contact form below, let me know any comments or
+            concerns you have, and any features I should add!
           </p>
           <p className="about-thirdparagraph">
             Make sure you always have a vpn on as some tools(even used
             ethically) can cause your internet provider to take away your
-            internet. If you don't know where to start, click on "Lab Intro" below
-            to create your first lab environment. Happy hacking!
+            internet. If you don't know where to start, click on "Lab Intro"
+            below to create your first lab environment. Happy hacking!
           </p>
           <div className="about-links-div">
             <a href="/contactme" className="about-contactme">

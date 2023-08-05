@@ -7,6 +7,7 @@
 
 .nav-container {
     /* text-align: center; */
+    margin-top: 1%;
     display: flex;
     background-color: #0f0e17;
     text-align: center;
@@ -100,6 +101,6 @@
 }
 
 .nav-button:active {
-    background-color: white;
+    color: grey;
     text-decoration: none;
 }

@@ -1,48 +1,84 @@
 .editguide-main-div {
     display: flex;
-    background-color: #DCDCDC;
+    background-color: #0f0e17;
     margin-top: 2%;
 
 }
 
+/*border color: #282828;
+background-color: #0f0e17;
+   highlight color: #dcdcdc; */
+/* text color: #B8B8B8; */
+
 .editguide-main-container {
     margin-left: 50%;
     margin: auto;
-    background-color: white;
+    background-color: #0f0e17;
     width: 100vh;
     padding: 50px;
     border-radius: 10px;
     color: black;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px;
+    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
+    color: #B8B8B8;
+    border-left: 2px solid #282828;
+    border-right: 2px solid #282828;
 }
 
-.step-div {
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 10px 10px;
+.editguide-title {
+    color: #dcdcdc;
+}
+
+.editguide-step-div {
+    margin-top: 4%;
+    border-top: 2px solid #282828;
+}
+
+.editguide-step-element {
+    margin-top: 5%;
+    padding: 10px;
 }
 
 .editstep-button {
+    margin-left: 92%;
     border-radius: 10px;
-    margin-left: 93%;
-    color: white;
-    background-color: black;
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 3px 5px 2px;
 }
 
 .editstep-button:hover {
-    color: white;
-    background-color: black;
+    background-color: #B8B8B8;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
 }
+
+
+
+
+
+
 
 .edit-description-button {
     border-radius: 10px;
-    background-color: black;
-    color: white;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 5px 5px 2px;
 }
 
 .edit-description-button:hover {
-    background-color: white;
-    color: black;
+    background-color: #B8B8B8;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
 }
+
+
+
+
+
+
+
+
+
 
 
 .newstep-div {
@@ -55,12 +91,12 @@
     padding: 10px;
     margin-left: 50%;
     margin: auto;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 10px 10px;
+    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 10px 10px; */
     width: 100%;
     height: 35vmin;
     border-radius: 5px;
-    border-bottom: 4px solid black;
-    border-left: 8px solid black;
+    /* border-bottom: 4px solid black;
+    border-left: 8px solid black; */
     text-indent: 10px;
 }
 
@@ -70,9 +106,15 @@
 .step-button-submit {
     margin-left: 80%;
     border-radius: 10px;
-    color: white;
-    background-color: black;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+    color: #B8B8B8;
+    background-color: #0f0e17;
+    box-shadow: #B8B8B8 0px 5px 2px;
+}
+
+.step-button-submit:hover {
+    background-color: #B8B8B8;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
 }
 
 
@@ -82,80 +124,109 @@
 }
 
 .added-step-button {
-    color: white;
-    background-color: black;
+    background-color: #0f0e17;
     border-radius: 10px;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 5px 5px 2px;
+    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px; */
 }
 
 .added-step-button:hover {
-    color: black;
-    background-color: white;
+    background-color: #B8B8B8;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
 }
 
 .publish-editguide-button {
     border-radius: 10px;
-    color: white;
-    background-color: black;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+    background-color: #0f0e17;
+    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px; */
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 0px 5px 2px;
 }
 
 .publish-editguide-button:hover {
-    color: black;
-    background-color: white;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #B8B8B8;
 }
 
 .editguide-description-div {
     margin-top: 5%;
     padding: 10px;
+
 }
 
 .editguide-description-textarea {
     width: 100%;
     height: 35vmin;
     border-radius: 5px;
-    border-bottom: 4px solid black;
-    border-left: 8px solid black;
+    /* border-bottom: 4px solid black;
+    border-left: 8px solid black; */
     text-indent: 10px;
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    padding: 10px;
+    border-left: 5px solid #B8B8B8;
+
 }
 
-.editguide-description-p{
+.editguide-description-p {
     word-wrap: break-word;
 }
 
 .update-description-button {
-    margin-left: 72%;
+    margin-left: 82%;
     border-radius: 10px;
-    color: white;
-    background-color: black;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 5px 5px 2px;
+
 }
 
-.update-editstep-main-div{
-    margin-top: 4%;
+.update-description-button:hover {
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #B8B8B8;
 }
 
-#editguide-step-textarea{
+.update-editstep-main-div {
+    margin-top: 2%;
+}
+
+.step-input-area {
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    padding: 10px;
+}
+
+#editguide-step-textarea {
     width: 100%;
     height: 35vmin;
     border-radius: 5px;
-    border-bottom: 4px solid black;
-    border-left: 8px solid black;
     text-indent: 10px;
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    padding: 10px;
+    border-left: 5px solid #B8B8B8;
 }
 
-.editguide-editstep-button{
+.editguide-editstep-button {
     margin-left: 80%;
     border-radius: 10px;
-    color: white;
-    background-color: black;
-    box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px;
+    background-color: #0f0e17;
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 5px 5px 2px;
 }
 
-.editstep-outside-div{
-   
+.editguide-editstep-button:hover {
+    background-color: #B8B8B8;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
 }
 
-.renderEditBox-div{
-   
+.editstep-outside-div {
+    padding: 10px;
 }
+
+.renderEditBox-div {}

@@ -45,7 +45,7 @@ const Home = ({ allPublishedBlogs }) => {
                   );
                 })
               ) : (
-                <h2 className="error-on-blogs-header">Failed to fetch blogs</h2>
+                <h5 className="error-on-blogs-header">Failed to fetch blogs</h5>
               )}
             </div>
           </div>

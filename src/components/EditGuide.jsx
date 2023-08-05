@@ -18,6 +18,10 @@ const EditGuide = ({ userBlogs }) => {
   let [editStep_html, setEditStep_html] = useState(null);
   const [blog, setBlog] = useState({});
   let [renderEditBox, setRenderEditBox] = useState(null);
+  let [showEditDescButton, setShowEditDescButton] = useState(true);
+  let [showEditStepButton, setShowEditStepButton] = useState(true);
+  let [showAddStepButton, setShowAddStepButton] = useState(true);
+
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
@@ -97,7 +101,7 @@ const EditGuide = ({ userBlogs }) => {
               location.reload();
             }}
           >
-            Update Description
+            Submit Update
           </button>
         </div>
       );
@@ -160,21 +164,25 @@ const EditGuide = ({ userBlogs }) => {
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
-        <h2>{blog.vmtitle}</h2>
+        <h2 className="editguide-title">{blog.vmtitle}</h2>
         <p className="author-guide">Created By: {blog.author}</p>
         <p className="date-guide">Published on: {blog.date}</p>
         <p>{blog.hostedby}</p>
         <p className="editguide-description-p">{blog.description}</p>
         {description_html}
-        <button
-          className="edit-description-button"
-          onClick={() => {
-            setDescription_html(renderDescriptionBox(id));
-          }}
-        >
-          {" "}
-          Edit Description
-        </button>
+        {showEditDescButton && (
+          <button
+            className="edit-description-button"
+            onClick={() => {
+              setShowEditDescButton(false);
+              setDescription_html(renderDescriptionBox(id));
+            }}
+          >
+            {" "}
+            Edit Description
+          </button>
+        )}
+
         {steppies ? (
           steppies.map((step) => {
             console.log(steppies);
@@ -185,19 +193,22 @@ const EditGuide = ({ userBlogs }) => {
             let index = counter - 1;
             return (
               <div className="editstep-outside-div">
-                <div key={counter} className="step-div">
-                  <p className="step-element">
+                <div key={counter} className="editguide-step-div">
+                  <p className="editguide-step-element">
                     Step {counter}: {step.step}
                   </p>
-                  <button
-                    className="editstep-button"
-                    onClick={() => {
-                      setRenderEditBox(index);
-                      setEditStep_html(renderEditStepBox(blog._id, index));
-                    }}
-                  >
-                    Edit
-                  </button>
+                  {showEditStepButton && (
+                    <button
+                      className="editstep-button"
+                      onClick={() => {
+                        setShowEditStepButton(false);
+                        setRenderEditBox(index);
+                        setEditStep_html(renderEditStepBox(blog._id, index));
+                      }}
+                    >
+                      Edit
+                    </button>
+                  )}
                 </div>
                 <div className="renderEditBox-div">
                   {renderEditBox === index ? editStep_html : null}
@@ -212,15 +223,18 @@ const EditGuide = ({ userBlogs }) => {
         )}
         {html}
         <div className="publish-editguide-button-div">
-          <button
-            className="added-step-button"
-            onClick={() => {
-              console.log("click!");
-              setHtml(renderStepBox(id));
-            }}
-          >
-            Add Step
-          </button>
+          {showAddStepButton && (
+            <button
+              className="added-step-button"
+              onClick={() => {
+                console.log("click!");
+                setShowAddStepButton(false);
+                setHtml(renderStepBox(id));
+              }}
+            >
+              Add Step
+            </button>
+          )}
           {blog.published ? (
             <button
               className="publish-editguide-button"

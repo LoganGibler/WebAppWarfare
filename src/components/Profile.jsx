@@ -20,7 +20,7 @@ const Profile = ({ userBlogs }) => {
       <div className="main-profile-container">
         {userBlogs.length ? (
           <div>
-            <h4> Welcome back, {activeUser}!</h4>
+            <h4 className="profile-title"> Welcome back, {activeUser}!</h4>
             <p>
               Looks like you already have some created guides! You can add and
               edit steps of your guides here by clicking on the guide you want
@@ -32,16 +32,18 @@ const Profile = ({ userBlogs }) => {
           userBlogs.map((blog) => {
             // console.log(blog);
             return (
-              <div
-                className="blog-profile-div"
-                key={blog._id}
-                onClick={() => {
-                  history.push(`/userguides/${blog._id}`);
-                }}
-              >
-                <div className="title-date-div">
-                  <h3 className="vmtitle-profile">{blog.vmtitle}</h3>
-                  <p className="date-profile">Created: {blog.date}</p>
+              <div className="profile-guide-main-div">
+                <div
+                  className="blog-profile-div"
+                  key={blog._id}
+                  onClick={() => {
+                    history.push(`/userguides/${blog._id}`);
+                  }}
+                >
+                  <div className="title-date-div">
+                    <h3 className="vmtitle-profile">{blog.vmtitle}</h3>
+                    <p className="date-profile">Created: {blog.date}</p>
+                  </div>
                 </div>
               </div>
             );

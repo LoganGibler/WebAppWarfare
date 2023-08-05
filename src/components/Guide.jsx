@@ -28,38 +28,47 @@ const Guide = ({ allPublishedBlogs }) => {
   return (
     <div className="main-individual-blog-div">
       <div className="main-blog-container1">
-        <h2>{blog.vmtitle}</h2>
+        <h2 className="guide-title">{blog.vmtitle}</h2>
         <p className="author-guide">Created By: {blog.author}</p>
         <p className="date-guide">Published on: {blog.date}</p>
         <div className="hostedby-difficulty-div-guide">
-          <p>{blog.hostedby}</p>
+          <p className="guide-hostedby">{blog.hostedby}</p>
           <p className="difficulty-guide">Rating: {blog.difficulty}</p>
         </div>
-        <p>{blog.description}</p>
-        {steppies ? (
-          steppies.map((step) => {
-            // console.log("step:", step.step);
-            counter = counter + 1;
-            if (!step.step && counter === 1) {
+        <div className="guide-description-div">
+          <p className="guide-description-p">{blog.description}</p>
+        </div>
+
+        <div className="guide-main-step-div">
+          {steppies ? (
+            steppies.map((step) => {
+              // console.log("step:", step.step);
+              counter = counter + 1;
+              if (!step.step && counter === 1) {
+                return (
+                  <div className="guide-step-div">
+                    <p className="guide-step-element">
+                      This guide has no steps yet!
+                    </p>
+                  </div>
+                );
+              }
               return (
-                <div className="step-div">
-                  <p className="step-element">This guide has no steps yet!</p>
+                <div className="guide-step-main-div">
+                  <div key={counter} className="guide-step-div">
+                    <p className="guide-step-element">
+                      Step {counter}: {step.step}
+                    </p>
+                  </div>
                 </div>
               );
-            }
-            return (
-              <div key={counter} className="step-div">
-                <p className="step-element">
-                  Step {counter}: {step.step}
-                </p>
-              </div>
-            );
-          })
-        ) : (
-          <div className="step-div">
-            <p className="step-element">This guide has no steps yet!</p>
-          </div>
-        )}
+            })
+          ) : (
+            <div className="guide-step-div">
+              <p className="guide-step-element">This guide has no steps yet!</p>
+            </div>
+          )}
+        </div>
         {/* <p>{blog.steps[1]}</p> */}
       </div>
     </div>
