@@ -32,15 +32,7 @@ const App = () => {
   const activeUser = getUser();
 
   let whereami = document.location.href
-  // async function fetchAllBlogs() {
-  //   const data = await getAllBlogs();
-  //   setAllBlogs(data);
-  // }
-
-  // async function fetchAllPublishedBlogs() {
-  //   const data = await getAllPublishedBlogs();
-  //   setAllPublishedBlogs(data.data.allPublishedBlogs);
-  // }
+  
 
   async function getUserBlogs(activeUser) {
     const blogs = await getBlogsByUsername(activeUser);

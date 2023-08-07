@@ -22,7 +22,7 @@ const Home = () => {
       <div className="center-me-div">
         <div className="middle-content-div">
           <div className="main-blog-div">
-            <div className="blog-container">
+            <div className="blog-container">  
               {publicBlogs.length ? (
                 publicBlogs.map((blog) => {
                   // console.log(blog);

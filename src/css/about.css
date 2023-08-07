@@ -24,12 +24,14 @@
 .about-links-div {
     display: flex;
     margin-top: 15%;
+    align-items: center;
+    width: 80vh;
 }
 
 .about-contactme {}
 
 .about-labintro {
-    margin-left: 14%;
+    margin-left: 11%;
 }
 
 /* .about-labintro:hover {
@@ -38,11 +40,11 @@
 
 
 .about-linkedin {
-    margin-left: 15%;
+    margin-left: 11%;
 }
 
 .about-github {
-    margin-left: 15%;
+    margin-left: 11%;
 }
 
 .about-firstparagraph {
@@ -59,7 +61,10 @@
     font-size: 18px;
 }
 
-.about-header-div {}
+.about-header-div {
+    border-bottom: 2px solid #282828;
+    padding-bottom: 10px;
+}
 
 .about-header {
     width: 60%;
@@ -68,7 +73,7 @@
 .about-paragraph-div {
     background-color: #0f0e17;
     color: #B8B8B8;
-    margin-top: 3%;
+    /* margin-top: 1%; */
     padding: 20px;
     /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
 }

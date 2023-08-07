@@ -34,7 +34,7 @@ const About = () => {
             <a href="/labguide" className="about-labintro">
               Lab Intro
             </a>
-            <a href="" className="about-linkedin">
+            <a href="https://www.linkedin.com/in/logan-gibler/" className="about-linkedin">
               LinkedIn
             </a>
             <a

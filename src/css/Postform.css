@@ -13,7 +13,13 @@ word-wrap: break-word;
 border-left: 2px solid #282828;
 border-right: 2px solid #282828; */
 
+
+/*border color: #282828;
+background-color: #0f0e17;
+   highlight color: #dcdcdc; */
+/* text color: #B8B8B8; */
 /* #dcdcdc */
+
 .createPostform {
     margin-left: 50%;
     margin: auto;
@@ -35,7 +41,8 @@ border-right: 2px solid #282828; */
 .header-title {
     /* margin-left: 50%;
     margin: auto; */
-    margin-left: 7.8%;
+    margin-left: 9%;
+    color: #dcdcdc;
     /* color: #dcdcdc; */
 }
 

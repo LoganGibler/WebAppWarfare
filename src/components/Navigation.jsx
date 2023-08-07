@@ -9,12 +9,27 @@ const Navigation = ({ loggedIn, whereami }) => {
   let [showLinks, setShowLinks] = useState(false);
   let [isHome, setIsHome] = useState(false);
   let path = whereami.slice(-4);
+  // let [hamActive, setHamActive] = useState(false)
   // console.log(path);
 
-  function changeImg(hamburger) {
-    let img = document.getElementById("ham_menu");
-    img.src = hamburger;
-  }
+  // function getHam() {
+  //   const myHam = JSON.parse(localStorage.getItem("ham"));
+  //   return myHam;
+  // }
+
+  // function setHam() {
+  //   let ham = getHam();
+  //   if (ham === false) {
+  //     localStorage.setItem("ham", JSON.stringify(true));
+  //   } else {
+  //     localStorage.setItem("ham", JSON.stringify(false));
+  //   }
+  // }
+
+  // function changeImg(hamburger) {
+  //   let img = document.getElementById("ham_menu");
+  //   img.src = hamburger;
+  // }
 
   async function areWeHome(path) {
     if (path === "Home") {
@@ -28,37 +43,15 @@ const Navigation = ({ loggedIn, whereami }) => {
 
   return (
     <nav className="nav-container">
-      {/* <div className="nav-branding-div">
+      <div className="nav-branding-div">
         <a href="/Home" className="brand-text">
           WebAppWarfare
         </a>
       </div>
-      {loggedIn ? (
-        <div className="nav-loggedin-check-yes">
-          {isHome ? (
-            <div>
-              {showLinks ? (
-                <div className="navbar-everythingsuccess">
-                  <div>
-                    <input placeholder="Search Guides here..."></input>
-                  </div>
-                </div>
-              ) : (
-                <div> </div>
-              )}
-            </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
-      ) : (
-        <div></div>
-      )} */}
-      <div></div>
+
       {loggedIn ? (
         <div>
-          {showLinks ? (
-            <div className="nav-links-loggedin">
+          <div className="nav-links-loggedin">
               <div className="this">
                 <a href="/Home" className="nav-button">
                   Guides
@@ -83,54 +76,8 @@ const Navigation = ({ loggedIn, whereami }) => {
                 >
                   Sign out
                 </a>
-                <div>
-                  <img
-                    src="https://img.icons8.com/ios/50/FFFFFF/top-menu.png"
-                    className="ham_menu"
-                    id="ham_menu"
-                    onClick={(e) => {
-                      let hamburger =
-                        "https://img.icons8.com/ios-glyphs/50/FFFFFF/top-menu.png";
-                      changeImg(hamburger);
-                      setShowLinks(false);
-                    }}
-                  ></img>
-                </div>
               </div>
             </div>
-          ) : (
-            <div className="nav-links-loggedin-linksoff">
-              <div className="there">
-                <div className="must">
-                  <div className="be">
-                    <div className="a">
-                      <div className="better">
-                        <a href="/Home" className="nav-button">
-                          Guides
-                        </a>
-                        <a href="/Profile" className="nav-button">
-                          Profile
-                        </a>
-                        <div>
-                          <img
-                            src="https://img.icons8.com/ios-glyphs/50/FFFFFF/top-menu.png"
-                            className="ham_menu-inactive"
-                            id="ham_menu"
-                            onClick={(e) => {
-                              let hamburger =
-                                "https://img.icons8.com/ios/50/FFFFFF/top-menu.png";
-                              changeImg(hamburger);
-                              setShowLinks(true);
-                            }}
-                          ></img>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       ) : (
         <div className="nav-links-loggedout">
