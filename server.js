@@ -10,7 +10,7 @@ const { JWT_SECRET = "neverTell" } = process.env;
 app.use(morgan("dev"));
 app.use(express.json());
 
-const uri = "mongodb+srv://logangibler:Nookshnook3@webappwarfare.px8ftut.mongodb.net/";
+const uri = "mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/";
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 
