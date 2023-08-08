@@ -17,8 +17,8 @@ background-color: #0f0e17;
     padding: 30px;
     border-radius: 5px;
     color: #B8B8B8;
-    border-left: 2px solid #282828;
-    border-right: 2px solid #282828;
+    /* border-left: 2px solid #282828;
+    border-right: 2px solid #282828; */
     /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
     margin-top: 2%;
 }
@@ -28,7 +28,7 @@ background-color: #0f0e17;
 }
 
 .profile-guide-main-div {
-    border-top: 2px solid #282828;
+    /* border-top: 2px solid #282828; */
     margin-top: 2.5%;
 }
 
@@ -55,8 +55,8 @@ background-color: #0f0e17;
 
 .title-date-div {
     display: flex;
-    padding-bottom: 15px;
-    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .title-date-div:hover {
@@ -73,7 +73,29 @@ background-color: #0f0e17;
 
 .vmtitle-profile {
     text-indent: 20px;
-    margin-top: 1%;
+    margin-top: 1.3%;
     position: absolute;
     color: #dcdcdc;
+  
+}
+
+.profile-listed-guides{
+    border-top: 2px solid #282828;
+}
+
+.profile-paragraph{
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 10%;
+    font-size: 14px;
+}
+
+.profile-no-guides-created-div{
+    margin-top: 2.5%;
+}
+
+.profile-no-guides-p{
+    font-size: 14px;
+    margin-left: 5%;
+    margin-right: 10%;
 }

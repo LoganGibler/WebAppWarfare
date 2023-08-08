@@ -29,8 +29,8 @@ background-color: #0f0e17;
     display: flex;
     border-radius: 10px;
     color: #dcdcdc;
-    border-right: 2px solid #282828;
-    border-left: 2px solid #282828;
+    /* border-right: 2px solid #282828;
+    border-left: 2px solid #282828; */
 }
 
 .header-title-div {
@@ -49,7 +49,7 @@ background-color: #0f0e17;
 .form-div {
     /* margin-left: 50%;
     margin: auto; */
-    margin-top: 5%;
+    margin-top: 2%;
     width: 100%;
     background-color: #0f0e17;
     /* box-shadow: 5px 5px 0px 1px #0f0e17 inset; */
@@ -63,9 +63,9 @@ background-color: #0f0e17;
 
 .create-post-title-div {
     margin-top: 3%;
-    padding: 20px;
+    padding: 5px;
     /* box-shadow: 8px 0.01px 0px #FFFFFF; */
-    border-bottom: 2px solid #282828;
+    /* border-bottom: 2px solid #282828; */
 }
 
 .create-post-title {
@@ -80,12 +80,10 @@ background-color: #0f0e17;
 }
 
 .create-post-hostedby-div {
-    padding: 20px;
-    margin-top: 1%;
-    margin-bottom: 2%;
+    padding: 5px;
     /* box-shadow: 8px 0.09px 0px #FFFFFF; */
     display: flex;
-    border-bottom: 2px solid #282828;
+    /* border-bottom: 2px solid #282828; */
 }
 
 .host-title {
@@ -111,8 +109,7 @@ background-color: #0f0e17;
 }
 
 .description-div {
-    padding: 20px;
-    margin-top: 1%;
+    padding: 5px;
     /* box-shadow: 8px 0.09px 0px #FFFFFF; */
     color: #dcdcdc;
 
@@ -122,7 +119,6 @@ background-color: #0f0e17;
     margin-left: 6%;
     width: 90%;
     height: 40vmin;
-    text-indent: 5px;
     padding: 10px;
     /* color: #dcdcdc; */
     color: #B8B8B8;
@@ -137,14 +133,16 @@ background-color: #0f0e17;
     /* box-shadow: 5px 5px 0px 1px #FFFFFF; */
 }
 
-.post-form-button {
-    margin-left: 83%;
-    border-radius: 5px;
+.post-form-button{
+    margin-left: 82%;
+    border-radius: 10px;
     background-color: #0f0e17;
-    color: #A8A8A8;
+    color: #B8B8B8;
+    box-shadow: #B8B8B8 3px 5px 2px;
 }
 
-.post-form-button:hover {
-    background-color: #0f0e17;
-    color: white;
+.post-form-button:hover  {
+    background-color: #B8B8B8;
+    color: #0f0e17;
+    box-shadow: #0f0e17 0px 2px 2px;
 }

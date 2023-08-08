@@ -49,11 +49,12 @@ background-color: #0f0e17;
 }
 
 .login-button {
-    color: #B8B8B8;
+    color: white;
     background-color: #0f0e17;
     margin-top: 5%;
     margin-left: 19%;
     border-radius: 10px;
+    font-size: 12px;
 }
 
 .signin-login-div {

@@ -64,6 +64,11 @@
     margin-top: 5%;
     margin-left: 19%;
     border-radius: 10px;
+    font-size: 12px;
+}
+
+.register-button:hover{
+    cursor: pointer;
 }
 
 .signin-div {
