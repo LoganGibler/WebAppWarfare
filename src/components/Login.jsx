@@ -42,6 +42,9 @@ const Login = () => {
           }
         }}
       >
+        <div className="login-username-label-div">
+          <p className="login-username-label">Username:</p>
+        </div>
         <div className="username-input-login-div">
           <input
             className="username-input-login"
@@ -52,6 +55,9 @@ const Login = () => {
               setUsername(event.target.value);
             }}
           ></input>
+        </div>
+        <div className="login-password-label-div">
+          <p className="login-password-label">Password:</p>
         </div>
         <div className="password-input-login-div">
           <input

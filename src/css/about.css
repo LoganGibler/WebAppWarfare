@@ -1,16 +1,22 @@
 #App {
-    background-color: #0f0e17;
+    background-color: #1a2332;
 }
+
+
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
 
 .about-main-div {
     display: flex;
     /* background-color: #DCDCDC; */
-    background-color: #0f0e17;
+    background-color: #1a2332;
     height: 100vm;
 }
 
 .about-container-div {
-    background-color: #0f0e17;
+    background-color: #1a2332;
     margin-left: 50%;
     margin: auto;
     width: 75vh;
@@ -18,17 +24,19 @@
     margin-top: 3%;
     border-radius: 5px;
     padding: 15px;
-    border-bottom: 2px solid #282828;
+    /* border-bottom: 2px solid white; */
 }
 
 .about-links-div {
     display: flex;
     margin-top: 15%;
-    align-items: center;
-    width: 80vh;
+    /* align-items: flex-start; */
+    width: 100vh;
 }
 
-.about-contactme {}
+.about-contactme {
+    margin-left: 2%;
+}
 
 .about-labintro {
     margin-left: 11%;
@@ -62,7 +70,7 @@
 }
 
 .about-header-div {
-    border-bottom: 2px solid #282828;
+    border-bottom: 2px solid white;
     padding-bottom: 10px;
 }
 
@@ -71,7 +79,7 @@
 }
 
 .about-paragraph-div {
-    background-color: #0f0e17;
+    background-color: #1a2332;
     color: #B8B8B8;
     /* margin-top: 1%; */
     padding: 20px;

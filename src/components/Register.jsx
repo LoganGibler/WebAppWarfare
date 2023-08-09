@@ -46,6 +46,9 @@ const Register = () => {
           }
         }}
       >
+        <div className="register-username-label-div">
+          <p className="register-username-label">Username:</p>
+        </div>
         <div className="username-input-register-div">
           <input
             className="username-input-register"
@@ -56,6 +59,9 @@ const Register = () => {
               setUsername(event.target.value);
             }}
           ></input>
+        </div>
+        <div className="register-password-label-div">
+          <p className="register-password-label">Password:</p>
         </div>
         <div className="password-input-register-div">
           <input

@@ -5,6 +5,11 @@
 
 }
 
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
+
 .register-form {
     /* width: 55vb;
     height: 40vb;
@@ -17,28 +22,29 @@
     width: 50vb;
     height: 40vb;
     margin: auto;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     padding: 10px;
     /* box-shadow: white 0px 5px 15px; */
     border-radius: 5px;
-    border: 3px solid #282828;
+    /* border: 3px solid white; */
+    box-shadow: black 1px 0px 10px;
 }
 
 .username-input-register-div {
     display: flex;
     margin-left: 19%;
-    margin-top: 15%;
+    /* margin-top: 5%; */
 }
 
 .username-input-register {
-    background-color: #dcdcdc;
-    color: #0f0e17;
-    margin-top: 2%;
+    background-color: #263143;
+    color: white;
+    /* margin-top: 2%; */
     width: 80%;
     border-radius: 5px;
     padding: 5px;
     text-indent: 4%;
-    box-shadow: #282828 5px 5px 1px;
+    box-shadow: white 2px 1px 1px;
 }
 
 .password-input-register-div {
@@ -48,26 +54,26 @@
 }
 
 .password-input-register {
-    background-color: #dcdcdc;
-    color: #0f0e17;
-    margin-top: 7%;
+    background-color: #263143;
+    color: white;
+    /* margin-top: 7%; */
     width: 80%;
     border-radius: 5px;
     padding: 5px;
     text-indent: 4%;
-    box-shadow: #282828 5px 5px 1px;
+    box-shadow: white 2px 1px 1px;
 }
 
 .register-button {
     color: white;
-    background-color: #0f0e17;
+    background-color: #263143;
     margin-top: 5%;
     margin-left: 19%;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
-.register-button:hover{
+.register-button:hover {
     cursor: pointer;
 }
 
@@ -78,4 +84,25 @@
 .signin-link {
     margin-left: 19%;
     font-size: 14px;
+}
+
+
+.register-username-label-div {
+    margin-top: 6%;
+    color: white;
+    display: flex;
+}
+
+.register-username-label {
+    margin-left: 19.5%;
+}
+
+.register-password-label-div {
+    margin-top: 4%;
+    color: white;
+    display: flex;
+}
+
+.register-password-label {
+    margin-left: 19.5%;
 }

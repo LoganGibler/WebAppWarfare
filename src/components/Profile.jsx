@@ -9,7 +9,6 @@ const Profile = ({ userBlogs }) => {
   const activeUser = getUser();
   let history = useHistory();
 
-
   return (
     <div className="main-profile-div">
       <div className="main-profile-container">

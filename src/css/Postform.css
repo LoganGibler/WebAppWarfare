@@ -1,34 +1,26 @@
 .main-createpost-div {
-    margin-top: 1%;
+    margin-top: 5%;
     display: flex;
-    background-color: #0f0e17;
+    background-color: #1a2332;
 }
 
-/* background-color: #0f0e17;
-margin-left: 50%;
-margin: auto;
-margin-top: 1%;
-width: 88vh;
-word-wrap: break-word;
-border-left: 2px solid #282828;
-border-right: 2px solid #282828; */
 
 
-/*border color: #282828;
-background-color: #0f0e17;
-   highlight color: #dcdcdc; */
-/* text color: #B8B8B8; */
-/* #dcdcdc */
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
 
 .createPostform {
     margin-left: 50%;
     margin: auto;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     padding: 12px;
     width: 80vh;
     display: flex;
-    border-radius: 10px;
-    color: #dcdcdc;
+    border-radius: 5px;
+    color: #B8B8B8;
+    box-shadow: black 1px 0px 10px;
     /* border-right: 2px solid #282828;
     border-left: 2px solid #282828; */
 }
@@ -42,7 +34,7 @@ background-color: #0f0e17;
     /* margin-left: 50%;
     margin: auto; */
     margin-left: 9%;
-    color: #dcdcdc;
+    color: white;
     /* color: #dcdcdc; */
 }
 
@@ -51,7 +43,7 @@ background-color: #0f0e17;
     margin: auto; */
     margin-top: 2%;
     width: 100%;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     /* box-shadow: 5px 5px 0px 1px #0f0e17 inset; */
     padding: 10px;
 }
@@ -75,8 +67,9 @@ background-color: #0f0e17;
     padding: 5px;
     border-radius: 5px;
     border-left: 5px solid #dcdcdc;
-    background-color: #0f0e17;
+    background-color: #263143;
     color: #B8B8B8;
+    box-shadow: white 2px 1px 1px;
 }
 
 .create-post-hostedby-div {
@@ -93,8 +86,9 @@ background-color: #0f0e17;
     padding: 5px;
     border-radius: 5px;
     color: #B8B8B8;
-    background-color: #0f0e17;
+    background-color: #263143;
     border-left: 5px solid #dcdcdc;
+    box-shadow: white 2px 1px 1px;
 }
 
 .postform-difficulty-select {
@@ -103,9 +97,10 @@ background-color: #0f0e17;
     margin-right: 4%;
     width: 18%;
     text-indent: 6px;
-    background-color: #0f0e17;
+    background-color: #263143;
     color: #B8B8B8;
     border-radius: 5px;
+    box-shadow: white 2px 1px 1px;
 }
 
 .description-div {
@@ -124,8 +119,9 @@ background-color: #0f0e17;
     color: #B8B8B8;
     border-radius: 4px;
     /* background-color: #181818; */
-    background-color: #0f0e17;
+    background-color: #263143;
     border-left: 5px solid #dcdcdc;
+    box-shadow: white 2px 1px 1px;
 }
 
 .post-form-button-div {
@@ -133,15 +129,15 @@ background-color: #0f0e17;
     /* box-shadow: 5px 5px 0px 1px #FFFFFF; */
 }
 
-.post-form-button{
-    margin-left: 82%;
+.post-form-button {
+    margin-left: 84%;
     border-radius: 10px;
-    background-color: #0f0e17;
+    background-color: #263143;
     color: #B8B8B8;
-    box-shadow: #B8B8B8 3px 5px 2px;
+    box-shadow: #B8B8B8 3px 1px 1px;
 }
 
-.post-form-button:hover  {
+.post-form-button:hover {
     background-color: #B8B8B8;
     color: #0f0e17;
     box-shadow: #0f0e17 0px 2px 2px;

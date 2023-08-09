@@ -52,32 +52,32 @@ const Navigation = ({ loggedIn, whereami }) => {
       {loggedIn ? (
         <div className="nav-linked-main-container-loggedin">
           <div className="nav-links-loggedin">
-              <div className="this">
-                <a href="/Home" className="nav-button">
-                  Guides
-                </a>
-                <a href="/PostForm" className="nav-button">
-                  Create Guide
-                </a>
-                <a href="/Profile" className="nav-button">
-                  Profile
-                </a>
-                <a href="/About" className="nav-button">
-                  About
-                </a>
-                <a
-                  href="/Login"
-                  className="nav-button"
-                  onClick={async () => {
-                    window.localStorage.removeItem("isLoggedIn", false);
-                    alert("Successfully Logged out.");
-                    localStorage.clear();
-                  }}
-                >
-                  Sign out
-                </a>
-              </div>
+            <div className="this">
+              <a href="/Home" className="nav-button">
+                Guides
+              </a>
+              <a href="/PostForm" className="nav-button">
+                Create Guide
+              </a>
+              <a href="/Profile" className="nav-button">
+                Profile
+              </a>
+              <a href="/About" className="nav-button">
+                About
+              </a>
+              <a
+                href="/Login"
+                className="nav-button"
+                onClick={async () => {
+                  window.localStorage.removeItem("isLoggedIn", false);
+                  alert("Successfully Logged out.");
+                  localStorage.clear();
+                }}
+              >
+                Sign out
+              </a>
             </div>
+          </div>
         </div>
       ) : (
         <div className="nav-links-loggedout">
