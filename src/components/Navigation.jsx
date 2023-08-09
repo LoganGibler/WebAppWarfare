@@ -50,7 +50,7 @@ const Navigation = ({ loggedIn, whereami }) => {
       </div>
 
       {loggedIn ? (
-        <div>
+        <div className="nav-linked-main-container-loggedin">
           <div className="nav-links-loggedin">
               <div className="this">
                 <a href="/Home" className="nav-button">

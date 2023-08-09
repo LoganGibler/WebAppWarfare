@@ -84,7 +84,7 @@
     padding: 10px;
     width: 12%;
     align-items: center;
-    margin-left: 40%;
+    margin-left: 50%;
 }
 
 .nav-button {
@@ -133,6 +133,9 @@
     position: absolute;
 }
 
+.nav-linked-main-container-loggedin{
+    margin-left: 18%;
+}
 
 
 

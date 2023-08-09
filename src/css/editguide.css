@@ -1,8 +1,12 @@
 .editguide-main-div {
     display: flex;
     background-color: #0f0e17;
-    margin-top: 2%;
-
+    /* margin-top: 2%; */
+    /* margin: 0;
+    padding: 0; */
+    height: 95vh;
+    /* width: 100%; */
+    /* background-size: cover; */
 }
 
 /*border color: #282828;
@@ -15,13 +19,16 @@ background-color: #0f0e17;
     margin: auto;
     background-color: #0f0e17;
     width: 100vh;
-    padding: 50px;
-    border-radius: 10px;
+  
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 120px;
+    border-radius: 1px;
     color: black;
     /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
     color: #B8B8B8;
-    border-left: 2px solid #282828;
-    border-right: 2px solid #282828;
+    /* border-left: 2px solid #282828;
+    border-right: 2px solid #282828; */
 }
 
 .editguide-title {

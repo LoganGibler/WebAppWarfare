@@ -8,12 +8,7 @@ const Profile = ({ userBlogs }) => {
   let [user, setUser] = useState("");
   const activeUser = getUser();
   let history = useHistory();
-  // need to do a post request to the backend to get the user's blogs
-  // add a button to delete the blog
-  // add a button to edit the blog
-  // add a button to create a new blog form this page as well
-  // add a button to view the blog
-  // console.log("this is user blogs", userBlogs);
+
 
   return (
     <div className="main-profile-div">
