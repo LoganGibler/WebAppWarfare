@@ -35,7 +35,7 @@ const Home = () => {
                         history.push(`/blog/${blog._id}`);
                       }}
                     >
-                      <h3 className="home-guide-title">{blog.vmtitle}</h3>
+                      <h4 className="home-guide-title">{blog.vmtitle}</h4>
                       <div className="hostedby-difficulty-div">
                         <p>{blog.hostedby}</p>
                         <p className="blog-difficulty-home">

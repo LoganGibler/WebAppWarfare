@@ -1,21 +1,23 @@
 .main-blogs-div {
-    background-color: #0f0e17;
+    background-color: #1a2332;
     display: flex;
 }
 
 .center-me-div {
-    background-color: #0f0e17;
+    background-color: #1a2332;
     margin-left: 50%;
     margin: auto;
     margin-top: 1%;
     width: 88vh;
     word-wrap: break-word;
-    border-left: 2px solid #282828;
-    border-right: 2px solid #282828;
+    display: flex;
+    /* border-left: 2px solid #282828;
+    border-right: 2px solid #282828; */
 }
 
 .middle-content-div {
     /* margin-top: .1%; */
+    display: flex;
 }
 
 .main-blog-div {
@@ -24,26 +26,30 @@
 }
 
 .blog-container {
-    background-color: #0f0e17;
+    background-color: #1a2332;
     word-wrap: break-word;
 }
 
 .blog-div {
     font-size: 14px;
     margin: 2%;
+    border-radius: 2px;
     /* color: #dcdcdc; */
     width: 80vh;
     color: #B8B8B8;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     padding: 3%;
     word-wrap: break-word;
-    border-bottom: #282828 2px solid;
+    border-bottom: white 1px solid;
 }
 
 .blog-div:hover {
+    /* border-radius: 35px; */
     cursor: pointer;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     color: white;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    
 }
 
 .date-createdby-div {
@@ -89,5 +95,5 @@ button: #ff8906
 }
 
 .home-guide-title {
-    color: #dcdcdc;
+    color: white;
 }

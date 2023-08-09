@@ -165,7 +165,7 @@ const EditGuide = () => {
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
-        <h2 className="editguide-title">{userGuide.vmtitle}</h2>
+        <h3 className="editguide-title">{userGuide.vmtitle}</h3>
         <p className="author-guide">Created By: {userGuide.author}</p>
         <p className="date-guide">Published on: {userGuide.date}</p>
         <p>{userGuide.hostedby}</p>

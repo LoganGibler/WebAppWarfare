@@ -9,7 +9,7 @@
     /* margin-top: 1%; */
     padding-top: 10px;
     display: flex;
-    background-color: #0f0e17;
+    background-color: #263143;
     text-align: center;
 }
 
@@ -49,10 +49,11 @@
 }
 
 .brand-text {
-
+    padding: 2px;
     color: white;
-    font-size: 24px;
+    font-size: 23px;
     display: inline;
+    border-radius: 4px;
 }
 
 .brand-text:link {
@@ -65,7 +66,8 @@
 
 .brand-text:hover {
     text-decoration: none;
-    color: grey;
+    color: white;
+    /* background-color: #1a2332; */
 }
 
 .brand-text:active {
@@ -88,13 +90,15 @@
 }
 
 .nav-button {
-    font-size: 14px;
+    font-size: 16px;
     color: white;
     white-space: nowrap;
-    margin-left: 5%;
-    padding: 5px;
+    /* margin-left: 5%; */
+    /* padding-right: 7px; */
+    padding: 12px;
+    /* padding-bottom: 10px; */
     border-radius: 5px;
-
+    align-self: center;
 }
 
 .nav-button:link {
@@ -106,7 +110,8 @@
 }
 
 .nav-button:hover {
-    color: grey;
+    color: white;
+    background-color: #1a2332;
     text-decoration: none;
 }
 
