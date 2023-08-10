@@ -46,9 +46,9 @@ const Register = () => {
           }
         }}
       >
-        <div className="register-username-label-div">
+        {/* <div className="register-username-label-div">
           <p className="register-username-label">Username:</p>
-        </div>
+        </div> */}
         <div className="username-input-register-div">
           <input
             className="username-input-register"
@@ -60,9 +60,9 @@ const Register = () => {
             }}
           ></input>
         </div>
-        <div className="register-password-label-div">
+        {/* <div className="register-password-label-div">
           <p className="register-password-label">Password:</p>
-        </div>
+        </div> */}
         <div className="password-input-register-div">
           <input
             className="password-input-register"
@@ -74,8 +74,8 @@ const Register = () => {
             }}
           ></input>
         </div>
-        <div>
-          <button className="register-button">Create Account</button>
+        <div className="register-button-div">
+          <p className="register-button">Create Account</p>
         </div>
         <div className="signin-div">
           <a className="signin-link" href="/Login">

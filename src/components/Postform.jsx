@@ -119,7 +119,7 @@ const Postform = () => {
             </div>
           </div>
           <div className="post-form-button-div">
-            <button className="post-form-button">Submit</button>
+            <button className="post-form-button-p">Submit</button>
             {/* <input
               className="create-post-pic"
               placeholder="Have a pic for the VM? Paste img link here!"

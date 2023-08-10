@@ -106,12 +106,12 @@ const EditGuide = () => {
             id="editguide-description-textarea"
             className="editguide-description-textarea"
             type="text"
-            max-length="2000"
+            max-length="4000"
           >
             {userGuide.description}
           </textarea>
-          <button
-            className="update-description-button"
+          <p
+            className="editguide-description-update-p"
             onClick={() => {
               // console.log("This is blog_id, passed to db", blog._id);
               getDescriptionData();
@@ -119,7 +119,7 @@ const EditGuide = () => {
             }}
           >
             Submit Update
-          </button>
+          </p>
         </div>
       );
     } catch (error) {
@@ -145,8 +145,8 @@ const EditGuide = () => {
           <textarea id="editguide-step-textarea">
             {userGuide.steps[index].step}
           </textarea>
-          <button
-            className="editguide-editstep-button"
+          <p
+            className="editguide-update-step-p"
             onClick={() => {
               getNewStepData();
               alert("Step Updated.");
@@ -154,7 +154,7 @@ const EditGuide = () => {
             }}
           >
             Update Step
-          </button>
+          </p>
         </div>
       );
     } catch (error) {
@@ -172,17 +172,15 @@ const EditGuide = () => {
         <p className="editguide-description-p">{userGuide.description}</p>
         {description_html}
         {showEditDescButton && (
-          <button
-            className="edit-description-button1"
-            id="edit-description-button1"
+          <p
+            className="edit-description-p"
             onClick={() => {
               setShowEditDescButton(false);
               setDescription_html(renderDescriptionBox(id));
             }}
           >
-
             Edit Description →
-          </button>
+          </p>
         )}
 
         {steppies ? (
@@ -199,21 +197,19 @@ const EditGuide = () => {
                   <p className="editguide-step-element">
                     Step {counter}: {step.step}
                   </p>
-                  {showEditStepButton && (
-                    <button
-                      className="editstep-button"
-                      onClick={() => {
-                        setShowEditStepButton(false);
-                        setRenderEditBox(index);
-                        setEditStep_html(
-                          renderEditStepBox(userGuide._id, index)
-                        );
-                      }}
-                    >
-                      Edit →
-                    </button>
-                  )}
                 </div>
+                {showEditStepButton && (
+                  <p
+                    className="editguide-p-button"
+                    onClick={() => {
+                      setShowEditStepButton(false);
+                      setRenderEditBox(index);
+                      setEditStep_html(renderEditStepBox(userGuide._id, index));
+                    }}
+                  >
+                    Edit →
+                  </p>
+                )}
                 <div className="renderEditBox-div">
                   {renderEditBox === index ? editStep_html : null}
                 </div>
@@ -228,20 +224,20 @@ const EditGuide = () => {
         {html}
         <div className="publish-editguide-button-div">
           {showAddStepButton && (
-            <button
-              className="added-step-button"
+            <p
+              className="editguide-addstep-p-button"
               onClick={() => {
                 // console.log("click!");
                 setShowAddStepButton(false);
                 setHtml(renderStepBox(id));
               }}
             >
-              Add Step &nbsp;  ↑
-            </button>
+              Add Step &nbsp; ↑
+            </p>
           )}
           {userGuide.published ? (
-            <button
-              className="publish-editguide-button"
+            <p
+              className="editguide-publish-p-button"
               onClick={async () => {
                 await unpublishGuide(userGuide._id);
                 alert("Guide hidden from public view.");
@@ -249,10 +245,10 @@ const EditGuide = () => {
               }}
             >
               Hide Guide
-            </button>
+            </p>
           ) : (
-            <button
-              className="publish-editguide-button"
+            <p
+              className="editguide-publish-p-button"
               onClick={async () => {
                 // console.log("blog._id", blog._id)
                 await publishGuide(userGuide._id);
@@ -261,7 +257,7 @@ const EditGuide = () => {
               }}
             >
               Publish Guide
-            </button>
+            </p>
           )}
         </div>
       </div>

@@ -70,6 +70,7 @@ text-color: #B8B8B8; */
     background-color: #263143;
     color: #B8B8B8;
     box-shadow: white 2px 1px 1px;
+    border-top: 1px solid white;
 }
 
 .create-post-hostedby-div {
@@ -89,6 +90,7 @@ text-color: #B8B8B8; */
     background-color: #263143;
     border-left: 5px solid #dcdcdc;
     box-shadow: white 2px 1px 1px;
+    border-top: 1px solid white;
 }
 
 .postform-difficulty-select {
@@ -124,21 +126,43 @@ text-color: #B8B8B8; */
     box-shadow: white 2px 1px 1px;
 }
 
+
+/* .editguide-update-step-p {
+    margin-top: 1%;
+    text-indent: 6px;
+    width: 13vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
+}
+
+.editguide-update-step-p:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+} */
+
 .post-form-button-div {
     display: flex;
     /* box-shadow: 5px 5px 0px 1px #FFFFFF; */
 }
 
-.post-form-button {
-    margin-left: 84%;
-    border-radius: 10px;
+.post-form-button-p {
+    margin-left: 81%;
+    width: 11vh;
     background-color: #263143;
-    color: #B8B8B8;
-    box-shadow: #B8B8B8 3px 1px 1px;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
 }
 
-.post-form-button:hover {
-    background-color: #B8B8B8;
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
+.post-form-button-p:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
 }

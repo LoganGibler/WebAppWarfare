@@ -54,61 +54,9 @@ text-color: #B8B8B8; */
 
 .editguide-step-element {
     /* margin-top: 1%; */
-    padding-top: 5px;
-    padding-left: 8px;
+    padding-top: 0px;
+    padding-left: 20px;
 }
-
-.editstep-button {
-    font-size: 10px;
-    margin-top: 4%;
-    margin-left: 92%;
-    border-radius: 10px;
-    background-color: #1a2332;
-    color: #B8B8B8;
-    /* box-shadow: #B8B8B8 3px 5px 2px; */
-}
-
-.editstep-button:hover {
-    background-color: #263143;
-    color: white;
-    /* box-shadow: #0f0e17 0px 2px 2px; */
-}
-
-
-
-
-
-
-↑
-#edit-description-button1 {
-    font-size: 11px;
-    border-radius: 10px;
-    color: #B8B8B8;
-    /* box-shadow: #B8B8B8 5px 5px 2px; */
-}
-
-.edit-description-button:hover {
-    background-color: #263143;
-    color: white;
-}
-
-button{
-    font-size: 11px;
-    border-radius: 10px;
-    color: #B8B8B8;
-}
-
-button:hover{
-    background-color: #263143;
-    color: white;
-}
-
-
-
-
-
-
-
 
 
 
@@ -132,52 +80,11 @@ button:hover{
 }
 
 
-.submit-step-button-div {}
-
-.step-button-submit {
-    margin-left: 80%;
-    font-size: 11px;
-    border-radius: 10px;
-    background-color: #1a2332;
-    color: #B8B8B8;
-}
-
-.step-button-submit:hover {
-    background-color: #263143;
-    color: white;
-}
 
 
-.publish-editguide-button-div {
-    display: flex;
-    margin-top: 5%;
-}
 
-.added-step-button {
-    font-size: 11px;
-    border-radius: 10px;
-    background-color: #1a2332;
-    color: #B8B8B8;
-    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px; */
-}
 
-.added-step-button:hover {
-    background-color: #263143;
-    color: white;
-}
 
-.publish-editguide-button {
-    font-size: 11px;
-    border-radius: 10px;
-    background-color: #1a2332;
-    color: #B8B8B8;
-}
-
-.publish-editguide-button:hover {
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
-    background-color: #B8B8B8;
-}
 
 .editguide-description-div {
     margin-top: 5%;
@@ -203,27 +110,14 @@ button:hover{
     word-wrap: break-word;
 }
 
-.update-description-button {
-    margin-left: 82%;
-    border-radius: 10px;
-    background-color: #0f0e17;
-    color: #B8B8B8;
-    box-shadow: #B8B8B8 5px 5px 2px;
 
-}
-
-.update-description-button:hover {
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
-    background-color: #B8B8B8;
-}
 
 .update-editstep-main-div {
     margin-top: 2%;
 }
 
 .step-input-area {
-    background-color: #0f0e17;
+    background-color: #263143;
     color: #B8B8B8;
     padding: 10px;
 }
@@ -240,18 +134,123 @@ button:hover{
     border-left: 5px solid #B8B8B8;
 }
 
-.editguide-editstep-button {
-    margin-left: 80%;
-    font-size: 11px;
-    border-radius: 10px;
-    background-color: #1a2332;
-    color: #B8B8B8;
-}
 
-.editguide-editstep-button:hover {
-    background-color: #263143;
-    color: white;
-}
 
 
 .renderEditBox-div {}
+
+
+.publish-editguide-button-div {
+    margin-top: 4%;
+    display: flex;
+}
+
+/* ALL BUTTONS//////////////////////////////////////////////////////////// */
+/* these are external buttons */
+.edit-description-p {
+    text-indent: 7px;
+    margin-top: 3%;
+    width: 17vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #263143;
+}
+
+.edit-description-p:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.editguide-p-button {
+    margin-top: 3%;
+    text-indent: 7px;
+    width: 8vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #263143;
+}
+
+.editguide-p-button:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.editguide-addstep-p-button {
+    width: 12vh;
+    text-indent: 7px;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #263143;
+    margin-right: 73%;
+}
+
+.editguide-addstep-p-button:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.editguide-publish-p-button {
+    text-indent: 8px;
+    width: 12vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #263143;
+    color: #B8B8B8
+}
+
+.editguide-publish-p-button:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+/* these are rendered buttons */
+
+
+.editguide-description-update-p {
+    margin-top: 1%;
+    text-indent: 5px;
+    width: 14vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
+}
+
+.editguide-description-update-p:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+
+.editguide-update-step-p {
+    margin-top: 1%;
+    text-indent: 6px;
+    width: 13vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
+}
+
+.editguide-update-step-p:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+}
