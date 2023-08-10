@@ -1,6 +1,6 @@
 .editguide-main-div {
     display: flex;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     /* margin-top: 2%; */
     /* margin: 0;
     padding: 0; */
@@ -9,15 +9,17 @@
     /* background-size: cover; */
 }
 
-/*border color: #282828;
-background-color: #0f0e17;
-   highlight color: #dcdcdc; */
-/* text color: #B8B8B8; */
+
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
+
 
 .editguide-main-container {
     margin-left: 50%;
     margin: auto;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     width: 100vh;
     padding-top: 50px;
     padding-left: 50px;
@@ -35,28 +37,41 @@ background-color: #0f0e17;
     color: #dcdcdc;
 }
 
+.editstep-outside-div {
+    margin-top: 5%;
+    border-top: 2px solid white;
+    padding: 5px;
+}
+
 .editguide-step-div {
+    padding: 10px;
     margin-top: 4%;
-    border-top: 2px solid #282828;
+    /* border-top: 2px solid white; */
+    /* box-shadow: black 1px 0px 10px; */
+    border-radius: 3px;
+    border-left: 5px solid white;
 }
 
 .editguide-step-element {
-    margin-top: 5%;
-    padding: 10px;
+    /* margin-top: 1%; */
+    padding-top: 5px;
+    padding-left: 8px;
 }
 
 .editstep-button {
+    font-size: 10px;
+    margin-top: 4%;
     margin-left: 92%;
     border-radius: 10px;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     color: #B8B8B8;
-    box-shadow: #B8B8B8 3px 5px 2px;
+    /* box-shadow: #B8B8B8 3px 5px 2px; */
 }
 
 .editstep-button:hover {
-    background-color: #B8B8B8;
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #263143;
+    color: white;
+    /* box-shadow: #0f0e17 0px 2px 2px; */
 }
 
 
@@ -64,20 +79,29 @@ background-color: #0f0e17;
 
 
 
-
-.edit-description-button {
+↑
+#edit-description-button1 {
+    font-size: 11px;
     border-radius: 10px;
-    background-color: #0f0e17;
     color: #B8B8B8;
-    box-shadow: #B8B8B8 5px 5px 2px;
+    /* box-shadow: #B8B8B8 5px 5px 2px; */
 }
 
 .edit-description-button:hover {
-    background-color: #B8B8B8;
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #263143;
+    color: white;
 }
 
+button{
+    font-size: 11px;
+    border-radius: 10px;
+    color: #B8B8B8;
+}
+
+button:hover{
+    background-color: #263143;
+    color: white;
+}
 
 
 
@@ -112,16 +136,15 @@ background-color: #0f0e17;
 
 .step-button-submit {
     margin-left: 80%;
+    font-size: 11px;
     border-radius: 10px;
+    background-color: #1a2332;
     color: #B8B8B8;
-    background-color: #0f0e17;
-    box-shadow: #B8B8B8 0px 5px 2px;
 }
 
 .step-button-submit:hover {
-    background-color: #B8B8B8;
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #263143;
+    color: white;
 }
 
 
@@ -131,25 +154,23 @@ background-color: #0f0e17;
 }
 
 .added-step-button {
-    background-color: #0f0e17;
+    font-size: 11px;
     border-radius: 10px;
+    background-color: #1a2332;
     color: #B8B8B8;
-    box-shadow: #B8B8B8 5px 5px 2px;
     /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px; */
 }
 
 .added-step-button:hover {
-    background-color: #B8B8B8;
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #263143;
+    color: white;
 }
 
 .publish-editguide-button {
+    font-size: 11px;
     border-radius: 10px;
-    background-color: #0f0e17;
-    /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 8px; */
+    background-color: #1a2332;
     color: #B8B8B8;
-    box-shadow: #B8B8B8 0px 5px 2px;
 }
 
 .publish-editguide-button:hover {
@@ -171,7 +192,7 @@ background-color: #0f0e17;
     /* border-bottom: 4px solid black;
     border-left: 8px solid black; */
     text-indent: 10px;
-    background-color: #0f0e17;
+    background-color: #263143;
     color: #B8B8B8;
     padding: 10px;
     border-left: 5px solid #B8B8B8;
@@ -208,11 +229,12 @@ background-color: #0f0e17;
 }
 
 #editguide-step-textarea {
+    margin-top: 4%;
     width: 100%;
     height: 35vmin;
     border-radius: 5px;
     text-indent: 10px;
-    background-color: #0f0e17;
+    background-color: #263143;
     color: #B8B8B8;
     padding: 10px;
     border-left: 5px solid #B8B8B8;
@@ -220,20 +242,16 @@ background-color: #0f0e17;
 
 .editguide-editstep-button {
     margin-left: 80%;
+    font-size: 11px;
     border-radius: 10px;
-    background-color: #0f0e17;
+    background-color: #1a2332;
     color: #B8B8B8;
-    box-shadow: #B8B8B8 5px 5px 2px;
 }
 
 .editguide-editstep-button:hover {
-    background-color: #B8B8B8;
-    color: #0f0e17;
-    box-shadow: #0f0e17 0px 2px 2px;
+    background-color: #263143;
+    color: white;
 }
 
-.editstep-outside-div {
-    padding: 10px;
-}
 
 .renderEditBox-div {}

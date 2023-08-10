@@ -173,14 +173,15 @@ const EditGuide = () => {
         {description_html}
         {showEditDescButton && (
           <button
-            className="edit-description-button"
+            className="edit-description-button1"
+            id="edit-description-button1"
             onClick={() => {
               setShowEditDescButton(false);
               setDescription_html(renderDescriptionBox(id));
             }}
           >
-            {" "}
-            Edit Description
+
+            Edit Description →
           </button>
         )}
 
@@ -209,7 +210,7 @@ const EditGuide = () => {
                         );
                       }}
                     >
-                      Edit
+                      Edit →
                     </button>
                   )}
                 </div>
@@ -235,7 +236,7 @@ const EditGuide = () => {
                 setHtml(renderStepBox(id));
               }}
             >
-              Add Step
+              Add Step &nbsp;  ↑
             </button>
           )}
           {userGuide.published ? (
