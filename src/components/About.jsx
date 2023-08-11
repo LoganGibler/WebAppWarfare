@@ -22,10 +22,10 @@ const About = () => {
             concerns you have, and any features I should add!
           </p>
           <p className="about-thirdparagraph">
-            Make sure you always have a vpn on as some tools(even used
-            ethically) can cause your internet provider to take away your
-            internet. If you don't know where to start, click on "Lab Intro"
-            below to create your first lab environment. Happy hacking!
+            Make sure you always have a vpn on when following a guide, as some
+            tools(even used ethically) can cause your internet provider to take
+            away your internet. If you don't know where to start, click on "Lab
+            Intro" below to create your first lab environment. Happy hacking!
           </p>
           <div className="about-links-div">
             <a href="/contactme" className="about-contactme">
@@ -34,7 +34,10 @@ const About = () => {
             <a href="/labguide" className="about-labintro">
               Lab Intro
             </a>
-            <a href="https://www.linkedin.com/in/logan-gibler/" className="about-linkedin">
+            <a
+              href="https://www.linkedin.com/in/logan-gibler/"
+              className="about-linkedin"
+            >
               LinkedIn
             </a>
             <a

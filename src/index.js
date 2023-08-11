@@ -14,6 +14,7 @@ import {
   Profile,
   EditGuide,
   Sample,
+  ContactMe
 } from "./components";
 import {
   BrowserRouter as Router,
@@ -81,8 +82,11 @@ const App = () => {
           <Route path="/userguides/:id">
             <EditGuide userBlogs={userBlogs} />
           </Route>
-          <Route>
+          {/* <Route>
             <Sample />
+          </Route> */}
+          <Route path="/ContactMe">
+          <ContactMe />
           </Route>
         </Switch>
       </div>

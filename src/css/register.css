@@ -33,16 +33,17 @@ text-color: #B8B8B8; */
 .username-input-register-div {
     display: flex;
     margin-left: 19%;
-    margin-top: 12%;
+    margin-top: 15%;
 }
 
 .username-input-register {
     background-color: #263143;
     color: white;
     width: 80%;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 5px;
     text-indent: 4%;
+    border-left: 5px solid white;
 }
 
 .password-input-register-div {
@@ -55,9 +56,10 @@ text-color: #B8B8B8; */
     background-color: #263143;
     color: white;
     width: 80%;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 5px;
     text-indent: 4%;
+    border-left: 5px solid white;
     /* border */
 }
 
@@ -119,8 +121,8 @@ text-color: #B8B8B8; */
 
 .register-button {
     margin-left: 19%;
-    text-indent: 5px;
-    width: 14vh;
+    text-indent: 6px;
+    width: 15vh;
     background-color: #263143;
     padding: 4px;
     border-radius: 5px;

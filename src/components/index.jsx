@@ -9,3 +9,4 @@ export { default as Login } from "./Login";
 export { default as Profile } from "./Profile";
 export { default as EditGuide } from "./EditGuide";
 export { default as Sample } from "./Sample";
+export { default as ContactMe } from "./ContactMe";

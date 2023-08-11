@@ -98,9 +98,13 @@
     /* margin-left: 5%; */
     /* padding-right: 7px; */
     padding: 12px;
+    margin-bottom: 2.5%;
     /* padding-bottom: 10px; */
     border-radius: 3px;
     align-self: center;
+    border-left: 1px solid #263143;
+    border-right: 1px solid #263143;
+    border-top: 1px solid #263143;
 }
 
 .nav-button:link {
@@ -115,6 +119,9 @@
     color: white;
     background-color: #1a2332;
     text-decoration: none;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid white;
 }
 
 .nav-button:active {

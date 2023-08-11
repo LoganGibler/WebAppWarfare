@@ -42,9 +42,9 @@ const Login = () => {
           }
         }}
       >
-        <div className="login-username-label-div">
+        {/* <div className="login-username-label-div">
           <p className="login-username-label">Username:</p>
-        </div>
+        </div> */}
         <div className="username-input-login-div">
           <input
             className="username-input-login"
@@ -56,9 +56,9 @@ const Login = () => {
             }}
           ></input>
         </div>
-        <div className="login-password-label-div">
+        {/* <div className="login-password-label-div">
           <p className="login-password-label">Password:</p>
-        </div>
+        </div> */}
         <div className="password-input-login-div">
           <input
             className="password-input-login"

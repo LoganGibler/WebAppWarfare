@@ -12,6 +12,7 @@ app.use(express.json());
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
+const Feedback = require("./db/feedbackModel")
 
 app.use((_, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -284,6 +285,29 @@ app.post("/getUserIDByUsername", async (req, res) => {
   }
 });
 
+// FEEDBACK FUNCTIONS////////////////////////////////////////////////
+
+app.post("/sendFeedback", async (req, res)=>{
+  const {username, subject, comment} = req.body
+
+  try {
+    const comment = await Feedback.create(username, subject, comment)
+    if (comment){
+      res.status(200).json({message: "Feedback successfully sent."})
+    } else{
+      res.status(500).json({message: "Feedback failed to send on DB"})
+    }
+  } catch (error) {
+   res.status(500).json({message: "Feedback failed to send on DB."})
+  }
+})
+
+
+
+
+
+
+// connection String
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

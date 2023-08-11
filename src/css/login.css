@@ -3,7 +3,7 @@
     width: 50vb;
     height: 40vb;
     margin: auto;
-    background-color: #1a2332;
+    background-color: #263143;
     padding: 10px;
     /* box-shadow: white 0px 5px 15px; */
     border-radius: 5px;
@@ -15,6 +15,7 @@
 .username-input-login-div {
     display: flex;
     margin-left: 19%;
+    margin-top: 15%;
 }
 
 .username-input-login {
@@ -22,35 +23,48 @@
     color: white;
     /* margin-top: 2%; */
     width: 80%;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 5px;
     text-indent: 4%;
-    box-shadow: white 2px 1px 1px;
+    box-shadow: black 2px 1px 1px;
+    border-left: 5px solid white;
 }
 
 .password-input-login-div {
     display: flex;
     margin-left: 19%;
+    margin-top: 4%;
 }
 
 .password-input-login {
     background-color: #263143;
     /* margin-top: 1%; */
     width: 80%;
-    border-radius: 5px;
+    border-radius: 4px;
     color: white;
     padding: 5px;
     text-indent: 4%;
-    box-shadow: white 2px 1px 1px;
+    box-shadow: black 2px 1px 1px;
+    border-left: 5px solid white;
 }
 
 .login-button {
-    color: white;
+    margin-top: 4%;
+    margin-left: 19.4%;
+    text-indent: 5px;
+    width: 14vh;
     background-color: #263143;
-    margin-top: 5%;
-    margin-left: 19%;
-    border-radius: 10px;
-    font-size: 14px;
+    padding: 4px;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
+}
+
+.login-button:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
 }
 
 .signin-login-div {
