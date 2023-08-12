@@ -8,16 +8,15 @@ import {
   unpublishGuide,
   publishGuide,
   getBlogById,
+  deleteGuide,
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
-//{ userBlogs }
 const EditGuide = () => {
   let history = useHistory();
   let [html, setHtml] = useState(null);
   let [description_html, setDescription_html] = useState(null);
   let [editStep_html, setEditStep_html] = useState(null);
-  // let [blog, setBlog] = useState({});
   let [renderEditBox, setRenderEditBox] = useState(null);
   let [showEditDescButton, setShowEditDescButton] = useState(true);
   let [showEditStepButton, setShowEditStepButton] = useState(true);
@@ -257,6 +256,19 @@ const EditGuide = () => {
               }}
             >
               Publish Guide
+            </p>
+          )}
+          {activeUser === userGuide.author && (
+            <p
+              className="editguide-deleteguide-button"
+              onClick={async () => {
+                await deleteGuide(userGuide._id);
+                alert("Guide successfully deleted.");
+                history.push("/Profile");
+                location.reload();
+              }}
+            >
+              Delete Guide
             </p>
           )}
         </div>

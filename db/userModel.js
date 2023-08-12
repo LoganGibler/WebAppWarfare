@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+let crypto = require("crypto");
 
 const userSchema = mongoose.Schema({
   username: {
@@ -13,9 +14,11 @@ const userSchema = mongoose.Schema({
     required: [true, "Please enter password"],
   },
   admin: {
-    type: Boolean
+    type: Boolean,
   },
 });
+
+
 
 const User = mongoose.model("User", userSchema);
 

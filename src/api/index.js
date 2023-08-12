@@ -2,7 +2,7 @@ import axios from "axios";
 import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
 require("dotenv").config();
-const BASE = "http://localhost:8000/";
+const BASE = "http://localhost:8000";
 
 export async function createPost(
   vmtitle,
@@ -21,7 +21,7 @@ export async function createPost(
   // console.log("THis IS DATE", date);
 
   try {
-    const { data } = await axios.post("http://localhost:8000/createPost", {
+    const { data } = await axios.post(`${BASE}/createPost`, {
       vmtitle: vmtitle,
       hostedby: hostedby,
       description: description,
@@ -40,7 +40,7 @@ export async function createPost(
 
 export async function getAllBlogs() {
   try {
-    const allBlogs = await axios.get("http://localhost:8000/allblogs");
+    const allBlogs = await axios.get(`${BASE}/allblogs`);
     if (!allBlogs) {
       console.log("error fetching all blogs on /api/allblogs");
     }
@@ -52,9 +52,9 @@ export async function getAllBlogs() {
 
 export async function getAllPublishedBlogs() {
   try {
-    const allBlogs = await axios.get("http://localhost:8000/allPublishedBlogs");
+    const allBlogs = await axios.get(`${BASE}/allPublishedBlogs`);
     if (!allBlogs) {
-      console.log("error fetching all blogs on /api/allPublishedBlogs");
+      // console.log("error fetching all blogs on /api/allPublishedBlogs");
     }
     return allBlogs;
   } catch (error) {
@@ -66,12 +66,12 @@ export async function addStep(_id, step) {
   console.log("_id on api:", _id);
   console.log("step on api:", step);
   try {
-    const { data } = await axios.post("http://localhost:8000/addstep", {
+    const { data } = await axios.post(`${BASE}/addstep`, {
       _id: _id,
       step: step,
     });
 
-    console.log("this is data after frontend api", data);
+    // console.log("this is data after frontend api", data);
     return data;
   } catch (error) {
     throw error;
@@ -80,7 +80,7 @@ export async function addStep(_id, step) {
 
 export async function getBlogById(_id) {
   try {
-    const { data } = await axios.post("http://localhost:8000/getBlogById", {
+    const { data } = await axios.post(`${BASE}/getBlogById`, {
       _id: _id,
     });
     return data;
@@ -92,7 +92,7 @@ export async function getBlogById(_id) {
 export async function getUserIDByUsername(username) {
   try {
     const { data } = await axios.post(
-      "http://localhost:8000/getUserIDByUsername",
+      `${BASE}/getUserIDByUsername`,
       {
         username: username,
       }
@@ -106,7 +106,7 @@ export async function getUserIDByUsername(username) {
 export async function getBlogsByUsername(author) {
   try {
     const { data } = await axios.post(
-      "http://localhost:8000/getBlogsByAuthor",
+      `${BASE}/getBlogsByAuthor`,
       {
         author: author,
       }
@@ -120,7 +120,7 @@ export async function getBlogsByUsername(author) {
 export async function updateDescription(id, description) {
   try {
     const { data } = await axios.post(
-      "http://localhost:8000/updateDescription",
+     `${BASE}/updateDescription`,
       {
         id: id,
         description: description,
@@ -134,7 +134,7 @@ export async function updateDescription(id, description) {
 
 export async function updateSteppie(id, index, newStepData){
   try {
-    const {data} = await axios.post("http://localhost:8000/updateStep", {
+    const {data} = await axios.post(`${BASE}/updateStep`, {
       id: id,
       index: index,
       newStepData: newStepData
@@ -147,7 +147,7 @@ export async function updateSteppie(id, index, newStepData){
 
 export async function publishGuide(_id) {
   try {
-    const { data } = await axios.post("http://localhost:8000/publishGuide", {
+    const { data } = await axios.post(`${BASE}/publishGuide`, {
       _id: _id,
     });
     return data;
@@ -158,7 +158,7 @@ export async function publishGuide(_id) {
 
 export async function unpublishGuide(_id) {
   try {
-    const { data } = axios.post("http://localhost:8000/unpublishGuide", {
+    const { data } = axios.post(`${BASE}/unpublishGuide`, {
       _id: _id,
     });
     return data;
@@ -166,11 +166,33 @@ export async function unpublishGuide(_id) {
     throw error;
   }
 }
+
+export async function deleteGuide(_id){
+  try {
+    const {data} = await axios.post(`${BASE}/removeGuided126d2c7cd71ad50a20e59f89afaf380`,{
+      _id: _id
+    })
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function getGuidesBySearch(search){
+  try {
+    const {data} = await axios.post(`${BASE}/getGuidesBySearch`, {
+      search: search
+    })
+    return data
+  } catch (error) {
+    throw error
+  }
+}
 // user api calls/////////////////////////////////////
 
 export async function registerUser(username, password) {
   try {
-    const { data } = await axios.post("http://localhost:8000/Register", {
+    const { data } = await axios.post(`${BASE}/Register`, {
       username: username,
       password: password,
     });

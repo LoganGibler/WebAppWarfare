@@ -35,10 +35,12 @@ text-color: #B8B8B8; */
     text-indent: 5px;
     color: #B8B8B8;
     border-top: 1px solid grey;
+    word-wrap: break-word;
 }
 
 .contactme-textarea-div {
     padding: 5px;
+
 }
 
 .contactme-textarea {
@@ -50,6 +52,7 @@ text-color: #B8B8B8; */
     height: 38vh;
     padding: 8px;
     resize: none;
+    word-wrap: break-word;
 }
 
 .contactme-button-div {}

@@ -1,6 +1,6 @@
 .main-blogs-div {
     background-color: #1a2332;
-    display: flex;
+    /* display: flex; */
 }
 
 .center-me-div {
@@ -10,18 +10,18 @@
     margin-top: 1%;
     width: 88vh;
     word-wrap: break-word;
-    display: flex;
+    /* display: flex; */
     /* border-left: 2px solid #282828;
     border-right: 2px solid #282828; */
 }
 
 .middle-content-div {
-    /* margin-top: .1%; */
-    display: flex;
+    margin-top: 1%;
+    /* display: flex; */
 }
 
 .main-blog-div {
-    display: flex;
+    /* display: flex; */
     word-wrap: break-word;
 }
 
@@ -31,14 +31,15 @@
 }
 
 .blog-div {
+    margin-top: 1%;
     font-size: 14px;
-    margin: 2%;
+    /* margin: 2%; */
     border-radius: 2px;
     /* color: #dcdcdc; */
     width: 80vh;
     color: #B8B8B8;
     background-color: #1a2332;
-    padding: 3%;
+    padding: 25px;
     word-wrap: break-word;
     border-bottom: white 1px solid;
 }
@@ -49,7 +50,7 @@
     background-color: #1a2332;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    
+
 }
 
 .date-createdby-div {
@@ -75,13 +76,7 @@
     font-size: 12px;
 }
 
-/* 
- background: #0f0e17
- headline: #fffffe
- paragraph: #a7a9be
- buttontext: #fffffe
-button: #ff8906
-*/
+
 
 
 .error-on-blogs-header {
@@ -96,4 +91,60 @@ button: #ff8906
 
 .home-guide-title {
     color: white;
+}
+
+
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
+
+/* 
+.editguide-newstep-button {
+    margin-left: 1.3%;
+    width: 13vh;
+    background-color: #263143;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
+}
+
+.editguide-newstep-button:hover {
+    color: white;
+    background-color: #1a2332;
+    cursor: pointer;
+    border: 1px solid white;
+} */
+
+.home-searchbar-form {
+    margin-left: 6%;
+    display: flex;
+}
+
+.home-searchbar-input {
+    width: 60vh;
+    background-color: #1a2332;
+    padding: 5px;
+    text-indent: 10px;
+    border-radius: 5px;
+    color: #B8B8B8;
+    border: 1px solid #B8B8B8;
+}
+
+.home-searchbar-button {
+    width: 10vh;
+    /* margin-left: 1.3%; */
+    background-color: #1a2332;
+    /* padding: 5px; */
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    color: #B8B8B8
+}
+
+.home-searchbar-button:hover {
+    color: white;
+    background-color: #263143;
+    cursor: pointer;
+    border: 1px solid white;
 }

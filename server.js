@@ -9,6 +9,7 @@ const { JWT_SECRET = "neverTell" } = process.env;
 
 app.use(morgan("dev"));
 app.use(express.json());
+// app.use(bodyparser.json());
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
@@ -215,10 +216,22 @@ app.post("/updateStep", async (req, res) => {
     res.status(500).json({ message: "/updateStep failed on DB." });
   }
 });
+
+app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
+  try {
+    const filter = { _id: req.body._id };
+    const deleted_guide = await Post.findOneAndDelete(filter, {
+      new: true,
+    });
+    res.status(200).json({ message: "guide successfully deleted." });
+  } catch (error) {
+    res.status(500).json({ message: "failed deleting guide" });
+  }
+});
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
+  let fail = "fail";
   try {
-    let fail = "fail"
     const { username, password } = req.body;
     // console.log("this is req.body", req.body);
     if (!username || !password) {
@@ -239,7 +252,7 @@ app.post("/Register", async (req, res) => {
         .status(200)
         .json({ message: "Account creation successful.", user, token });
     } else {
-      res.status(200).json({ message: "Username Taken", fail});
+      res.status(200).json({ message: "Username Taken", fail });
     }
   } catch (error) {
     res.status(200).json({ message: error.message, fail });
@@ -248,7 +261,7 @@ app.post("/Register", async (req, res) => {
 
 app.post("/Login", async (req, res) => {
   try {
-    let fail = "fail"
+    let fail = "fail";
     const { username, password } = req.body;
     // console.log("username: ", username, "password: ", password);
     if (!username || !password) {
@@ -265,11 +278,11 @@ app.post("/Login", async (req, res) => {
       } else {
         res
           .status(200)
-          .json({ message: "Username or password was incorrect.", fail});
+          .json({ message: "Username or password was incorrect.", fail });
       }
     }
   } catch (error) {
-    res.status(500).json({ message: "Login Failed.", fail});
+    res.status(500).json({ message: "Login Failed.", fail });
   }
 });
 
@@ -287,40 +300,84 @@ app.post("/getUserIDByUsername", async (req, res) => {
   }
 });
 
-app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res)=>{
-  console.log(process.env.ADMIN_PASS)
-  console.log(req.body.pass)
+app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
+  console.log(process.env.ADMIN_PASS);
+  console.log(req.body.pass);
   try {
-    if (req.body.pass === process.env.ADMIN_PASS){
-    let filter = {_id: req.body._id}
-    let update = {admin: true}
-    const modded_user = await User.findOneAndUpdate(filter, update, {
-      new: true
-    })
-    res.status(200).json({message: "User permissions updated", modded_user})
-    } else{
-      res.status(500).json({message: "Failed on user to admin"})
+    if (req.body.pass === process.env.ADMIN_PASS) {
+      let filter = { _id: req.body._id };
+      let update = { admin: true };
+      const modded_user = await User.findOneAndUpdate(filter, update, {
+        new: true,
+      });
+      res
+        .status(200)
+        .json({ message: "User permissions updated", modded_user });
+    } else {
+      res.status(500).json({ message: "Failed on user to admin" });
     }
   } catch (error) {
-    res.status(500).json({message: "Error setting admin account"})
+    res.status(500).json({ message: "Error setting admin account" });
   }
-})
+});
+
+app.post("/getGuidesBySearch", async (req, res) => {
+  try {
+    let allFoundGuides = [];
+    const filter1 = { vmtitle: req.body.search };
+    const foundGuidesBytitle = await Post.find(filter1);
+    allFoundGuides.push(foundGuidesBytitle);
+
+    const filter2 = { author: req.body.search };
+    const foundGuidesByAuthor = await Post.find(filter2);
+    allFoundGuides.push(foundGuidesByAuthor);
+
+    const filter3 = { hostedby: req.body.search };
+    const foundGuidesByHost = await Post.find(filter3);
+    allFoundGuides.push(foundGuidesByHost);
+
+    const filter4 = { difficulty: req.body.search };
+    const foundGuidesByDiff = await Post.find(filter4);
+    allFoundGuides.push(foundGuidesByDiff);
+
+    console.log("here are found guides", allFoundGuides);
+    if (allFoundGuides) {
+      res.status(200).json({ allFoundGuides });
+    } else {
+      res.status(500).json({ message: "failed request on /getGuidesByTitle" });
+    }
+  } catch (error) {
+    throw error;
+  }
+});
+
+// app.post("/getGuidesByAuthor", async (req, res)=>{
+//   try {
+//     const foundGuides = await Post.findMany(req.body.search)
+//     if (foundGuides){
+//       res.status(200).json({foundGuides})
+//     } else{
+//       res.status(500).json({message: "failed request on /getGuidesByTitle"})
+//     }
+//   } catch (error) {
+//     throw error
+//   }
+// })
 
 // FEEDBACK FUNCTIONS////////////////////////////////////////////////
 
 app.post("/sendFeedback", async (req, res) => {
-  const { submittedBy, subject, comment} = req.body;
+  const { submittedBy, subject, comment } = req.body;
   // console.log(submittedBy, subject, comment)
   try {
-      const sendComment = await Feedback.create(req.body);
-      // console.log("this is sendComment:", sendComment)
-      // if (sendComment) {
-      //   res.status(200).json({ message: "Feedback successfully sent.", sendComment });
-      // } else {
-      //   res.status(500).json({ message: "Feedback failed to send on DB" });
-      // }
-      res.status(200).json({message: "Here is sendComment", sendComment})
-
+    const sendComment = await Feedback.create(req.body);
+    // console.log("this is sendComment:", sendComment)
+    // if (sendComment) {
+    //   res.status(200).json({ message: "Feedback successfully sent.", sendComment });
+    // } else {
+    //   res.status(500).json({ message: "Feedback failed to send on DB" });
+    // }
+    res.status(200).json({ message: "Here is sendComment", sendComment });
   } catch (error) {
     res.status(500).json({ message: "Feedback failed on DB." });
   }

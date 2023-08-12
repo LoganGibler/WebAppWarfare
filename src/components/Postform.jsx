@@ -10,7 +10,7 @@ const Postform = () => {
   let [hostedby, setHostedBy] = useState("");
   let [description, setDescription] = useState("");
   let [difficulty, setDifficulty] = useState("");
-  // let [picture, setPicture] = useState("");
+  let history = useHistory();
 
   let author = getUser();
   function getCategoryOption() {
@@ -26,10 +26,10 @@ const Postform = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            console.log(
-              "right before diff is passed into createPost:",
-              difficulty
-            );
+            // console.log(
+            //   "right before diff is passed into createPost:",
+            //   difficulty
+            // );
             const data = await createPost(
               vmtitle,
               hostedby,
@@ -46,6 +46,8 @@ const Postform = () => {
             setvmtitle("");
             setHostedBy("");
             setDescription("");
+            history.push("/Profile");
+            location.reload();
             // setDifficulty("");
             // setPicture("");
           } catch (error) {
@@ -90,10 +92,10 @@ const Postform = () => {
                 onChange={async () => {
                   let selected_difficulty1 = await getCategoryOption();
                   setDifficulty(selected_difficulty1);
-                  console.log(
-                    "this is selected_difficulty1",
-                    selected_difficulty1
-                  );
+                  // console.log(
+                  //   "this is selected_difficulty1",
+                  //   selected_difficulty1
+                  // );
                 }}
               >
                 <option disabled={true} value="">
