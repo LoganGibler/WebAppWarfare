@@ -24,7 +24,7 @@ const Register = () => {
               console.log("this is active user", activeUser);
               if (activeUser) {
                 window.localStorage.setItem("isLoggedin", true);
-                console.log("this is active user", activeUser);
+                // console.log("this is active user", activeUser);
                 logStatus(true);
                 storeUser(activeUser.user.username);
                 storeToken(activeUser.token);
@@ -39,7 +39,9 @@ const Register = () => {
                 );
               }
             } else {
-              alert("Registration failed.");
+              alert(
+                "Registration failed. Please try a different username or password."
+              );
             }
           } catch (error) {
             throw error;
@@ -75,7 +77,7 @@ const Register = () => {
           ></input>
         </div>
         <div className="register-button-div">
-          <p className="register-button">Create Account</p>
+          <button className="register-button">Create Account</button>
         </div>
         <div className="signin-div">
           <a className="signin-link" href="/Login">

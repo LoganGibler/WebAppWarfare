@@ -1,0 +1,62 @@
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
+
+.homelab-outside-div {
+    display: flex;
+}
+
+.homelab-main-div {
+    margin-left: 50%;
+    margin: auto;
+    /* box-shadow: black 1px 0px 10px; */
+    color: #B8B8B8;
+    width: 85vh;
+    margin-top: 4%;
+}
+
+.homelab-title {
+    margin-top: 1%;
+    margin-left: 5%;
+    color: white;
+}
+
+
+.homelab-img-p-div {
+    display: flex;
+    padding: 15px;
+    /* box-shadow: black 1px 0px 10px; */
+    border-bottom: 1px solid #B8B8B8;
+}
+
+.homelab-img {
+    height: 18vh;
+    width: 27vh;
+    padding: 10px;
+}
+
+.homelab-intro-p {
+    padding: 9px;
+}
+
+.homelab-first-p {
+    margin-top: 5%;
+    text-indent: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 5px solid white;
+    border-radius: 5px;
+    margin-left: 5%;
+}
+
+.homelab-second-p {
+    margin-top: 5%;
+    text-indent: 30px;
+    /* padding: 15px; */
+    padding-left: 15px;
+    padding-right: 15px;
+    border-left: 5px solid white;
+    border-radius: 5px;
+    margin-left: 5%;
+}

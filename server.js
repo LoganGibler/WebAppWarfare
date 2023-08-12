@@ -12,7 +12,7 @@ app.use(express.json());
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
-const Feedback = require("./db/feedbackModel")
+const Feedback = require("./db/feedbackModel");
 
 app.use((_, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -51,7 +51,7 @@ app.post("/addstep", async (req, res) => {
       { $push: { steps: new_step } }
     );
     if (step) {
-      console.log("this is step:", step);
+      // console.log("this is step:", step);
       res.status(200).json({
         message: "step added successfully.",
         step,
@@ -140,7 +140,7 @@ app.post("/unpublishGuide", async (req, res) => {
 app.post("/getBlogById", async (req, res) => {
   try {
     let filter = { _id: req.body._id };
-    console.log("this is req.body._id:", req.body._id);
+    // console.log("this is req.body._id:", req.body._id);
     let blog = await Post.findOne(filter);
     // console.log("this is blog:", blog);
     if (blog) {
@@ -158,9 +158,9 @@ app.post("/getBlogById", async (req, res) => {
 app.post("/getBlogsByAuthor", async (req, res) => {
   try {
     let filter = { author: req.body.author };
-    console.log("this is req.body.author:", req.body.author);
+    // console.log("this is req.body.author:", req.body.author);
     let blogs = await Post.find(filter);
-    console.log("this is blogs:", blogs);
+    // console.log("this is blogs:", blogs);
     if (blogs) {
       res
         .status(200)
@@ -203,7 +203,7 @@ app.post("/updateStep", async (req, res) => {
     const updatedStep = await Post.findOneAndUpdate(filter, update, {
       new: true,
     });
-    console.log("This is updatedStep DB:", updatedStep);
+    // console.log("This is updatedStep DB:", updatedStep);
     if (!updatedStep) {
       res.status(500).json({ message: "/updateStep failed on DB.." });
     } else {
@@ -218,6 +218,7 @@ app.post("/updateStep", async (req, res) => {
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
   try {
+    let fail = "fail"
     const { username, password } = req.body;
     // console.log("this is req.body", req.body);
     if (!username || !password) {
@@ -238,17 +239,18 @@ app.post("/Register", async (req, res) => {
         .status(200)
         .json({ message: "Account creation successful.", user, token });
     } else {
-      res.status(500).json({ message: "Username Taken" });
+      res.status(200).json({ message: "Username Taken", fail});
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(200).json({ message: error.message, fail });
   }
 });
 
 app.post("/Login", async (req, res) => {
   try {
+    let fail = "fail"
     const { username, password } = req.body;
-    console.log("username: ", username, "password: ", password);
+    // console.log("username: ", username, "password: ", password);
     if (!username || !password) {
       res
         .status(500)
@@ -262,12 +264,12 @@ app.post("/Login", async (req, res) => {
         res.status(200).json({ message: "Login successful", user, token });
       } else {
         res
-          .status(500)
-          .json({ message: "Username or password was incorrect." });
+          .status(200)
+          .json({ message: "Username or password was incorrect.", fail});
       }
     }
   } catch (error) {
-    res.status(500).json({ message: "Login Failed." });
+    res.status(500).json({ message: "Login Failed.", fail});
   }
 });
 
@@ -285,29 +287,45 @@ app.post("/getUserIDByUsername", async (req, res) => {
   }
 });
 
-// FEEDBACK FUNCTIONS////////////////////////////////////////////////
-
-app.post("/sendFeedback", async (req, res)=>{
-  const {username, subject, comment} = req.body
-
+app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res)=>{
+  console.log(process.env.ADMIN_PASS)
+  console.log(req.body.pass)
   try {
-    const comment = await Feedback.create(username, subject, comment)
-    if (comment){
-      res.status(200).json({message: "Feedback successfully sent."})
+    if (req.body.pass === process.env.ADMIN_PASS){
+    let filter = {_id: req.body._id}
+    let update = {admin: true}
+    const modded_user = await User.findOneAndUpdate(filter, update, {
+      new: true
+    })
+    res.status(200).json({message: "User permissions updated", modded_user})
     } else{
-      res.status(500).json({message: "Feedback failed to send on DB"})
+      res.status(500).json({message: "Failed on user to admin"})
     }
   } catch (error) {
-   res.status(500).json({message: "Feedback failed to send on DB."})
+    res.status(500).json({message: "Error setting admin account"})
   }
 })
 
+// FEEDBACK FUNCTIONS////////////////////////////////////////////////
 
+app.post("/sendFeedback", async (req, res) => {
+  const { submittedBy, subject, comment} = req.body;
+  // console.log(submittedBy, subject, comment)
+  try {
+      const sendComment = await Feedback.create(req.body);
+      // console.log("this is sendComment:", sendComment)
+      // if (sendComment) {
+      //   res.status(200).json({ message: "Feedback successfully sent.", sendComment });
+      // } else {
+      //   res.status(500).json({ message: "Feedback failed to send on DB" });
+      // }
+      res.status(200).json({message: "Here is sendComment", sendComment})
 
+  } catch (error) {
+    res.status(500).json({ message: "Feedback failed on DB." });
+  }
+});
 
-
-
-// connection String
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

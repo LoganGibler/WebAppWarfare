@@ -1,18 +1,14 @@
 const mongoose = require("mongoose");
 
 const feedbackSchema = mongoose.Schema({
-  username: {
+  submittedBy: {
     type: String,
-    minlength: 5,
-    unique: true,
-    required: [true, "Please enter username"],
   },
   subject: {
     type: String
   },
   comment: {
     type: String,
-    minlength: 6,
   },
 });
 

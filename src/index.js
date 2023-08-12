@@ -14,7 +14,8 @@ import {
   Profile,
   EditGuide,
   Sample,
-  ContactMe
+  ContactMe,
+  HomeLab,
 } from "./components";
 import {
   BrowserRouter as Router,
@@ -22,9 +23,9 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { getAllBlogs, getAllPublishedBlogs, getBlogsByUsername } from "./api";
+import { getBlogsByUsername } from "./api";
 import { getUser } from "./auth";
-import "../src/css/about.css"
+import "../src/css/about.css";
 // CHODIKAR_USEPOLLING=true npm run start
 
 const App = () => {
@@ -32,8 +33,7 @@ const App = () => {
   const loggedIn = window.localStorage.getItem("isLoggedin");
   const activeUser = getUser();
 
-  let whereami = document.location.href
-  
+  let whereami = document.location.href;
 
   async function getUserBlogs(activeUser) {
     const blogs = await getBlogsByUsername(activeUser);
@@ -53,13 +53,10 @@ const App = () => {
         <Navigation
           loggedIn={loggedIn}
           whereami={whereami}
-          // isLoggedIn={isLoggedIn}
-          // setIsLoggedIn={setIsLoggedIn}
         />
-        {/* <Footer /> */}
         <Switch>
           <Route path="/Home">
-            <Home  />
+            <Home />
           </Route>
           <Route path="/About">
             <About />
@@ -82,11 +79,11 @@ const App = () => {
           <Route path="/userguides/:id">
             <EditGuide userBlogs={userBlogs} />
           </Route>
-          {/* <Route>
-            <Sample />
-          </Route> */}
           <Route path="/ContactMe">
-          <ContactMe />
+            <ContactMe />
+          </Route>
+          <Route path="/HomeLab">
+            <HomeLab />
           </Route>
         </Switch>
       </div>

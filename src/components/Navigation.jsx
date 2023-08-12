@@ -42,57 +42,65 @@ const Navigation = ({ loggedIn, whereami }) => {
   }, [path]);
 
   return (
-    <nav className="nav-container">
-      <div className="nav-branding-div">
-        <a href="/Home" className="brand-text">
-          WebAppWarfare
-        </a>
-      </div>
-
+    <div>
       {loggedIn ? (
-        <div className="nav-linked-main-container-loggedin">
-          <div className="nav-links-loggedin">
-            <div className="this">
-              <a href="/Home" className="nav-button">
-                Guides
-              </a>
-              <a href="/PostForm" className="nav-button">
-                Create Guide
-              </a>
-              <a href="/Profile" className="nav-button">
-                Profile
-              </a>
-              <a href="/About" className="nav-button">
-                About
-              </a>
-              <a
-                href="/Login"
-                className="nav-button"
-                onClick={async () => {
-                  window.localStorage.removeItem("isLoggedIn", false);
-                  alert("Successfully Logged out.");
-                  localStorage.clear();
-                }}
-              >
-                Sign out
-              </a>
+        <nav className="nav-container-loggedin">
+          <div className="nav-branding-div">
+            <a href="/Home" className="brand-text">
+              WebAppWarfare
+            </a>
+          </div>
+          <div className="nav-linked-main-container-loggedin">
+            <div className="nav-links-loggedin">
+              <div className="this">
+                <a href="/Home" className="nav-button">
+                  Guides
+                </a>
+                <a href="/PostForm" className="nav-button">
+                  Create Guide
+                </a>
+                <a href="/Profile" className="nav-button">
+                  Profile
+                </a>
+                <a href="/About" className="nav-button">
+                  About
+                </a>
+                <a
+                  href="/Login"
+                  className="nav-button"
+                  onClick={async () => {
+                    window.localStorage.removeItem("isLoggedIn", false);
+                    alert("Successfully Logged out.");
+                    localStorage.clear();
+                  }}
+                >
+                  Sign out
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
       ) : (
-        <div className="nav-links-loggedout">
-          <a href="/Home" className="nav-button">
-            Guides
-          </a>
-          <a href="/About" className="nav-button">
-            About
-          </a>
-          <a className="nav-button" href="/Login">
-            Sign In
-          </a>
-        </div>
+        <nav className="nav-container-loggedout">
+          <div className="nav-branding-div">
+            <a href="/Home" className="brand-text">
+              WebAppWarfare
+            </a>
+          </div>
+          <div className="nav-links-loggedout">
+            <a href="/Home" className="nav-button">
+              Guides
+            </a>
+            <a href="/About" className="nav-button">
+              About
+            </a>
+            <a className="nav-button" href="/Login">
+              Sign In
+            </a>
+          </div>
+        </nav>
       )}
-    </nav>
+    </div>
   );
 };
 

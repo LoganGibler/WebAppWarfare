@@ -1,6 +1,7 @@
 import axios from "axios";
 import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
+require("dotenv").config();
 const BASE = "http://localhost:8000/";
 
 export async function createPost(
@@ -17,7 +18,7 @@ export async function createPost(
   let year = preformattedDate.getFullYear();
 
   let date = `${month}-${day}-${year}`;
-  console.log("THis IS DATE", date);
+  // console.log("THis IS DATE", date);
 
   try {
     const { data } = await axios.post("http://localhost:8000/createPost", {
@@ -173,6 +174,7 @@ export async function registerUser(username, password) {
       username: username,
       password: password,
     });
+    console.log(data)
     return data;
   } catch (error) {
     throw error;
@@ -188,5 +190,20 @@ export async function loginUser(username, password) {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+// feedbackSchema api calls
+
+export async function sendFeedbackToDB(submittedBy, subject, comment){
+  // console.log(submittedBy, subject, comment)
+  try {
+    const {data} = await axios.post("http://localhost:8000/sendFeedback", {
+      submittedBy: submittedBy,
+      subject: subject,
+      comment: comment
+    })
+    return data
+  } catch (error) {
+    throw error
   }
 }

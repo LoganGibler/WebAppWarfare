@@ -30,7 +30,7 @@ const EditGuide = () => {
 
   async function fetchUserGuide(id) {
     let guide = await getBlogById(id);
-    console.log(guide);
+    // console.log(guide);
     setUserGuide(guide.blog);
   }
 
@@ -61,16 +61,16 @@ const EditGuide = () => {
               placeholder="Enter new step here..."
             ></textarea>
           </div>
-          <div className="submit-step-button-div">
+          <div className="editguide-newstep-button-div">
             <button
-              className="step-button-submit"
+              className="editguide-newstep-button"
               onClick={async () => {
                 const data = await getStepData();
                 // console.log(data, "!!!!!!!!");
                 if (!data) {
                   alert("Step Failed to add.");
                 } else {
-                  alert("New Step added!");
+                  // alert("New Step added!");
                 }
                 location.reload();
               }}
@@ -149,7 +149,7 @@ const EditGuide = () => {
             className="editguide-update-step-p"
             onClick={() => {
               getNewStepData();
-              alert("Step Updated.");
+              // alert("Step Updated.");
               location.reload();
             }}
           >

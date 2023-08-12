@@ -31,7 +31,7 @@ const About = () => {
             <a href="/contactme" className="about-contactme">
               Contact Me
             </a>
-            <a href="/labguide" className="about-labintro">
+            <a href="/HomeLab" className="about-labintro">
               Lab Intro
             </a>
             <a

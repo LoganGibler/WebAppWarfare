@@ -21,20 +21,19 @@ const Login = () => {
             }
             const data = await loginUser(username, password);
             // console.log("Token: ", data.token)
-            // console.log("user: ", data.user.username)
-            if (data.user) {
-              //   window.localStorage.setItem("isLoggedin", true);
+            console.log("fail: ", data);
+            if (data.fail === "fail") {
+              alert("Sign in failed.");
+              setUsername("");
+              setPassword("");
+              location.reload();
+            } else {
               logStatus(true);
               storeUser(data.user.username);
               storeToken(data.token);
               setPassword("");
               setUsername("");
               history.push("/Home");
-              location.reload();
-            } else {
-              alert("Sign in failed.");
-              setUsername("");
-              setPassword("");
               location.reload();
             }
           } catch (error) {
