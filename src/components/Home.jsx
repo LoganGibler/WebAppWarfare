@@ -42,24 +42,24 @@ const Home = () => {
           <button
             className="home-searchbar-button"
             onClick={async () => {
-              try {
-                let foundGuides = await getGuidesBySearch(search);
-                console.log(foundGuides);
-                console.log(publicBlogs);
-                setSearchedGuides(foundGuides);
-                if (searchedGuides) {
-                  setActive(true);
-                }
-              } catch (error) {
-                throw error;
-              }
+              // try {
+              //   let foundGuides = await getGuidesBySearch(search);
+              //   console.log(foundGuides);
+              //   console.log(publicBlogs);
+              //   setSearchedGuides(foundGuides);
+              //   if (searchedGuides) {
+              //     setActive(true);
+              //   }
+              // } catch (error) {
+              //   throw error;
+              // }
             }}
           >
             Search
           </button>
         </div>
-        {active &&
-          searchedGuides.map((blog) => {
+        {/* {active && */}
+          {/* searchedGuides.map((blog) => {
             return (
               <div
                 className="blog-div"
@@ -83,7 +83,7 @@ const Home = () => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         <div className="middle-content-div">
           <div className="main-blog-div">
             <div className="blog-container">
