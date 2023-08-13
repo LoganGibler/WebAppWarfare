@@ -54,6 +54,8 @@ text-color: #B8B8B8; */
 }
 
 .title-date-div {
+    border-bottom: 1px solid #1a2332;
+    border-top: 1px solid #1a2332;
     display: flex;
     padding-bottom: 5px;
     padding-top: 5px;
