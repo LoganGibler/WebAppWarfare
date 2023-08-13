@@ -42,24 +42,40 @@ const Home = () => {
           <button
             className="home-searchbar-button"
             onClick={async () => {
-              // try {
-              //   let foundGuides = await getGuidesBySearch(search);
-              //   console.log(foundGuides);
-              //   console.log(publicBlogs);
-              //   setSearchedGuides(foundGuides);
-              //   if (searchedGuides) {
-              //     setActive(true);
-              //   }
-              // } catch (error) {
-              //   throw error;
-              // }
+              try {
+                if (search.length > 0) {
+                  let foundGuides = await getGuidesBySearch(search);
+                  console.log(foundGuides = foundGuides.allFoundGuides[0])
+                  if (foundGuides != undefined) {
+                    console.log(foundGuides);
+                    let sortedGuides = [];
+                    const filteredGuides = foundGuides.map((guide) => {
+                      if (guide.published === true) {
+                        sortedGuides.push(guide);
+                      }
+                    });
+                    console.log("THIS IS sortedGuides", sortedGuides);
+                    setPublicBlogs(sortedGuides);
+                    console.log("This is now public blogs", publicBlogs);
+                    if (searchedGuides) {
+                      setActive(true);
+                    }
+                  } else{
+                    console.log("no guides found")
+                  }
+                } else{
+                  return;
+                }
+              } catch (error) {
+                throw error;
+              }
             }}
           >
             Search
           </button>
         </div>
         {/* {active && */}
-          {/* searchedGuides.map((blog) => {
+        {/* searchedGuides.map((blog) => {
             return (
               <div
                 className="blog-div"

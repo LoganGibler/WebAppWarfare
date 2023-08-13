@@ -325,22 +325,34 @@ app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
 app.post("/getGuidesBySearch", async (req, res) => {
   try {
     let allFoundGuides = [];
+
     const filter1 = { vmtitle: req.body.search };
     const foundGuidesBytitle = await Post.find(filter1);
-    allFoundGuides.push(foundGuidesBytitle);
-
+    if (foundGuidesBytitle.length > 0){
+      allFoundGuides.push(foundGuidesBytitle);
+    }
+    
     const filter2 = { author: req.body.search };
     const foundGuidesByAuthor = await Post.find(filter2);
-    allFoundGuides.push(foundGuidesByAuthor);
-
+    if (foundGuidesByAuthor.length > 0){
+      allFoundGuides.push(foundGuidesByAuthor);
+    }
+    
+   
     const filter3 = { hostedby: req.body.search };
     const foundGuidesByHost = await Post.find(filter3);
-    allFoundGuides.push(foundGuidesByHost);
-
+    if (foundGuidesByHost.length > 0){
+      allFoundGuides.push(foundGuidesByHost);
+    }
+   
+    
     const filter4 = { difficulty: req.body.search };
     const foundGuidesByDiff = await Post.find(filter4);
-    allFoundGuides.push(foundGuidesByDiff);
-
+    if (foundGuidesByDiff.length > 0){
+      allFoundGuides.push(foundGuidesByDiff);
+    }
+    
+    console.log(allFoundGuides)
     console.log("here are found guides", allFoundGuides);
     if (allFoundGuides) {
       res.status(200).json({ allFoundGuides });
