@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "neverTell" } = process.env;
-
+app.enable('trust proxy')
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
