@@ -2,7 +2,7 @@ import axios from "axios";
 import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
 require("dotenv").config();
-const BASE = "http://localhost:8000";
+const BASE = "https://webappwarfare-709c12ecbe83.herokuapp.com";
 
 export async function createPost(
   vmtitle,
