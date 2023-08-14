@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-// const cors = require("cors");
+const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -9,7 +9,7 @@ const { JWT_SECRET = "neverTell" } = process.env;
 app.enable('trust proxy')
 app.use(morgan("dev"));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
