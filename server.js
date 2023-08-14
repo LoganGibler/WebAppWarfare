@@ -15,15 +15,15 @@ const User = require("./db/userModel");
 const Post = require("./db/postModel");
 const Feedback = require("./db/feedbackModel");
 
-app.use((_, res, next) => {
-  res.set("Access-Control-Allow-Origin", "*");
-  res.set("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.set(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  return next();
-});
+// app.use((_, res, next) => {
+//   res.set("Access-Control-Allow-Origin", "*");
+//   res.set("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+//   res.set(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   return next();
+// });
 
 // should add date created
 app.post("/createPost", async (req, res) => {
