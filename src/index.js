@@ -58,31 +58,31 @@ const App = () => {
           <Route to="/Home">
             <Home />
           </Route>
-          <Route path="/About">
+          <Route to="/About">
             <About />
           </Route>
-          <Route path="/Postform">
+          <Route to="/Postform">
             <Postform />
           </Route>
-          <Route path="/blog/:id">
+          <Route to="/blog/:id">
             <Guide />
           </Route>
-          <Route path="/Register">
+          <Route to="/Register">
             <Register />
           </Route>
-          <Route path="/Login">
+          <Route to="/Login">
             <Login />
           </Route>
-          <Route path="/Profile">
+          <Route to="/Profile">
             <Profile userBlogs={userBlogs} />
           </Route>
-          <Route path="/userguides/:id">
+          <Route to="/userguides/:id">
             <EditGuide userBlogs={userBlogs} />
           </Route>
-          <Route path="/ContactMe">
+          <Route to="/ContactMe">
             <ContactMe />
           </Route>
-          <Route path="/HomeLab">
+          <Route to="/HomeLab">
             <HomeLab />
           </Route>
         </Switch>
