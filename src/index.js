@@ -55,34 +55,34 @@ const App = () => {
           whereami={whereami}
         />
         <Switch>
-          <Route to="/Home">
+          <Route path="/Home">
             <Home />
           </Route>
-          <Route to="/About">
+          <Route path="/About">
             <About />
           </Route>
-          <Route to="/Postform">
+          <Route path="/Postform">
             <Postform />
           </Route>
-          <Route to="/blog/:id">
+          <Route path="/blog/:id">
             <Guide />
           </Route>
-          <Route to="/Register">
+          <Route path="/Register">
             <Register />
           </Route>
-          <Route to="/Login">
+          <Route path="/Login">
             <Login />
           </Route>
-          <Route to="/Profile">
+          <Route path="/Profile">
             <Profile userBlogs={userBlogs} />
           </Route>
-          <Route to="/userguides/:id">
+          <Route path="/userguides/:id">
             <EditGuide userBlogs={userBlogs} />
           </Route>
-          <Route to="/ContactMe">
+          <Route path="/ContactMe">
             <ContactMe />
           </Route>
-          <Route to="/HomeLab">
+          <Route path="/HomeLab">
             <HomeLab />
           </Route>
         </Switch>
