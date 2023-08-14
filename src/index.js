@@ -55,7 +55,7 @@ const App = () => {
           whereami={whereami}
         />
         <Switch>
-          <Route path="/Home">
+          <Route to="/Home">
             <Home />
           </Route>
           <Route path="/About">
