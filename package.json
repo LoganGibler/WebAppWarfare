@@ -2,7 +2,7 @@
   "name": "react_boilerplate",
   "version": "1.0.0",
   "homepage":"",
-  "description":"https://webappwarfare-prod.onrender.com/Home",
+  "description":"https://webappwarfare-prod.onrender.com",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",

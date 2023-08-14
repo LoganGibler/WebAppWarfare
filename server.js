@@ -25,6 +25,10 @@ app.use((_, res, next) => {
   return next();
 });
 
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 // should add date created
 app.post("/createPost", async (req, res) => {
   try {
