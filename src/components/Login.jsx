@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { loginUser, registerUser } from "../api";
 import { storeToken, storeUser, logStatus } from "../auth";
+import { hashPassword } from "../flask_api";
 import "../css/login.css";
 
 const Login = () => {
@@ -19,7 +20,9 @@ const Login = () => {
             if (!username || !password) {
               alert("Please enter username and password.");
             }
-            const data = await loginUser(username, password);
+            let hashedPassword = await hashPassword(password);
+            parsedHashedPassword = hashedPassword.data.hashed_pass
+            const data = await loginUser(username, parsedHashedPassword);
             // console.log("Token: ", data.token)
             console.log("fail: ", data);
             if (data.fail === "fail") {
