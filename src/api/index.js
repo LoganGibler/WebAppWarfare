@@ -196,7 +196,7 @@ export async function registerUser(username, password) {
       username: username,
       password: password,
     });
-    console.log(data)
+    // console.log(data)
     return data;
   } catch (error) {
     throw error;
