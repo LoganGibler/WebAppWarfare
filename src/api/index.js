@@ -16,9 +16,8 @@ export async function createPost(
   let day = preformattedDate.getDate();
   let month = preformattedDate.getMonth() + 1;
   let year = preformattedDate.getFullYear();
-
   let date = `${month}-${day}-${year}`;
-  // console.log("THis IS DATE", date);
+  let approved = false
 
   try {
     const { data } = await axios.post(`${BASE}/createPost`, {
@@ -29,6 +28,7 @@ export async function createPost(
       author: author,
       date: date,
       difficulty: difficulty,
+      approved: approved
     });
 
     // console.log("this is data after frontend api", data);
@@ -182,6 +182,17 @@ export async function getGuidesBySearch(search){
   try {
     const {data} = await axios.post(`${BASE}/getGuidesBySearch`, {
       search: search
+    })
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+export async function getPublishedUnapprovedGuides(username){
+  try {
+    const {data} = await axios.post(`${BASE}/getPublishedUnapprovedGuides`,{
+      username: username
     })
     return data
   } catch (error) {

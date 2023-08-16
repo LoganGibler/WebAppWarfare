@@ -251,7 +251,9 @@ const EditGuide = () => {
               onClick={async () => {
                 // console.log("blog._id", blog._id)
                 await publishGuide(userGuide._id);
-                alert("Guide published. Other Users can now see this guide.");
+                alert(
+                  "Guide published. Once this guide is approved by a dev, it will be public."
+                );
                 // location.reload()
               }}
             >

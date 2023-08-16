@@ -29,6 +29,9 @@ const postSchema = mongoose.Schema({
   },
   date: {
     type: String
+  },
+  approved: {
+    type: Boolean
   }
   //   should have a date, and a finalized button.
 });

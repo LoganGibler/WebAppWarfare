@@ -1,18 +1,8 @@
-search bar!
-
 users need to be able to add screen shots. This needs to be researched.
 
 implement approval for published guides submitted by users to dev
 
 add better alert("failed signing in")
-
-
-   
-will have to review process of token, should place in cookie
-
-hash passwords before they are stored in db, possibly bring PTool for
-    hashing algo? might be cool. Will have to review how to deploy flask db.
-    maybe run flask db off of laptop? same with mongodb? 
 
 
 Stretch Goals:
@@ -21,6 +11,8 @@ Stretch Goals:
   3. Have Guides not extend forever down the page, have page1, page2, page3.
      Maybe only 5/6 per page. Will have to do research on this.
 
-     post questions- either directly related to the guide, or maybe just random forum
+ 4. post questions- either directly related to the guide, or maybe just random forum
     for questions and answers. Should there be approval for this? maybe have input
-    sanitization for bad words
+    sanitization for bad wordsd
+
+ 5. rework css into tailwind- its time to use a css framework!

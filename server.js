@@ -228,6 +228,51 @@ app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
     res.status(500).json({ message: "failed deleting guide" });
   }
 });
+
+app.post("/getGuidesBySearch", async (req, res) => {
+  try {
+    let allFoundGuides = [];
+    const filter1 = { vmtitle: req.body.search };
+    const foundGuidesBytitle = await Post.find(filter1);
+    allFoundGuides.push(foundGuidesBytitle);
+
+    const filter2 = { author: req.body.search };
+    const foundGuidesByAuthor = await Post.find(filter2);
+    allFoundGuides.push(foundGuidesByAuthor);
+
+    const filter3 = { hostedby: req.body.search };
+    const foundGuidesByHost = await Post.find(filter3);
+    allFoundGuides.push(foundGuidesByHost);
+
+    const filter4 = { difficulty: req.body.search };
+    const foundGuidesByDiff = await Post.find(filter4);
+    allFoundGuides.push(foundGuidesByDiff);
+
+    console.log("here are found guides", allFoundGuides);
+    if (allFoundGuides) {
+      res.status(200).json({ allFoundGuides });
+    } else {
+      res.status(500).json({ message: "failed request on /getGuidesByTitle" });
+    }
+  } catch (error) {
+    throw error;
+  }
+});
+
+app.post("/getPublishedUnapprovedGuides", async (req, res)=>{
+  try {
+    const filter = {approved: false, published: true}
+    const guides = Post.find(filter)
+    console.log(guides)
+    if (guides){
+      res.status({message: "/getPublishedUnapprovedGuides request successful.", guides})
+    } else{
+      res.status(500).json({message: "failure fetching /getPublishedUnapprovedGuides"})
+    }
+  } catch (error) {
+    res.status(500).json({message: "failed on request getPublishedUnapprovedGuides"})
+  }
+})
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
   let fail = "fail";
@@ -321,35 +366,7 @@ app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
   }
 });
 
-app.post("/getGuidesBySearch", async (req, res) => {
-  try {
-    let allFoundGuides = [];
-    const filter1 = { vmtitle: req.body.search };
-    const foundGuidesBytitle = await Post.find(filter1);
-    allFoundGuides.push(foundGuidesBytitle);
 
-    const filter2 = { author: req.body.search };
-    const foundGuidesByAuthor = await Post.find(filter2);
-    allFoundGuides.push(foundGuidesByAuthor);
-
-    const filter3 = { hostedby: req.body.search };
-    const foundGuidesByHost = await Post.find(filter3);
-    allFoundGuides.push(foundGuidesByHost);
-
-    const filter4 = { difficulty: req.body.search };
-    const foundGuidesByDiff = await Post.find(filter4);
-    allFoundGuides.push(foundGuidesByDiff);
-
-    console.log("here are found guides", allFoundGuides);
-    if (allFoundGuides) {
-      res.status(200).json({ allFoundGuides });
-    } else {
-      res.status(500).json({ message: "failed request on /getGuidesByTitle" });
-    }
-  } catch (error) {
-    throw error;
-  }
-});
 
 // app.post("/getGuidesByAuthor", async (req, res)=>{
 //   try {
