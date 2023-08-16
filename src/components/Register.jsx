@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { loginUser, registerUser } from "../api";
+import { hashPassword } from "../flask_api";
 import { storeToken, storeUser, logStatus } from "../auth";
 import "../css/register.css";
 
@@ -9,6 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   let history = useHistory();
 
+
   return (
     <div className="main-form-div">
       <form
@@ -16,11 +18,14 @@ const Register = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            const { token } = await registerUser(username, password);
+            let hashedPassword = await hashPassword(password);
+            let parsedHashedPassword = hashedPassword.data.hashed_pass;
+            console.log("This is hashed password after function: ", parsedHashedPassword);
+            const { token } = await registerUser(username, parsedHashedPassword);
             if (token) {
               console.log("this is token", token);
               alert("Registration successful.");
-              const activeUser = await loginUser(username, password);
+              const activeUser = await loginUser(username, parsedHashedPassword);
               console.log("this is active user", activeUser);
               if (activeUser) {
                 window.localStorage.setItem("isLoggedin", true);

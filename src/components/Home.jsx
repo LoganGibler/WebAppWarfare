@@ -43,12 +43,28 @@ const Home = () => {
             className="home-searchbar-button"
             onClick={async () => {
               try {
-                let foundGuides = await getGuidesBySearch(search);
-                console.log(foundGuides);
-                console.log(publicBlogs);
-                setSearchedGuides(foundGuides);
-                if (searchedGuides) {
-                  setActive(true);
+                if (search.length > 0) {
+                  let foundGuides = await getGuidesBySearch(search);
+                  console.log(foundGuides = foundGuides.allFoundGuides[0])
+                  if (foundGuides != undefined) {
+                    console.log(foundGuides);
+                    let sortedGuides = [];
+                    const filteredGuides = foundGuides.map((guide) => {
+                      if (guide.published === true) {
+                        sortedGuides.push(guide);
+                      }
+                    });
+                    console.log("THIS IS sortedGuides", sortedGuides);
+                    setPublicBlogs(sortedGuides);
+                    console.log("This is now public blogs", publicBlogs);
+                    if (searchedGuides) {
+                      setActive(true);
+                    }
+                  } else{
+                    console.log("no guides found")
+                  }
+                } else{
+                  return;
                 }
               } catch (error) {
                 throw error;
@@ -58,8 +74,8 @@ const Home = () => {
             Search
           </button>
         </div>
-        {active &&
-          searchedGuides.map((blog) => {
+        {/* {active && */}
+        {/* searchedGuides.map((blog) => {
             return (
               <div
                 className="blog-div"
@@ -83,7 +99,7 @@ const Home = () => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         <div className="middle-content-div">
           <div className="main-blog-div">
             <div className="blog-container">

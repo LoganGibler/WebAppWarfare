@@ -2,7 +2,7 @@ import axios from "axios";
 import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
 require("dotenv").config();
-const BASE = "http://localhost:8000";
+const BASE = "https://webappwarfare-api.onrender.com";
 
 export async function createPost(
   vmtitle,
@@ -207,7 +207,7 @@ export async function registerUser(username, password) {
       username: username,
       password: password,
     });
-    console.log(data)
+    // console.log(data)
     return data;
   } catch (error) {
     throw error;
@@ -216,7 +216,7 @@ export async function registerUser(username, password) {
 
 export async function loginUser(username, password) {
   try {
-    const { data } = await axios.post("http://localhost:8000/Login", {
+    const { data } = await axios.post(`${BASE}/Login`, {
       username: username,
       password: password,
     });
@@ -230,7 +230,7 @@ export async function loginUser(username, password) {
 export async function sendFeedbackToDB(submittedBy, subject, comment){
   // console.log(submittedBy, subject, comment)
   try {
-    const {data} = await axios.post("http://localhost:8000/sendFeedback", {
+    const {data} = await axios.post(`${BASE}/sendFeedback`, {
       submittedBy: submittedBy,
       subject: subject,
       comment: comment

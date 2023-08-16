@@ -3,13 +3,14 @@ const app = express();
 const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const path = require("path");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "neverTell" } = process.env;
-
+app.enable('trust proxy')
 app.use(morgan("dev"));
 app.use(express.json());
-// app.use(bodyparser.json());
+app.use(cors());
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
@@ -25,6 +26,10 @@ app.use((_, res, next) => {
   return next();
 });
 
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 // should add date created
 app.post("/createPost", async (req, res) => {
   try {
@@ -223,6 +228,7 @@ app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
     const deleted_guide = await Post.findOneAndDelete(filter, {
       new: true,
     });
+    console.log(deleted_guide)
     res.status(200).json({ message: "guide successfully deleted." });
   } catch (error) {
     res.status(500).json({ message: "failed deleting guide" });
@@ -367,7 +373,6 @@ app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
 });
 
 
-
 // app.post("/getGuidesByAuthor", async (req, res)=>{
 //   try {
 //     const foundGuides = await Post.findMany(req.body.search)
@@ -401,10 +406,10 @@ app.post("/sendFeedback", async (req, res) => {
 });
 
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
   .then(() => {
-    app.listen(8000, () => {
-      console.log("server is running on port 8000");
+    app.listen(process.env.PORT || 8000, () => {
+      console.log(`server is running on port: ${process.env.PORT}`);
     });
     console.log("connected to mongodb");
   })
