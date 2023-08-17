@@ -19,7 +19,7 @@ const Register = () => {
           e.preventDefault();
           try {
             let hashedPassword = await hashPassword(password);
-            let parsedHashedPassword = hashedPassword.data.hashed_pass;
+             hashedPassword = hashedPassword.data.hashed_pass;
             console.log("This is hashed password after function: ", parsedHashedPassword);
             const { token } = await registerUser(username, parsedHashedPassword);
             if (token) {

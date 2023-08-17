@@ -21,8 +21,8 @@ const Login = () => {
               alert("Please enter username and password.");
             }
             let hashedPassword = await hashPassword(password);
-            parsedHashedPassword = hashedPassword.data.hashed_pass
-            const data = await loginUser(username, parsedHashedPassword);
+            hashedPassword = hashedPassword.data.hashed_pass
+            const data = await loginUser(username, hashedPassword);
             // console.log("Token: ", data.token)
             console.log("fail: ", data);
             if (data.fail === "fail") {
