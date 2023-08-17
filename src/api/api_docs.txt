@@ -1,0 +1,50 @@
+WebAppWarfare API Docs
+
+Base api url:    https://webappwarfare-api.onrender.com
+
+User requests:
+
+
+    function name: registerUser()   
+     
+        /Register
+        {
+            username: username,
+            password: password
+        }
+
+    function name: loginUser()
+
+        /Login
+        {
+            username: username,
+            password: password
+        }
+
+    function name: getUserByID()
+
+        /getUserByID
+        {
+            _id: _id
+        }
+
+
+
+
+Guide Requests:
+
+
+    function name: createGuide()
+
+        /createPost
+        {
+            vmtitle: vmtitle,
+            hostedby: hostedby,
+            description: description,
+            published: published,
+            author: author,
+            date: date,
+            difficulty: difficulty,
+            approved: approved
+        }
+

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import "../css/profile.css";
-import { getUser } from "../auth";
+import { getUser, getID } from "../auth";
 import { getBlogsByUsername } from "../api";
 
 const Profile = ({ userBlogs }) => {
@@ -12,13 +12,13 @@ const Profile = ({ userBlogs }) => {
 
   async function fetchUser(key) {
     let user = await getUserByID(key);
-    console.log(user)
+    console.log(user);
     setUser(user);
   }
-  
+
   useEffect(() => {
-    getUser(key)
-  },[])
+    getUser(key);
+  }, []);
 
   return (
     <div className="main-profile-div">
@@ -64,9 +64,7 @@ const Profile = ({ userBlogs }) => {
               <a href="/Postform"> Click here to create a Guide</a>
             </div>
           )}
-          <div>
-
-          </div>
+          <div></div>
         </div>
       </div>
     </div>

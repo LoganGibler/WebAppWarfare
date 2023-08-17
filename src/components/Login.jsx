@@ -21,11 +21,11 @@ const Login = () => {
               alert("Please enter username and password.");
             }
             let hashedPassword = await hashPassword(password);
-            hashedPassword = hashedPassword.data.hashed_pass
+            hashedPassword = hashedPassword.data.hashed_pass;
             const data = await loginUser(username, hashedPassword);
-            console.log("data ", data)
+            console.log("data ", data);
             if (data.fail === "fail") {
-              // alert("Sign in failed.");
+              alert("Sign in failed.");
               setUsername("");
               setPassword("");
               location.reload();
@@ -33,7 +33,7 @@ const Login = () => {
               logStatus(true);
               storeUser(data.user.username);
               storeToken(data.token);
-              storeID(data.user._id)
+              storeID(data.user._id);
               setPassword("");
               setUsername("");
               history.push("/Home");
