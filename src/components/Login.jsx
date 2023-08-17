@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { loginUser, registerUser } from "../api";
-import { storeToken, storeUser, logStatus } from "../auth";
+import { storeToken, storeUser, logStatus, storeID } from "../auth";
 import { hashPassword } from "../flask_api";
 import "../css/login.css";
 
@@ -23,10 +23,9 @@ const Login = () => {
             let hashedPassword = await hashPassword(password);
             hashedPassword = hashedPassword.data.hashed_pass
             const data = await loginUser(username, hashedPassword);
-            // console.log("Token: ", data.token)
-            console.log("fail: ", data);
+            console.log("data ", data)
             if (data.fail === "fail") {
-              alert("Sign in failed.");
+              // alert("Sign in failed.");
               setUsername("");
               setPassword("");
               location.reload();
@@ -34,6 +33,7 @@ const Login = () => {
               logStatus(true);
               storeUser(data.user.username);
               storeToken(data.token);
+              storeID(data.user._id)
               setPassword("");
               setUsername("");
               history.push("/Home");

@@ -1,9 +1,12 @@
+create a writeup of all api calls
+
 users need to be able to add screen shots. This needs to be researched.
 
 implement approval for published guides submitted by users to dev
 
 add better alert("failed signing in")
 
+do dimensions for iphone.
 
 Stretch Goals:
   2. Users should have "likes"? Maybe individual likes on guides? All guides
@@ -15,4 +18,4 @@ Stretch Goals:
     for questions and answers. Should there be approval for this? maybe have input
     sanitization for bad wordsd
 
- 5. rework css into tailwind- its time to use a css framework!
+ 5. rework css into tailwind- its time to use a css framework! 

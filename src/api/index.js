@@ -2,8 +2,8 @@ import axios from "axios";
 import { storeToken, StoreUser } from "../auth";
 import { async } from "q";
 require("dotenv").config();
-const BASE = "https://webappwarfare-api.onrender.com";
-// const BASE = "http://localhost:8000";
+// const BASE = "https://webappwarfare-api.onrender.com";
+const BASE = "http://localhost:8000";
 
 
 export async function createGuide(
@@ -227,8 +227,19 @@ export async function loginUser(username, password) {
     throw error;
   }
 }
-// feedbackSchema api calls
 
+export async function getUserByID(_id) {
+  try {
+    const {data} = await axios.post("/getUserByID", {
+      _id: _id,
+    })
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+// feedbackSchema api calls
 export async function sendFeedbackToDB(submittedBy, subject, comment){
   // console.log(submittedBy, subject, comment)
   try {

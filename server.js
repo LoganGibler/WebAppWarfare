@@ -84,7 +84,7 @@ app.get("/allblogs", async (req, res) => {
 
 app.get("/allPublishedBlogs", async (req, res) => {
   try {
-    const allPublishedBlogs = await Post.find({ published: true });
+    const allPublishedBlogs = await Post.find({ published: true, approved: true });
 
     if (allPublishedBlogs) {
       res.status(200).json({
@@ -271,7 +271,7 @@ app.get("/getPublishedUnapprovedGuides", async (req, res)=>{
     const guides = await Post.find(filter)
     console.log(guides)
     if (guides){
-      res.status({message: "/getPublishedUnapprovedGuides request successful.", guides})
+      res.status(200).json({message: "/getPublishedUnapprovedGuides request successful.", guides})
     } else{
       res.status(500).json({message: "failure fetching /getPublishedUnapprovedGuides"})
     }
@@ -351,9 +351,17 @@ app.post("/getUserIDByUsername", async (req, res) => {
   }
 });
 
+app.post("/getUserByID", async (req, res) => {
+  try {
+    let filter = {_id: req.params._id}
+    let user = await User.find(filter)
+    res.status(200).json({ message: "getUserByID successful.", user });
+  } catch (error) {
+    res.status(500).json({ message: "getUserByID failed." });
+  }
+})
+
 app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
-  console.log(process.env.ADMIN_PASS);
-  console.log(req.body.pass);
   try {
     if (req.body.pass === process.env.ADMIN_PASS) {
       let filter = { _id: req.body._id };
@@ -393,6 +401,7 @@ app.post("/sendFeedback", async (req, res) => {
   // console.log(submittedBy, subject, comment)
   try {
     const sendComment = await Feedback.create(req.body);
+
     // console.log("this is sendComment:", sendComment)
     // if (sendComment) {
     //   res.status(200).json({ message: "Feedback successfully sent.", sendComment });

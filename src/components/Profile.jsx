@@ -8,6 +8,17 @@ const Profile = ({ userBlogs }) => {
   let [user, setUser] = useState("");
   const activeUser = getUser();
   let history = useHistory();
+  let key = getID();
+
+  async function fetchUser(key) {
+    let user = await getUserByID(key);
+    console.log(user)
+    setUser(user);
+  }
+  
+  useEffect(() => {
+    getUser(key)
+  },[])
 
   return (
     <div className="main-profile-div">
@@ -53,6 +64,9 @@ const Profile = ({ userBlogs }) => {
               <a href="/Postform"> Click here to create a Guide</a>
             </div>
           )}
+          <div>
+
+          </div>
         </div>
       </div>
     </div>

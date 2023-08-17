@@ -22,3 +22,12 @@ export function getUser(){
 export function logStatus(status){
     window.localStorage.setItem("isLoggedin", status);
 }
+
+export function storeID(id){
+    window.localStorage.setItem("key", JSON.stringify(id));
+}
+
+export function getID(){
+    const myKey = JSON.parse(localStorage.getItem('key'));
+    return myKey;
+}
