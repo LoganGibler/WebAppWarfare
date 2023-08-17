@@ -20,12 +20,12 @@ const Register = () => {
           try {
             let hashedPassword = await hashPassword(password);
              hashedPassword = hashedPassword.data.hashed_pass;
-            console.log("This is hashed password after function: ", parsedHashedPassword);
-            const { token } = await registerUser(username, parsedHashedPassword);
+          
+            const { token } = await registerUser(username, hashedPassword);
             if (token) {
               console.log("this is token", token);
               alert("Registration successful.");
-              const activeUser = await loginUser(username, parsedHashedPassword);
+              const activeUser = await loginUser(username, hashedPassword);
               console.log("this is active user", activeUser);
               if (activeUser) {
                 window.localStorage.setItem("isLoggedin", true);

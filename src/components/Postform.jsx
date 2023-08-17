@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 // import { createPost } from "../api";
 import "../css/Postform.css";
 import { getUser } from "../auth";
-import { createPost } from "../api";
+import { createGuide } from "../api";
 
 const Postform = () => {
   let [vmtitle, setvmtitle] = useState("");
@@ -30,7 +30,7 @@ const Postform = () => {
             //   "right before diff is passed into createPost:",
             //   difficulty
             // );
-            const data = await createPost(
+            const data = await createGuide(
               vmtitle,
               hostedby,
               description,

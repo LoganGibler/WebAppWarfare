@@ -6,7 +6,7 @@ const BASE = "https://webappwarfare-api.onrender.com";
 // const BASE = "http://localhost:8000";
 
 
-export async function createPost(
+export async function createGuide(
   vmtitle,
   hostedby,
   description,

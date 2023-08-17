@@ -268,7 +268,7 @@ app.post("/getGuidesBySearch", async (req, res) => {
 app.get("/getPublishedUnapprovedGuides", async (req, res)=>{
   try {
     const filter = {approved: false, published: true}
-    const guides = Post.find(filter)
+    const guides = await Post.find(filter)
     console.log(guides)
     if (guides){
       res.status({message: "/getPublishedUnapprovedGuides request successful.", guides})
