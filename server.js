@@ -7,7 +7,7 @@ const path = require("path");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "neverTell" } = process.env;
-app.enable('trust proxy')
+app.enable("trust proxy");
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
@@ -26,9 +26,9 @@ app.use((_, res, next) => {
   return next();
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 // should add date created
 app.post("/createPost", async (req, res) => {
@@ -84,7 +84,10 @@ app.get("/allblogs", async (req, res) => {
 
 app.get("/allPublishedBlogs", async (req, res) => {
   try {
-    const allPublishedBlogs = await Post.find({ published: true, approved: true });
+    const allPublishedBlogs = await Post.find({
+      published: true,
+      approved: true,
+    });
 
     if (allPublishedBlogs) {
       res.status(200).json({
@@ -228,7 +231,7 @@ app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
     const deleted_guide = await Post.findOneAndDelete(filter, {
       new: true,
     });
-    console.log(deleted_guide)
+    console.log(deleted_guide);
     res.status(200).json({ message: "guide successfully deleted." });
   } catch (error) {
     res.status(500).json({ message: "failed deleting guide" });
@@ -265,18 +268,40 @@ app.post("/getGuidesBySearch", async (req, res) => {
   }
 });
 
-app.get("/getPublishedUnapprovedGuides", async (req, res)=>{
+app.get("/getPublishedUnapprovedGuides", async (req, res) => {
   try {
-    const filter = {approved: false, published: true}
-    const guides = await Post.find(filter)
-    console.log(guides)
-    if (guides){
-      res.status(200).json({message: "/getPublishedUnapprovedGuides request successful.", guides})
-    } else{
-      res.status(500).json({message: "failure fetching /getPublishedUnapprovedGuides"})
+    const filter = { approved: false, published: true };
+    const guides = await Post.find(filter);
+    console.log(guides);
+    if (guides) {
+      res
+        .status(200)
+        .json({
+          message: "/getPublishedUnapprovedGuides request successful.",
+          guides,
+        });
+    } else {
+      res
+        .status(500)
+        .json({ message: "no guides are published but unapproved." });
     }
   } catch (error) {
-    res.status(500).json({message: "failed on request getPublishedUnapprovedGuides"})
+    res
+      .status(500)
+      .json({ message: "failed on request getPublishedUnapprovedGuides" });
+  }
+});
+
+app.post("/approveGuide", async (req,res)=>{
+  try {
+    let filter = {_id: req.body._id}
+    let update = {approved: true}
+    const updatedGuide = await Post.findOneAndUpdate(filter, update, {
+      new: true
+    })
+    res.status(200).json({message: "successfully updated guide.", updatedGuide})
+  } catch (error) {
+    res.status(500).json({message: "error on /approveGuide"})
   }
 })
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
@@ -353,13 +378,19 @@ app.post("/getUserIDByUsername", async (req, res) => {
 
 app.post("/getUserByID", async (req, res) => {
   try {
-    let filter = {_id: req.params._id}
-    let user = await User.find(filter)
-    res.status(200).json({ message: "getUserByID successful.", user });
+    let filter = { _id: req.body._id };
+    console.log("this is filter", filter);
+    let user = await User.find(filter);
+    console.log(user);
+    if (user[0].username) {
+      res.status(200).json({ message: "getUserByID successful.", user });
+    } else {
+      res.status(500).json({ message: "no user found by that id." });
+    }
   } catch (error) {
     res.status(500).json({ message: "getUserByID failed." });
   }
-})
+});
 
 app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
   try {
@@ -379,7 +410,6 @@ app.post("/44a312daf9f1a589cb7635630a222ff4", async (req, res) => {
     res.status(500).json({ message: "Error setting admin account" });
   }
 });
-
 
 // app.post("/getGuidesByAuthor", async (req, res)=>{
 //   try {

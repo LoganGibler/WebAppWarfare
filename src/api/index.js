@@ -5,7 +5,6 @@ require("dotenv").config();
 // const BASE = "https://webappwarfare-api.onrender.com";
 const BASE = "http://localhost:8000";
 
-
 export async function createGuide(
   vmtitle,
   hostedby,
@@ -19,7 +18,7 @@ export async function createGuide(
   let month = preformattedDate.getMonth() + 1;
   let year = preformattedDate.getFullYear();
   let date = `${month}-${day}-${year}`;
-  let approved = false
+  let approved = false;
 
   try {
     const { data } = await axios.post(`${BASE}/createPost`, {
@@ -30,7 +29,7 @@ export async function createGuide(
       author: author,
       date: date,
       difficulty: difficulty,
-      approved: approved
+      approved: approved,
     });
 
     // console.log("this is data after frontend api", data);
@@ -91,28 +90,11 @@ export async function getBlogById(_id) {
   }
 }
 
-export async function getUserIDByUsername(username) {
-  try {
-    const { data } = await axios.post(
-      `${BASE}/getUserIDByUsername`,
-      {
-        username: username,
-      }
-    );
-    return data;
-  } catch (error) {
-    throw error;
-  }
-}
-
 export async function getBlogsByUsername(author) {
   try {
-    const { data } = await axios.post(
-      `${BASE}/getBlogsByAuthor`,
-      {
-        author: author,
-      }
-    );
+    const { data } = await axios.post(`${BASE}/getBlogsByAuthor`, {
+      author: author,
+    });
     return data;
   } catch (error) {
     throw error;
@@ -121,29 +103,26 @@ export async function getBlogsByUsername(author) {
 
 export async function updateDescription(id, description) {
   try {
-    const { data } = await axios.post(
-     `${BASE}/updateDescription`,
-      {
-        id: id,
-        description: description,
-      }
-    );
-    return data
+    const { data } = await axios.post(`${BASE}/updateDescription`, {
+      id: id,
+      description: description,
+    });
+    return data;
   } catch (error) {
     throw error;
   }
 }
 
-export async function updateSteppie(id, index, newStepData){
+export async function updateSteppie(id, index, newStepData) {
   try {
-    const {data} = await axios.post(`${BASE}/updateStep`, {
+    const { data } = await axios.post(`${BASE}/updateStep`, {
       id: id,
       index: index,
-      newStepData: newStepData
-    })
-    return data
+      newStepData: newStepData,
+    });
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
@@ -169,36 +148,48 @@ export async function unpublishGuide(_id) {
   }
 }
 
-export async function deleteGuide(_id){
+export async function deleteGuide(_id) {
   try {
-    const {data} = await axios.post(`${BASE}/removeGuided126d2c7cd71ad50a20e59f89afaf380`,{
-      _id: _id
-    })
-    return data
+    const { data } = await axios.post(
+      `${BASE}/removeGuided126d2c7cd71ad50a20e59f89afaf380`,
+      {
+        _id: _id,
+      }
+    );
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
-export async function getGuidesBySearch(search){
+export async function getGuidesBySearch(search) {
   try {
-    const {data} = await axios.post(`${BASE}/getGuidesBySearch`, {
-      search: search
-    })
-    return data
+    const { data } = await axios.post(`${BASE}/getGuidesBySearch`, {
+      search: search,
+    });
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 
-export async function getPublishedUnapprovedGuides(username){
+export async function getPublishedUnapprovedGuides() {
   try {
-    const {data} = await axios.post(`${BASE}/getPublishedUnapprovedGuides`,{
-      username: username
-    })
-    return data
+    const { data } = await axios.get(`${BASE}/getPublishedUnapprovedGuides`);
+    return data;
   } catch (error) {
-    throw error
+    throw error;
+  }
+}
+
+export async function approveGuide(_id) {
+  try {
+    const { data } = await axios.post(`${BASE}/approveGuide`, {
+      _id: _id,
+    });
+    return data;
+  } catch (error) {
+    throw error;
   }
 }
 // user api calls/////////////////////////////////////
@@ -230,26 +221,37 @@ export async function loginUser(username, password) {
 
 export async function getUserByID(_id) {
   try {
-    const {data} = await axios.post("/getUserByID", {
+    const { data } = await axios.post(`${BASE}/getUserByID`, {
       _id: _id,
-    })
-    return data
+    });
+    return data;
   } catch (error) {
-    throw error
+    throw error;
+  }
+}
+
+export async function getUserIDByUsername(username) {
+  try {
+    const { data } = await axios.post(`${BASE}/getUserIDByUsername`, {
+      username: username,
+    });
+    return data;
+  } catch (error) {
+    throw error;
   }
 }
 
 // feedbackSchema api calls
-export async function sendFeedbackToDB(submittedBy, subject, comment){
+export async function sendFeedbackToDB(submittedBy, subject, comment) {
   // console.log(submittedBy, subject, comment)
   try {
-    const {data} = await axios.post(`${BASE}/sendFeedback`, {
+    const { data } = await axios.post(`${BASE}/sendFeedback`, {
       submittedBy: submittedBy,
       subject: subject,
-      comment: comment
-    })
-    return data
+      comment: comment,
+    });
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
