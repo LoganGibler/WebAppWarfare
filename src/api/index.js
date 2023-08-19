@@ -1,7 +1,13 @@
 import axios from "axios";
 require("dotenv").config();
-const BASE = "https://webappwarfare-api.onrender.com";
-// const BASE = "http://localhost:8000";
+
+const env = "main"
+if (env==="main"){
+  const BASE = process.env.API_CONN_MAIN;
+} else{
+  const BASE = process.env.API_CONN_QA;
+}
+      
 
 export async function createGuide(
   vmtitle,

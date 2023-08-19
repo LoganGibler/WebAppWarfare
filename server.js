@@ -12,6 +12,15 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
+const env = "main"
+if (env==="main"){
+  var BASE = process.env.MONGO_URI_MAIN;
+} else{
+  var BASE = process.env.MONGO_URI_QA;
+}
+      
+
+
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 const Feedback = require("./db/feedbackModel");
@@ -445,7 +454,7 @@ app.post("/sendFeedback", async (req, res) => {
 });
 
 mongoose
-  .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
+  .connect(BASE)
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
       console.log(`server is running on port: ${process.env.PORT}`);
