@@ -9,12 +9,10 @@
     /* background-size: cover; */
 }
 
-
 /* background-color: #1a2332;
 lighter-bacgkround: #263143;
 highlight-color: white;
 text-color: #B8B8B8; */
-
 
 .editguide-main-container {
     margin-left: 50%;
@@ -26,15 +24,15 @@ text-color: #B8B8B8; */
     padding-right: 50px;
     padding-bottom: 120px;
     border-radius: 1px;
-    color: black;
+    color: #c0c0c0;
     /* box-shadow: rgba(14, 3, 3, 0.397) 0px 5px 15px; */
-    color: #B8B8B8;
+
     /* border-left: 2px solid #282828;
     border-right: 2px solid #282828; */
 }
 
 .editguide-title {
-    color: #dcdcdc;
+    color: white;
 }
 
 .editstep-outside-div {
@@ -59,8 +57,6 @@ text-color: #B8B8B8; */
     word-wrap: break-word;
 }
 
-
-
 .newstep-div {
     margin-top: 5%;
     padding: 10px;
@@ -82,17 +78,9 @@ text-color: #B8B8B8; */
     word-wrap: break-word;
 }
 
-
-
-
-
-
-
-
 .editguide-description-div {
     margin-top: 5%;
     padding: 10px;
-
 }
 
 .editguide-description-textarea {
@@ -103,18 +91,15 @@ text-color: #B8B8B8; */
     border-left: 8px solid black; */
     text-indent: 10px;
     background-color: #263143;
-    color: #B8B8B8;
+    color: #b8b8b8;
     padding: 10px;
-    border-left: 5px solid #B8B8B8;
+    border-left: 5px solid white;
     resize: none;
-
 }
 
 .editguide-description-p {
     word-wrap: break-word;
 }
-
-
 
 .update-editstep-main-div {
     margin-top: 2%;
@@ -122,9 +107,10 @@ text-color: #B8B8B8; */
 
 .step-input-area {
     background-color: #263143;
-    color: #B8B8B8;
+    color: #b8b8b8;
     padding: 10px;
     resize: none;
+    border-left: 5px solid white;
 }
 
 #editguide-step-textarea {
@@ -134,17 +120,13 @@ text-color: #B8B8B8; */
     border-radius: 5px;
     text-indent: 10px;
     background-color: #263143;
-    color: #B8B8B8;
+    color: #b8b8b8;
     padding: 10px;
-    border-left: 5px solid #B8B8B8;
+    border-left: 5px solid white;
     resize: none;
 }
 
-
-
-
 .renderEditBox-div {}
-
 
 .publish-editguide-button-div {
     margin-top: 4%;
@@ -209,13 +191,13 @@ text-color: #B8B8B8; */
 .editguide-publish-p-button {
     text-indent: 11px;
     height: 4vh;
-    width: 14vh;
+    width: 15vh;
     margin-left: 5%;
     background-color: #263143;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #263143;
-    color: #B8B8B8
+    color: #b8b8b8;
 }
 
 .editguide-publish-p-button:hover {
@@ -227,7 +209,6 @@ text-color: #B8B8B8; */
 
 /* these are rendered buttons */
 
-
 .editguide-description-update-p {
     margin-top: 1%;
     text-indent: 5px;
@@ -235,8 +216,8 @@ text-color: #B8B8B8; */
     background-color: #263143;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #B8B8B8;
-    color: #B8B8B8
+    border: 1px solid #b8b8b8;
+    color: #b8b8b8;
 }
 
 .editguide-description-update-p:hover {
@@ -246,7 +227,6 @@ text-color: #B8B8B8; */
     border: 1px solid white;
 }
 
-
 .editguide-update-step-p {
     margin-top: 1%;
     text-indent: 6px;
@@ -254,8 +234,8 @@ text-color: #B8B8B8; */
     background-color: #263143;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #B8B8B8;
-    color: #B8B8B8
+    border: 1px solid #b8b8b8;
+    color: #b8b8b8;
 }
 
 .editguide-update-step-p:hover {
@@ -265,6 +245,28 @@ text-color: #B8B8B8; */
     border: 1px solid white;
 }
 
+.updatestep-deletestep-div {
+    display: flex;
+}
+
+.delete-step-p {
+    margin-top: 1%;
+    text-indent: 6px;
+    width: 11vh;
+    background-color: darkred;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #b8b8b8;
+    color: #b8b8b8;
+    display: inline;
+}
+
+.delete-step-p:hover {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    border: 1px solid white;
+}
 
 .editguide-newstep-button {
     margin-left: 1.3%;
@@ -272,8 +274,8 @@ text-color: #B8B8B8; */
     background-color: #263143;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #B8B8B8;
-    color: #B8B8B8
+    border: 1px solid #b8b8b8;
+    color: #b8b8b8;
 }
 
 .editguide-newstep-button:hover {
@@ -286,14 +288,14 @@ text-color: #B8B8B8; */
 .editguide-deleteguide-button {
     text-indent: 7px;
     /* margin-left: 1.3%; */
-    width: 13vh;
+    width: 14vh;
     height: 4vh;
     background-color: darkred;
     padding: 5px;
     border-radius: 5px;
     /* border: 1px solid #B8B8B8; */
     /* border: 1px solid #263143; */
-    color: #B8B8B8
+    color: #b8b8b8;
 }
 
 .editguide-deleteguide-button:hover {
@@ -301,4 +303,30 @@ text-color: #B8B8B8; */
     background-color: red;
     cursor: pointer;
     border: 1px solid white;
+}
+
+.editguide-uploadimage-div {
+    display: flex;
+    margin-left: 50%;
+}
+
+.editguide-imageupload-label {
+    margin-left: 36%;
+    width: 11vh;
+    height: 2vh;
+    margin-top: 1%;
+
+}
+
+.editguide-imageupload-main-container {
+    display: flex;
+}
+
+.editguide-image-input {
+    margin-top: .7%;
+    color: #C0C0C0;
+    background-color: #263143;
+    width: 24vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }

@@ -12,14 +12,15 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-const env = "main"
-if (env==="main"){
+const env = "QA";
+
+if (env === "main") {
   var BASE = process.env.MONGO_URI_MAIN;
-} else{
+} else {
   var BASE = process.env.MONGO_URI_QA;
 }
-      
 
+console.log("connected to :", BASE);
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
@@ -234,6 +235,27 @@ app.post("/updateStep", async (req, res) => {
   }
 });
 
+app.post("/deleteStep", async (req, res) => {
+  try {
+    const { _id, index } = req.body;
+    let filter = { _id: _id };
+    let update = {};
+    let editedStep = "steps." + index + ".step";
+    update[editedStep] = null;
+    const updatedStep = await Post.findOneAndUpdate(filter, update, {
+      new: true,
+    });
+    // console.log("updated STEP:",updatedStep.steps)
+
+
+    // const deleted_null_steps = await Post.update(filter, {$pullAll: {steps: {step: null}}})
+    // console.log("deleted null steps: ",deleted_null_steps)
+    res.status(200).json({ message: "step deleted.", updatedStep});
+  } catch (error) {
+    res.status(500).json({ message: "/deleteStep request has failed" });
+  }
+});
+
 app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
   try {
     const filter = { _id: req.body._id };
@@ -249,22 +271,52 @@ app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
 
 app.post("/getGuidesBySearch", async (req, res) => {
   try {
+    // searched guides pop up even when unpublshed or unapproved
     let allFoundGuides = [];
-    const filter1 = { vmtitle: req.body.search };
+    const filter1 = {
+      vmtitle: req.body.search,
+      published: true,
+      approved: true,
+    };
     const foundGuidesBytitle = await Post.find(filter1);
-    allFoundGuides.push(foundGuidesBytitle);
+    if (foundGuidesBytitle.length) {
+      allFoundGuides.push(foundGuidesBytitle);
+    }
 
-    const filter2 = { author: req.body.search };
+    const filter2 = {
+      author: req.body.search,
+      published: true,
+      approved: true,
+    };
     const foundGuidesByAuthor = await Post.find(filter2);
-    allFoundGuides.push(foundGuidesByAuthor);
+    if (foundGuidesByAuthor.length) {
+      allFoundGuides.push(foundGuidesByAuthor);
+    }
 
-    const filter3 = { hostedby: req.body.search };
+    const filter3 = {
+      hostedby: req.body.search,
+      published: true,
+      approved: true,
+    };
     const foundGuidesByHost = await Post.find(filter3);
-    allFoundGuides.push(foundGuidesByHost);
+    if (foundGuidesByHost.length) {
+      allFoundGuides.push(foundGuidesByHost);
+    }
 
-    const filter4 = { difficulty: req.body.search };
+    const filter4 = {
+      difficulty: req.body.search,
+      published: true,
+      approved: true,
+    };
     const foundGuidesByDiff = await Post.find(filter4);
-    allFoundGuides.push(foundGuidesByDiff);
+    if (foundGuidesByDiff.length) {
+      allFoundGuides.push(foundGuidesByDiff);
+    }
+
+    if (req.body.search === null) {
+      const emptySearch = await Post.find({ published: true, approved: true });
+      allFoundGuides.push(emptySearch);
+    }
 
     console.log("here are found guides", allFoundGuides);
     if (allFoundGuides) {
@@ -283,12 +335,10 @@ app.get("/getPublishedUnapprovedGuides", async (req, res) => {
     const guides = await Post.find(filter);
     console.log(guides);
     if (guides) {
-      res
-        .status(200)
-        .json({
-          message: "/getPublishedUnapprovedGuides request successful.",
-          guides,
-        });
+      res.status(200).json({
+        message: "/getPublishedUnapprovedGuides request successful.",
+        guides,
+      });
     } else {
       res
         .status(500)
@@ -301,18 +351,22 @@ app.get("/getPublishedUnapprovedGuides", async (req, res) => {
   }
 });
 
-app.post("/approveGuide", async (req,res)=>{
+app.post("/approveGuide", async (req, res) => {
   try {
-    let filter = {_id: req.body._id}
-    let update = {approved: true}
+    let filter = { _id: req.body._id };
+    let update = { approved: true };
     const updatedGuide = await Post.findOneAndUpdate(filter, update, {
-      new: true
-    })
-    res.status(200).json({message: "successfully updated guide.", updatedGuide})
+      new: true,
+    });
+    res
+      .status(200)
+      .json({ message: "successfully updated guide.", updatedGuide });
   } catch (error) {
-    res.status(500).json({message: "error on /approveGuide"})
+    res.status(500).json({ message: "error on /approveGuide" });
   }
-})
+});
+
+
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
   let fail = "fail";

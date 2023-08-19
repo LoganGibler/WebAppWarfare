@@ -7,6 +7,7 @@ import {
   getPublishedUnapprovedGuides,
   getUserByID,
   approveGuide,
+  unpublishGuide,
 } from "../api";
 
 const Profile = ({ userBlogs }) => {
@@ -85,15 +86,16 @@ const Profile = ({ userBlogs }) => {
                 {unapprovedGuides.length ? (
                   unapprovedGuides.map((guide) => {
                     return (
-                      <div
-                        className="blog-profile-div-dev"
-                        key={guide._id}
-                        onClick={() => {
-                          history.push(`/blog/${guide._id}`);
-                        }}
-                      >
+                      <div className="blog-profile-div-dev" key={guide._id}>
                         <div className="profile-dev-main-container">
-                          <div className="dev-title-date-div">
+                          <div
+                            className="dev-title-date-div"
+                            onClick={async (e) => {
+                              if (e.target == e.currentTarget) {
+                                history.push(`/blog/${guide._id}`);
+                              }
+                            }}
+                          >
                             <h6 className="vmtitle-profile-unapproved">
                               {guide.vmtitle}
                             </h6>
@@ -105,15 +107,22 @@ const Profile = ({ userBlogs }) => {
                             <div className="profile-dev-approve-reject-div">
                               <button
                                 className="profile-approve-button"
-                                onClick={() => {
-                                  approveGuide(guide._id);
-                                  alert("Guide Approved.");
+                                onClick={async (e) => {
+                                  await approveGuide(guide._id);
                                   location.reload();
                                 }}
                               >
                                 Approve
                               </button>
-                              <button className="profile-reject-button">
+                              <button
+                                className="profile-reject-button"
+                                onClick={async (e) => {
+                                  if (e.target == e.currentTarget) {
+                                    await unpublishGuide(guide._id);
+                                    location.reload();
+                                  }
+                                }}
+                              >
                                 Reject
                               </button>
                             </div>

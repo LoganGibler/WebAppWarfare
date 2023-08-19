@@ -6,13 +6,14 @@ import "../css/guide.css";
 const Guide = () => {
   const [guide, setGuide] = useState([]);
   let { id } = useParams();
-  console.log("id:", id);
+  // console.log("id:", id);
   let counter = 0;
 
   async function fetchGuide(id) {
     const fetchedGuide = await getBlogById(id);
     setGuide(fetchedGuide.blog);
   }
+
   useEffect(() => {
     fetchGuide(id);
   }, []);
@@ -32,11 +33,12 @@ const Guide = () => {
         <div className="guide-description-div">
           <p className="guide-description-p">{guide.description}</p>
         </div>
-
         <div className="guide-main-step-div">
           {steppies ? (
             steppies.map((step) => {
-              // console.log("step:", step.step);
+              if (step.step === null) {
+                return;
+              }
               counter = counter + 1;
               if (!step.step && counter === 1) {
                 return (

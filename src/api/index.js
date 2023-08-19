@@ -1,14 +1,14 @@
 import axios from "axios";
 require("dotenv").config();
 
-const env = "main"
+const env = "QA"
 if (env==="main"){
-  var BASE = process.env.API_CONN_MAIN;
+  var BASE = "https://webappwarfare-api.onrender.com"
 } else{
-  var BASE = process.env.API_CONN_QA;
+  var BASE = "http://localhost:8000";
 }
       
-
+console.log("api connection string:", BASE)
 export async function createGuide(
   vmtitle,
   hostedby,
@@ -194,6 +194,20 @@ export async function approveGuide(_id) {
     return data;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function deleteStep(_id, index){
+  try {
+    console.log("This is passed in index", index)
+    const deletedStep = await axios.post(`${BASE}/deleteStep`, {
+      _id: _id,
+      index: index
+    })
+
+    return deletedStep
+  } catch (error) {
+    throw error
   }
 }
 // user api calls/////////////////////////////////////

@@ -15,9 +15,13 @@
     width: 100vh;
     padding: 50px;
     border-radius: 5px;
-    color: #B8B8B8;
+    color: #C0C0C0;
     height: 100%;
-    /* border: 1px solid #282828; */
+    /* border: 1px solid white; */
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 7px;
+
 }
 
 .guide-title {
@@ -43,9 +47,14 @@
     padding: 5px;
     margin-top: 5%;
     font-size: 16px;
-    color: #B8B8B8;
-    border-radius: 5px;
-    border-left: 5px solid white;
+    color: #C0C0C0;
+    /* border-radius: 5px; */
+    border-left: 3px solid white;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 7px;
+    margin-bottom: 5%;
+
 }
 
 .guide-step-element {
@@ -60,7 +69,7 @@
 
 .guide-step-main-div {
     margin-top: 3%;
-    border-top: 2px solid white;
+    border-top: 1px solid #C0C0C0;
 }
 
 .hostedby-difficulty-div-guide {

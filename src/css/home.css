@@ -40,15 +40,19 @@ text-color: #B8B8B8; */
     margin-top: 2%;
     font-size: 14px;
     /* margin: 2%; */
-    border-radius: 5px;
+    /* border-radius: 5px; */
     /* color: #dcdcdc; */
     width: 80vh;
-    color: #B8B8B8;
+    color: #C0C0C0;
     background-color: #263143;
+
     padding: 25px;
     word-wrap: break-word;
     /* border-bottom: white 1px solid; */
     border-left: 5px solid white;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 2px;
 }
 
 .blog-div:hover {
@@ -94,6 +98,7 @@ text-color: #B8B8B8; */
     display: inline-block;
     word-break: break-word;
     margin-left: 2%;
+    line-height: 20px;
 }
 
 .home-guide-title {
@@ -123,18 +128,38 @@ text-color: #B8B8B8; */
     cursor: pointer;
     border: 1px solid white;
 } */
+.home-searchbar-main-container {
+    display: flex;
+    align-items: center;
+}
 
 .home-searchbar-form {
-    margin-left: 6%;
+    /* margin-left: 45%; */
+    /* margin: auto; */
+    width: 80vh;
+    display: flex;
+    background-color: #263143;
+    padding: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 2px;
+}
+
+.searchbar-button-input-div {
+    margin-left: 50%;
+    margin: auto;
     display: flex;
 }
 
 .home-searchbar-input {
-    width: 60vh;
+    margin-left: 50%;
+    margin: auto;
+    width: 67vh;
     background-color: #1a2332;
     padding: 5px;
     text-indent: 10px;
-    border-radius: 5px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     color: #B8B8B8;
     border: 1px solid #B8B8B8;
 }

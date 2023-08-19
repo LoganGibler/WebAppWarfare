@@ -23,57 +23,56 @@ const Home = () => {
   return (
     <div className="main-blogs-div">
       <div className="center-me-div">
-        <div
-          className="home-searchbar-form"
-          // onSubmit={async () => {
-          //   const foundGuides = await getGuidesBySearch(search);
-          //   console.log(foundGuides);
-          //   console.log(publicBlogs);
-          //   setPublicBlogs(foundGuides);
-          // }}
-        >
-          <input
-            className="home-searchbar-input"
-            placeholder="Search Guides here..."
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          ></input>
-          <button
-            className="home-searchbar-button"
-            onClick={async () => {
-              try {
-                if (search.length > 0) {
-                  let foundGuides = await getGuidesBySearch(search);
-                  console.log((foundGuides = foundGuides.allFoundGuides[0]));
-                  if (foundGuides != undefined) {
-                    console.log(foundGuides);
-                    let sortedGuides = [];
-                    const filteredGuides = foundGuides.map((guide) => {
-                      if (guide.published === true) {
-                        sortedGuides.push(guide);
+        <div className="home-searchbar-main-container">
+          <div className="home-searchbar-form">
+            <div className="searchbar-button-input-div">
+              <input
+                className="home-searchbar-input"
+                placeholder="Search Guides here..."
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              ></input>
+              <button
+                className="home-searchbar-button"
+                onClick={async () => {
+                  try {
+                    if (search.length > 0) {
+                      let foundGuides = await getGuidesBySearch(search);
+                      console.log(
+                        (foundGuides = foundGuides.allFoundGuides[0])
+                      );
+                      if (foundGuides != undefined) {
+                        console.log(foundGuides);
+                        let sortedGuides = [];
+                        const filteredGuides = foundGuides.map((guide) => {
+                          if (guide.published === true) {
+                            sortedGuides.push(guide);
+                          }
+                        });
+                        console.log("THIS IS sortedGuides", sortedGuides);
+                        setPublicBlogs(sortedGuides);
+                        console.log("This is now public blogs", publicBlogs);
+                        if (searchedGuides) {
+                          setActive(true);
+                        }
+                      } else {
+                        console.log("no guides found");
                       }
-                    });
-                    console.log("THIS IS sortedGuides", sortedGuides);
-                    setPublicBlogs(sortedGuides);
-                    console.log("This is now public blogs", publicBlogs);
-                    if (searchedGuides) {
-                      setActive(true);
+                    } else {
+                      return;
                     }
-                  } else {
-                    console.log("no guides found");
+                  } catch (error) {
+                    throw error;
                   }
-                } else {
-                  return;
-                }
-              } catch (error) {
-                throw error;
-              }
-            }}
-          >
-            Search
-          </button>
+                }}
+              >
+                Search
+              </button>
+            </div>
+          </div>
         </div>
+
         {/* {active && */}
         {/* searchedGuides.map((blog) => {
             return (

@@ -1,0 +1,31 @@
+08/19/2023
+
+Devs can approve and reject guides      DONE
+Users can delete steps on owned guides
+Users can upload screenshots to guides
+fix page clip when reloading if the guide only has 1 step   
+Public posts must be approve and published to show on home  DONE
+fix search bar showing unpublished unapproved guides        DONE
+Guides with the same title are showing public, when not actually public
+
+
+
+
+
+
+
+
+
+Stretch Goals/ future ideas:
+  2. Users should have "likes"? Maybe individual likes on guides? All guides
+     sorted by likes on home page?
+  3. Have Guides not extend forever down the page, have page1, page2, page3.
+     Maybe only 5/6 per page. Will have to do research on this.
+
+ 4. post questions- either directly related to the guide, or maybe just random forum
+    for questions and answers. Should there be approval for this? maybe have input
+    sanitization for bad wordsd
+
+ 5. rework css into tailwind- its time to use a css framework! 
+
+ do dimensions for iphone.

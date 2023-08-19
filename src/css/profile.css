@@ -151,9 +151,10 @@ text-color: #B8B8B8; */
     /* margin-left: 5%; */
     /* margin-left: 5%; */
     display: flex;
-    /* width: 15vh; */
+    width: 18vh;
     margin-left: 52%;
 }
+
 
 .date-profile-unapproved {
     font-size: 12px;

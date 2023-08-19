@@ -9,6 +9,7 @@ import {
   publishGuide,
   getBlogById,
   deleteGuide,
+  deleteStep,
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
@@ -22,11 +23,12 @@ const EditGuide = () => {
   let [showEditStepButton, setShowEditStepButton] = useState(true);
   let [showAddStepButton, setShowAddStepButton] = useState(true);
   let [userGuide, setUserGuide] = useState([]);
+  let [uploadImage, setUploadImage] = useState(null);
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
   let steppies = userGuide.steps;
-
+  let stepCounter = 0;
   async function fetchUserGuide(id) {
     let guide = await getBlogById(id);
     // console.log(guide);
@@ -44,8 +46,13 @@ const EditGuide = () => {
       async function getStepData() {
         let newStepData = document.getElementById("step-area").value;
         // console.log("this should be new step data:", newStepData);
-        let addedSteppie = await addStep(id, newStepData);
-        return addedSteppie;
+        if (newStepData !== null) {
+          let addedSteppie = await addStep(id, newStepData);
+          return addedSteppie;
+        } else {
+          alert("Please enter Step data.");
+          location.reload();
+        }
       }
 
       return (
@@ -60,21 +67,34 @@ const EditGuide = () => {
             ></textarea>
           </div>
           <div className="editguide-newstep-button-div">
-            <button
-              className="editguide-newstep-button"
-              onClick={async () => {
-                const data = await getStepData();
-                // console.log(data, "!!!!!!!!");
-                if (!data) {
-                  alert("Step Failed to add.");
-                } else {
-                  // alert("New Step added!");
-                }
-                location.reload();
-              }}
-            >
-              Submit Step
-            </button>
+            <div className="editguide-imageupload-main-container">
+              <button
+                className="editguide-newstep-button"
+                type="submit"
+                onClick={async () => {
+                  const data = await getStepData();
+                  // console.log(data, "!!!!!!!!");
+                  if (!data) {
+                    alert("Step Failed to add.");
+                  } else {
+                    // alert("New Step added!");
+                  }
+                  location.reload();
+                }}
+              >
+                Submit Step
+              </button>
+
+              <label className="editguide-imageupload-label">Upload Img</label>
+              <input
+                className="editguide-image-input"
+                type="file"
+                id="image"
+                name="image"
+                value=""
+                required
+              ></input>
+            </div>
           </div>
         </div>
       );
@@ -125,7 +145,8 @@ const EditGuide = () => {
     }
   }
 
-  function renderEditStepBox(id, index) {
+  function renderEditStepBox(id, index, stepCounterIndex) {
+    console.log("stepCounterIndex:", stepCounterIndex);
     // console.log("id:", id);
     // console.log("index:", index);
     try {
@@ -144,16 +165,28 @@ const EditGuide = () => {
           <textarea id="editguide-step-textarea">
             {userGuide.steps[index].step}
           </textarea>
-          <p
-            className="editguide-update-step-p"
-            onClick={() => {
-              getNewStepData();
-              // alert("Step Updated.");
-              location.reload();
-            }}
-          >
-            Update Step
-          </p>
+          <div className="updatestep-deletestep-div">
+            <p
+              className="editguide-update-step-p"
+              onClick={async () => {
+                await getNewStepData();
+                // alert("Step Updated.");
+                location.reload();
+              }}
+            >
+              Update Step
+            </p>
+            <p
+              className="delete-step-p"
+              onClick={async () => {
+                await deleteStep(id, stepCounterIndex);
+                alert("Step deleted.");
+                location.reload();
+              }}
+            >
+              Delete &nbsp; ↑
+            </p>
+          </div>
         </div>
       );
     } catch (error) {
@@ -184,12 +217,16 @@ const EditGuide = () => {
 
         {steppies ? (
           steppies.map((step) => {
-            // console.log(steppies);
-            if (step === null) {
+            // console.log(step);
+            if (step.step === null) {
+              stepCounter += 1;
+              var stepCounterIndex = stepCounter - 1;
               return;
             }
             counter = counter + 1;
-            let index = counter - 1;
+            var index = counter - 1;
+            var stepCounterIndex = stepCounter;
+            stepCounter += 1;
             return (
               <div className="editstep-outside-div" key={counter}>
                 <div className="editguide-step-div">
@@ -203,8 +240,14 @@ const EditGuide = () => {
                     onClick={() => {
                       setShowEditStepButton(false);
                       setRenderEditBox(index);
-                      console.log("This is index: ", index);
-                      setEditStep_html(renderEditStepBox(userGuide._id, index));
+                      // console.log("This is index: ", index);
+                      setEditStep_html(
+                        renderEditStepBox(
+                          userGuide._id,
+                          index,
+                          stepCounterIndex
+                        )
+                      );
                     }}
                   >
                     Edit →

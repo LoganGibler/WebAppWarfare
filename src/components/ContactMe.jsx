@@ -8,7 +8,7 @@ import "../css/contactme.css";
 const ContactMe = () => {
   const [subject, setSubject] = useState("");
   const [comment, setComment] = useState("");
-  const submittedBy = getUser();
+  let submittedBy = getUser();
   // let api_FrontEnd = process.env.API_FE;
   // console.log(api_FrontEnd);
   return (
@@ -18,7 +18,10 @@ const ContactMe = () => {
         onSubmit={async (e) => {
           e.preventDefault();
           try {
-            if (submittedBy && subject && comment) {
+            if (!submittedBy) {
+              submittedBy = "Anonymous User";
+            }
+            if (subject && comment) {
               const feedback = await sendFeedbackToDB(
                 submittedBy,
                 subject,
@@ -34,7 +37,7 @@ const ContactMe = () => {
                 location.reload();
               }
             } else {
-              alert("Please fill out all fields.");
+              alert("Please Fill out all fields.");
             }
           } catch (error) {
             throw error;
