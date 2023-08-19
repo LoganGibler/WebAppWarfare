@@ -43,7 +43,6 @@ const EditGuide = () => {
     try {
       async function getStepData() {
         let newStepData = document.getElementById("step-area").value;
-        // setNewStep(newStepData);
         // console.log("this should be new step data:", newStepData);
         let addedSteppie = await addStep(id, newStepData);
         return addedSteppie;
@@ -133,9 +132,10 @@ const EditGuide = () => {
       async function getNewStepData() {
         let newStepData = document.getElementById("editguide-step-textarea")
           .value;
+        console.log("This should be new typed in step data: ", newStepData);
         // console.log("this should be new step data:", newStepData);
         let newStep = await updateSteppie(id, index, newStepData);
-        // console.log("This is new step", newStep);
+        console.log("This is new step", newStep);
         return newStep;
       }
 
@@ -203,6 +203,7 @@ const EditGuide = () => {
                     onClick={() => {
                       setShowEditStepButton(false);
                       setRenderEditBox(index);
+                      console.log("This is index: ", index);
                       setEditStep_html(renderEditStepBox(userGuide._id, index));
                     }}
                   >
