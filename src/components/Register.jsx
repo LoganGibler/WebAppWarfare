@@ -10,7 +10,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   let history = useHistory();
 
-
   return (
     <div className="main-form-div">
       <form
@@ -19,8 +18,8 @@ const Register = () => {
           e.preventDefault();
           try {
             let hashedPassword = await hashPassword(password);
-             hashedPassword = hashedPassword.data.hashed_pass;
-          
+            hashedPassword = hashedPassword.data.hashed_pass;
+
             const { token } = await registerUser(username, hashedPassword);
             if (token) {
               console.log("this is token", token);

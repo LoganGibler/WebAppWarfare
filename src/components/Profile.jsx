@@ -79,37 +79,45 @@ const Profile = ({ userBlogs }) => {
           <div className="dev-approval-guides-div">
             {user.admin === true ? (
               <div>
-                <h5>Guides awaiting Dev approval:</h5>
+                <h5 className="profile-dev-header">
+                  Guides awaiting Dev approval:
+                </h5>
                 {unapprovedGuides.length ? (
                   unapprovedGuides.map((guide) => {
                     return (
                       <div
-                        className="blog-profile-div"
+                        className="blog-profile-div-dev"
                         key={guide._id}
                         onClick={() => {
                           history.push(`/blog/${guide._id}`);
                         }}
                       >
-                        <div className="title-date-div">
-                          <h6 className="vmtitle-profile-unapproved">
-                            {guide.vmtitle}
-                          </h6>
-                          <p className="date-profile-unapproved">
-                            Created: {guide.date}
-                          </p>
-                          <button
-                            className="profile-approve-button"
-                            onClick={() => {
-                              approveGuide(guide._id);
-                              alert("Guide Approved.");
-                              location.reload();
-                            }}
-                          >
-                            Approve
-                          </button>
-                          <button className="profile-reject-button">
-                            Reject
-                          </button>
+                        <div className="profile-dev-main-container">
+                          <div className="dev-title-date-div">
+                            <h6 className="vmtitle-profile-unapproved">
+                              {guide.vmtitle}
+                            </h6>
+                            <div className="date-dev-profile-div">
+                              <p className="date-profile-unapproved">
+                                Created: {guide.date}
+                              </p>
+                            </div>
+                            <div className="profile-dev-approve-reject-div">
+                              <button
+                                className="profile-approve-button"
+                                onClick={() => {
+                                  approveGuide(guide._id);
+                                  alert("Guide Approved.");
+                                  location.reload();
+                                }}
+                              >
+                                Approve
+                              </button>
+                              <button className="profile-reject-button">
+                                Reject
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     );

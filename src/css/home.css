@@ -3,6 +3,12 @@
     /* display: flex; */
 }
 
+
+/* background-color: #1a2332;
+lighter-bacgkround: #263143;
+highlight-color: white;
+text-color: #B8B8B8; */
+
 .center-me-div {
     background-color: #1a2332;
     margin-left: 50%;
@@ -31,23 +37,24 @@
 }
 
 .blog-div {
-    margin-top: 1%;
+    margin-top: 2%;
     font-size: 14px;
     /* margin: 2%; */
-    border-radius: 2px;
+    border-radius: 5px;
     /* color: #dcdcdc; */
     width: 80vh;
     color: #B8B8B8;
-    background-color: #1a2332;
+    background-color: #263143;
     padding: 25px;
     word-wrap: break-word;
-    border-bottom: white 1px solid;
+    /* border-bottom: white 1px solid; */
+    border-left: 5px solid white;
 }
 
 .blog-div:hover {
     /* border-radius: 35px; */
     cursor: pointer;
-    background-color: #1a2332;
+    /* background-color: #1a2332; */
     color: white;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 

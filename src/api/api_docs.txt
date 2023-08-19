@@ -38,13 +38,13 @@ Guide Requests:
 
         /createPost
         {
-            vmtitle: vmtitle,
-            hostedby: hostedby,
-            description: description,
-            published: published,
-            author: author,
-            date: date,
-            difficulty: difficulty,
-            approved: approved
+            "vmtitle": "vmtitle",
+            "hostedby": "hostedby",
+            "description": "description",
+            "published": true/false,
+            "author": "author",
+            "date": "date",
+            "difficulty": "difficulty",
+            "approved": true/false
         }
 

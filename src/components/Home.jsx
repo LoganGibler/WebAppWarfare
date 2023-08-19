@@ -45,7 +45,7 @@ const Home = () => {
               try {
                 if (search.length > 0) {
                   let foundGuides = await getGuidesBySearch(search);
-                  console.log(foundGuides = foundGuides.allFoundGuides[0])
+                  console.log((foundGuides = foundGuides.allFoundGuides[0]));
                   if (foundGuides != undefined) {
                     console.log(foundGuides);
                     let sortedGuides = [];
@@ -60,10 +60,10 @@ const Home = () => {
                     if (searchedGuides) {
                       setActive(true);
                     }
-                  } else{
-                    console.log("no guides found")
+                  } else {
+                    console.log("no guides found");
                   }
-                } else{
+                } else {
                   return;
                 }
               } catch (error) {

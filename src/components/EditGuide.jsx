@@ -131,9 +131,8 @@ const EditGuide = () => {
     // console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById(
-          "editguide-step-textarea"
-        ).value;
+        let newStepData = document.getElementById("editguide-step-textarea")
+          .value;
         // console.log("this should be new step data:", newStepData);
         let newStep = await updateSteppie(id, index, newStepData);
         // console.log("This is new step", newStep);
