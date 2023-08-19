@@ -1,6 +1,4 @@
 import axios from "axios";
-import { storeToken, StoreUser } from "../auth";
-import { async } from "q";
 require("dotenv").config();
 const BASE = "https://webappwarfare-api.onrender.com";
 // const BASE = "http://localhost:8000";
