@@ -3,9 +3,9 @@ require("dotenv").config();
 
 const env = "main"
 if (env==="main"){
-  const BASE = process.env.API_CONN_MAIN;
+  var BASE = process.env.API_CONN_MAIN;
 } else{
-  const BASE = process.env.API_CONN_QA;
+  var BASE = process.env.API_CONN_QA;
 }
       
 
