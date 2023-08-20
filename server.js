@@ -4,9 +4,12 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
+const multer = require("multer");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "neverTell" } = process.env;
+const uuidv4 = require("uuid").v4;
+let Image = require("./db/imageModel");
 app.enable("trust proxy");
 app.use(morgan("dev"));
 app.use(express.json());
@@ -505,22 +508,69 @@ app.post("/sendFeedback", async (req, res) => {
   }
 });
 // IMAGE UPLOAD FUNCTIONS////////////////////////////////////////////////
+// app.post("/uploadImage", async (req, res) => {
+//   try {
+
+//     if (!req.body.image){
+//       res.status(500).json({ message: "failed to upload image."})
+//     } else{
+//       res.status(200).json({ message: "image uploaded successfully.", image})
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: "failed to upload image." })
+//   }
+// });
+
+const DIR = "./uploads";
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.toLowerCase().split(" ").join("-");
+    cb(null, uuidv4() + "-" + fileName);
+  },
+});
+
+var upload = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (
+      file.minetype == "image/png" ||
+      file.minetype == "image/jpg" ||
+      file.mimetype == "image/jpeg"
+    ) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
+    }
+  },
+});
+
 app.post("/uploadImage", upload.single("image"), async (req, res) => {
-  try {
-    console.log("this is req.body:", req.body);
-    res.send("uploaded image!");
-  } catch (error) {
-    throw error;
-  }
+  // pass in guide ID and step index
+  const url = req.protocol + "://" + req.get("host");
+  const image = new Image({
+    image: url + "/uploads/" + req.file.filename,
+  });
+  image
+    .save()
+    .then((result) => {
+      res.status(200).json({ message: "Image uploaded successfully!", result });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ message: "Failed to upload image." });
+    });
 });
 
 mongoose
   .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
-      console.log(`server is running on port: ${process.env.PORT}`);
+      console.log("connected to mongodb");
     });
-    console.log("connected to mongodb");
   })
   .catch((error) => {
     console.log(error);

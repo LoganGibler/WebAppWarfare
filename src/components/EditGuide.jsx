@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import axios from "axios";
 import {
   addStep,
   getBlogsByUsername,
@@ -10,9 +11,11 @@ import {
   getBlogById,
   deleteGuide,
   deleteStep,
+  uploadImage,
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
+import FileUploadComponent from "./FileUpload";
 
 const EditGuide = () => {
   let history = useHistory();
@@ -24,7 +27,7 @@ const EditGuide = () => {
   let [showEditStepButton, setShowEditStepButton] = useState(true);
   let [showAddStepButton, setShowAddStepButton] = useState(true);
   let [userGuide, setUserGuide] = useState([]);
-  let [image, setImage] = useState("");
+  let [image, setImage] = useState({ image: "" });
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
@@ -40,21 +43,14 @@ const EditGuide = () => {
   useEffect(() => {
     fetchUserGuide(id);
   }, [id]);
-  const submitImage = (e) => {
-    e.preventDefault()
-    const formData = new FormData();
-    formData.append("image", image);
 
-    const result = await axios.post("http://localhost:8000/uploadImage", formData, {
-      headers: {"Content-Type": "multipart/form-data"},
-    })
-  }
-  const onImageChange = (e) => {
-    console.log(e.target.files[0]);
-    setImage(e.target.files[0]);
-  };
+  // async function imageUploadChange(e) {
+  //   setImage(e.target.files[0]);
+  //   console.log("This is image uploaded",image)
+  //   await uploadImage(image)
+  // }
 
-  function renderStepBox(id) {
+  function renderStepBox(id, stepCounter) {
     try {
       async function getStepData() {
         let newStepData = document.getElementById("step-area").value;
@@ -97,22 +93,12 @@ const EditGuide = () => {
               >
                 Submit Step
               </button>
-              <label className="editguide-imageupload-label">Upload Img</label>
-              <input
-                className="editguide-image-input"
-                type="file"
-                id="image"
-                name="image"
-                accept="image/*"
-                onChange={onImageChange}
-              ></input>
-              {image == "" || image == null ? null : (
-                <img
-                  className="editguide-image-preview"
-                  src={image}
-                  alt="preview"
-                ></img>
-              )}
+{/*       
+              <form>
+                <input type="file"></input>
+                <button type="submit">Upload Img</button>
+              </form> */}
+              <FileUploadComponent id={id} stepCounter={stepCounter}/>
             </div>
           </div>
         </div>

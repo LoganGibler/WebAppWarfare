@@ -1,14 +1,14 @@
 import axios from "axios";
 require("dotenv").config();
 
-const env = "QA"
-if (env==="main"){
-  var BASE = "https://webappwarfare-api.onrender.com"
-} else{
+const env = "QA";
+if (env === "main") {
+  var BASE = "https://webappwarfare-api.onrender.com";
+} else {
   var BASE = "http://localhost:8000";
 }
-      
-console.log("api connection string:", BASE)
+
+// console.log("api connection string:", BASE);
 export async function createGuide(
   vmtitle,
   hostedby,
@@ -197,17 +197,17 @@ export async function approveGuide(_id) {
   }
 }
 
-export async function deleteStep(_id, index){
+export async function deleteStep(_id, index) {
   try {
-    console.log("This is passed in index", index)
+    console.log("This is passed in index", index);
     const deletedStep = await axios.post(`${BASE}/deleteStep`, {
       _id: _id,
-      index: index
-    })
+      index: index,
+    });
 
-    return deletedStep
+    return deletedStep;
   } catch (error) {
-    throw error
+    throw error;
   }
 }
 // user api calls/////////////////////////////////////
@@ -269,6 +269,20 @@ export async function sendFeedbackToDB(submittedBy, subject, comment) {
       comment: comment,
     });
     return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+// IMAGE UPLOAD API CALLS
+
+export async function uploadImage(image) {
+  try {
+    console.log(image)
+    const imgUpload = await axios.post(`${BASE}/uploadImage`, {
+      image: image,
+    })
+    return imgUpload;
   } catch (error) {
     throw error;
   }
