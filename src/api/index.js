@@ -1,7 +1,7 @@
 import axios from "axios";
 require("dotenv").config();
 
-const env = "QA"
+const env = "main"
 if (env==="main"){
   var BASE = "https://webappwarfare-api.onrender.com"
 } else{

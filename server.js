@@ -12,7 +12,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-const env = "QA";
+const env = "main";
 
 if (env === "main") {
   var BASE = process.env.MONGO_URI_MAIN;
@@ -508,7 +508,7 @@ app.post("/sendFeedback", async (req, res) => {
 });
 
 mongoose
-  .connect(BASE)
+  .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
       console.log(`server is running on port: ${process.env.PORT}`);
