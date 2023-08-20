@@ -287,3 +287,16 @@ export async function uploadImage(image) {
     throw error;
   }
 }
+
+export async function uploadImageDetails(image_id, id, index){
+  try {
+    const {details} = await axios.post(`${BASE}/uploadImageDetails`, {
+      _id: image_id,
+      id: id,
+      step_index: index
+    })
+    return details
+  } catch (error) {
+    throw error
+  }
+}

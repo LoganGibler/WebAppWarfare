@@ -12,6 +12,7 @@ import {
   deleteGuide,
   deleteStep,
   uploadImage,
+  uploadImageDetails
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
@@ -278,7 +279,7 @@ const EditGuide = () => {
               onClick={() => {
                 // console.log("click!");
                 setShowAddStepButton(false);
-                setHtml(renderStepBox(id));
+                setHtml(renderStepBox(id, stepCounter));
               }}
             >
               Add Step &nbsp; ↑

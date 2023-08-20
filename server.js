@@ -508,18 +508,6 @@ app.post("/sendFeedback", async (req, res) => {
   }
 });
 // IMAGE UPLOAD FUNCTIONS////////////////////////////////////////////////
-// app.post("/uploadImage", async (req, res) => {
-//   try {
-
-//     if (!req.body.image){
-//       res.status(500).json({ message: "failed to upload image."})
-//     } else{
-//       res.status(200).json({ message: "image uploaded successfully.", image})
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: "failed to upload image." })
-//   }
-// });
 
 const DIR = "./uploads";
 const storage = multer.diskStorage({
@@ -550,9 +538,12 @@ var upload = multer({
 
 app.post("/uploadImage", upload.single("image"), async (req, res) => {
   // pass in guide ID and step index
+  console.log("this is req:", req.body);
   const url = req.protocol + "://" + req.get("host");
   const image = new Image({
     image: url + "/uploads/" + req.file.filename,
+    step_index: req.body.step_index,
+    guide_id: req.body.guide_id,
   });
   image
     .save()
@@ -564,6 +555,28 @@ app.post("/uploadImage", upload.single("image"), async (req, res) => {
       res.status(500).json({ message: "Failed to upload image." });
     });
 });
+
+// app.post("/uploadImageDetails", async (req, res) => {
+//   try {
+//     const filter = { _id: req.body._id };
+//     const update = { guide_id: req.body.id, step_index: req.body.step_index };
+//     const imageDetails = await Image.updateOne(filter, update, {
+//       new: true,
+//     });
+//     if (imageDetails) {
+//       res
+//         .status(200)
+//         .json({
+//           message: "Image details uploaded successfully!",
+//           imageDetails,
+//         });
+//     } else {
+//       res.status(500).json({ message: "Failed to upload image details." });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ message: "failed to upload image." });
+//   }
+// });
 
 mongoose
   .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
