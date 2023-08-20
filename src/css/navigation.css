@@ -8,7 +8,7 @@
 .nav-container-loggedin {
     /* margin-top: 1%; */
     padding-top: 7px;
-    padding-bottom: 6px;
+    padding-bottom: 3px;
     display: flex;
     background-color: #263143;
     text-align: center;
@@ -108,7 +108,10 @@
     color: white;
     white-space: nowrap;
     padding: 12px;
-    border-radius: 3px;
+    margin-bottom: .4%;
+    /* border-radius: 3px; */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     align-self: center;
     border-left: 1px solid #263143;
     border-right: 1px solid #263143;

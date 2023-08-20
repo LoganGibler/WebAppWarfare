@@ -13,6 +13,7 @@ import {
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
+
 const EditGuide = () => {
   let history = useHistory();
   let [html, setHtml] = useState(null);
@@ -23,12 +24,13 @@ const EditGuide = () => {
   let [showEditStepButton, setShowEditStepButton] = useState(true);
   let [showAddStepButton, setShowAddStepButton] = useState(true);
   let [userGuide, setUserGuide] = useState([]);
-  let [uploadImage, setUploadImage] = useState(null);
+  let [image, setImage] = useState("");
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
   let steppies = userGuide.steps;
   let stepCounter = 0;
+
   async function fetchUserGuide(id) {
     let guide = await getBlogById(id);
     // console.log(guide);
@@ -38,9 +40,20 @@ const EditGuide = () => {
   useEffect(() => {
     fetchUserGuide(id);
   }, [id]);
+  const submitImage = (e) => {
+    e.preventDefault()
+    const formData = new FormData();
+    formData.append("image", image);
 
-  // console.log("this is userGuide", userGuide);
-  // console.log("this is steppies:", steppies);
+    const result = await axios.post("http://localhost:8000/uploadImage", formData, {
+      headers: {"Content-Type": "multipart/form-data"},
+    })
+  }
+  const onImageChange = (e) => {
+    console.log(e.target.files[0]);
+    setImage(e.target.files[0]);
+  };
+
   function renderStepBox(id) {
     try {
       async function getStepData() {
@@ -84,16 +97,22 @@ const EditGuide = () => {
               >
                 Submit Step
               </button>
-
               <label className="editguide-imageupload-label">Upload Img</label>
               <input
                 className="editguide-image-input"
                 type="file"
                 id="image"
                 name="image"
-                value=""
-                required
+                accept="image/*"
+                onChange={onImageChange}
               ></input>
+              {image == "" || image == null ? null : (
+                <img
+                  className="editguide-image-preview"
+                  src={image}
+                  alt="preview"
+                ></img>
+              )}
             </div>
           </div>
         </div>
@@ -151,8 +170,9 @@ const EditGuide = () => {
     // console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById("editguide-step-textarea")
-          .value;
+        let newStepData = document.getElementById(
+          "editguide-step-textarea"
+        ).value;
         console.log("This should be new typed in step data: ", newStepData);
         // console.log("this should be new step data:", newStepData);
         let newStep = await updateSteppie(id, index, newStepData);

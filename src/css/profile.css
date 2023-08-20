@@ -221,6 +221,14 @@ text-color: #B8B8B8; */
     display: flex;
 }
 
+.no-guides-approval{
+    padding-top: 10px;
+}
+
+.no-guides-approval-div{
+    margin-top: 2%;
+    margin-left: 5%;
+}
 /* .edit-description-p {
     text-indent: 7px;
     margin-top: 3%;

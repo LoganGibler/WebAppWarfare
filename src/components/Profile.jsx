@@ -132,7 +132,11 @@ const Profile = ({ userBlogs }) => {
                     );
                   })
                 ) : (
-                  <h5>No Guides awaiting approval</h5>
+                  <div className="no-guides-approval-div">
+                    <h7 className="no-guides-approval">
+                      All Dev tasks have been completed. 
+                    </h7>
+                  </div>
                 )}
               </div>
             ) : null}

@@ -247,10 +247,9 @@ app.post("/deleteStep", async (req, res) => {
     });
     // console.log("updated STEP:",updatedStep.steps)
 
-
     // const deleted_null_steps = await Post.update(filter, {$pullAll: {steps: {step: null}}})
     // console.log("deleted null steps: ",deleted_null_steps)
-    res.status(200).json({ message: "step deleted.", updatedStep});
+    res.status(200).json({ message: "step deleted.", updatedStep });
   } catch (error) {
     res.status(500).json({ message: "/deleteStep request has failed" });
   }
@@ -365,7 +364,6 @@ app.post("/approveGuide", async (req, res) => {
     res.status(500).json({ message: "error on /approveGuide" });
   }
 });
-
 
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
@@ -504,6 +502,15 @@ app.post("/sendFeedback", async (req, res) => {
     res.status(200).json({ message: "Here is sendComment", sendComment });
   } catch (error) {
     res.status(500).json({ message: "Feedback failed on DB." });
+  }
+});
+// IMAGE UPLOAD FUNCTIONS////////////////////////////////////////////////
+app.post("/uploadImage", upload.single("image"), async (req, res) => {
+  try {
+    console.log("this is req.body:", req.body);
+    res.send("uploaded image!");
+  } catch (error) {
+    throw error;
   }
 });
 
