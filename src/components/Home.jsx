@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "../css/home.css";
 import { useHistory } from "react-router-dom";
 import { getAllPublishedBlogs, getGuidesBySearch } from "../api";
-// { allPublishedBlogs }
+
+
 const Home = () => {
   let [publicBlogs, setPublicBlogs] = useState([]);
   let [search, setSearch] = useState("");
   let [searchedGuides, setSearchedGuides] = useState([]);
   let [active, setActive] = useState(false);
+  let [imageList, setImageList] = useState([]);
   const history = useHistory();
 
   async function fetchPublicBlogs() {

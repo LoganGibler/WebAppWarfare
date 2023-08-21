@@ -1,90 +1,103 @@
 .main-individual-blog-div {
-    display: flex;
-    background-color: #1a2332;
-    margin-top: 2%;
-    /* height: 100vh; */
-    /* height: 100vh; */
-    height: 100%;
-    /* height: 100vh; */
+  display: flex;
+  background-color: #1a2332;
+  margin-top: 2%;
+  /* height: 100vh; */
+  /* height: 100vh; */
+  height: 100%;
+  /* height: 100vh; */
 }
 
 .main-blog-container1 {
-    margin-left: 50%;
-    margin: auto;
-    background-color: #1a2332;
-    width: 100vh;
-    padding: 50px;
-    border-radius: 5px;
-    color: #C0C0C0;
-    height: 100%;
-    /* border: 1px solid white; */
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-top-right-radius: 7px;
-
+  margin-left: 50%;
+  margin: auto;
+  background-color: #1a2332;
+  width: 100vh;
+  padding: 50px;
+  border-radius: 5px;
+  color: #c0c0c0;
+  height: 100%;
+  /* border: 1px solid white; */
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 7px;
 }
 
 .guide-title {
-    color: white;
-
+  color: white;
 }
 
 .date-guide {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .author-guide {
-
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .guide-description-p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .guide-step-div {
-    background-color: #1a2332;
-    padding: 5px;
-    margin-top: 5%;
-    font-size: 16px;
-    color: #C0C0C0;
-    /* border-radius: 5px; */
-    border-left: 3px solid white;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-top-right-radius: 7px;
-    margin-bottom: 5%;
-
+  background-color: #1a2332;
+  padding: 5px;
+  margin-top: 5%;
+  font-size: 16px;
+  color: #c0c0c0;
+  /* border-radius: 5px; */
+  border-left: 3px solid white;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 7px;
+  margin-bottom: 5%;
 }
 
 .guide-step-element {
-    border-radius: 10px;
-    padding: 10px;
-    margin-left: 2%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 2%;
 }
 
 .guide-main-step-div {
-    padding: 10px
+  padding: 10px;
 }
 
 .guide-step-main-div {
-    margin-top: 3%;
-    border-top: 1px solid #C0C0C0;
+  margin-top: 3%;
+  border-top: 1px solid #c0c0c0;
 }
 
 .hostedby-difficulty-div-guide {
-    display: flex;
+  display: flex;
 }
 
 .difficulty-guide {
-    margin-left: 5%;
-    font-size: 14px;
+  margin-left: 5%;
+  font-size: 14px;
 }
 
 .guide-description-div {
-    /* border-bottom: 1px solid #282828; */
+  /* border-bottom: 1px solid #282828; */
 }
 
 .guide-hostedby {
-    font-size: 14px;
+  font-size: 14px;
+}
+
+.guide-uploaded-img-div {
+  margin-top: 3%;
+  display: flex;
+  padding: 10px;
+
+  width: 70vh;
+}
+
+.guide_uploaded_img {
+  /* margin-left: 50%;
+      margin: auto; */
+  max-width: 85vh;
+  max-height: 70vh;
+  border: 1px solid white;
+  margin-left: 5%;
 }

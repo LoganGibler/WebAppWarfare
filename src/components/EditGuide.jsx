@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import axios from "axios";
 import { storage } from "../firebase.js";
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
 import {
   addStep,
   updateDescription,
@@ -42,26 +40,37 @@ const EditGuide = () => {
   };
 
   const handleImageChange = (e) => {
-    inputed_img = e.target.files[0];
+    console.log(e.target.files[0].name);
+    if (e.target.files[0] === null) {
+    } else {
+      inputed_img = e.target.files[0];
+    }
   };
 
   const imageListReg = ref(storage, id);
   function uploadImage(id, index) {
-    console.log(
-      inputed_img,
-      "this is image upload passed into upload img func"
-    );
-    if (inputed_img === null) {
+    // console.log(
+    //   inputed_img,
+    //   "this is image upload passed into upload img func"
+    // );
+    // console.log(inputed_img);
+    if (inputed_img === undefined) {
       console.log("IMAGE NULL");
+      alert("Please select an image to upload.");
       return;
     }
     // console.log("this is image upload", imageUpload)
     const imageRef = ref(storage, `${id + "/" + index}`);
     // console.log("this is imageRef",imageRef)
     uploadBytes(imageRef, inputed_img, metadata).then((snapshot) => {
-      alert(
-        "Image uploaded successfully. Once you submit the step, this image will appear below your Text."
-      );
+      if (index === "main-guide-img") {
+        alert("Guide PFP uploaded.");
+        location.reload();
+      } else {
+        alert(
+          "Image uploaded successfully. Once you submit the step, this image will appear below your Text."
+        );
+      }
     });
   }
 
@@ -125,12 +134,9 @@ const EditGuide = () => {
               >
                 Submit Step
               </button>
-              <input
-                type="file"
-                accept="image/jpg, image/jpeg, image/png"
-                onChange={handleImageChange}
-              ></input>
+
               <button
+                className="editguide-imageupload-button"
                 onClick={() => {
                   uploadImage(id, stepIndex);
                   console.log("click");
@@ -138,6 +144,14 @@ const EditGuide = () => {
               >
                 Upload Img
               </button>
+              <div className="editguide-image-input-div">
+                <input
+                  className="editguide-image-input"
+                  type="file"
+                  accept="image/jpg, image/jpeg, image/png"
+                  onChange={handleImageChange}
+                ></input>
+              </div>
             </div>
           </div>
         </div>
@@ -242,23 +256,63 @@ const EditGuide = () => {
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
+        {
+          // imageList.map((image) => {}
+          imageList.length &&
+            imageList.map((image) => {
+              // console.log("This is image.name", image.name)
+              // how to get last 4 characters of string from index
+              let index = image.split("?");
+              // how to get last character of string
+              // console.log("This is image.split", index);
+              // // index = index[index.length - 1];
+              // // console.log("This is index", index);
+              // console.log("This is image url", image);
+              if (index === "main") {
+                return (
+                  <div className="editguide-uploaded-img-div">
+                    <img className="editguide-uploaded-img-PFP" src={image} />
+                  </div>
+                );
+              }
+            })
+        }
         <h3 className="editguide-title">{userGuide.vmtitle}</h3>
         <p className="author-guide">Created By: {userGuide.author}</p>
         <p className="date-guide">Published on: {userGuide.date}</p>
         <p>{userGuide.hostedby}</p>
         <p className="editguide-description-p">{userGuide.description}</p>
         {description_html}
-        {showEditDescButton && (
-          <p
-            className="edit-description-p"
+
+        <div className="editguide-imageupload-PFP-div">
+          {showEditDescButton && (
+            <p
+              className="edit-description-p"
+              onClick={() => {
+                setShowEditDescButton(false);
+                setDescription_html(renderDescriptionBox(id));
+              }}
+            >
+              Edit Description →
+            </p>
+          )}
+          <button
+            className="editguide-imageupload-button-PFP"
             onClick={() => {
-              setShowEditDescButton(false);
-              setDescription_html(renderDescriptionBox(id));
+              uploadImage(id, "main");
             }}
           >
-            Edit Description →
-          </p>
-        )}
+            Upload Guide PFP
+          </button>
+          <div className="editguide-image-input-div-PFP">
+            <input
+              className="editguide-image-input-PFP"
+              type="file"
+              accept="image/jpg, image/jpeg, image/png"
+              onChange={handleImageChange}
+            ></input>
+          </div>
+        </div>
 
         {steppies ? (
           steppies.map((step) => {
@@ -281,22 +335,30 @@ const EditGuide = () => {
                   <p className="editguide-step-element">
                     Step {counter}: {step.step}
                   </p>
+                  {
+                    // imageList.map((image) => {}
+                    imageList.length &&
+                      imageList.map((image) => {
+                        // console.log("This is image.name", image.name)
+                        let index = image.split("?")[0];
+                        // how to get last character of string
+                        index = index[index.length - 1];
+                        // console.log("This is index", index);
+                        // console.log("This is image url", image);
+                        if (index === stepCounterIndex.toString()) {
+                          return (
+                            <div className="editguide-uploaded-img-div">
+                              <img
+                                className="editguide_uploaded_img"
+                                src={image}
+                              />
+                            </div>
+                          );
+                        }
+                      })
+                  }
                 </div>
-                {
-                  // imageList.map((image) => {}
-                  imageList.length &&
-                    imageList.map((image) => {
-                      // console.log("This is image.name", image.name)
-                      let index = image.split("?")[0];
-                      // how to get last character of string
-                      index = index[index.length - 1];
-                      console.log("This is index", index);
-                      console.log("This is image url", image);
-                      if (index === stepCounterIndex.toString()) {
-                        return <img src={image} />;
-                      }
-                    })
-                }
+
                 {showEditStepButton && (
                   <p
                     className="editguide-p-button"
