@@ -4,16 +4,19 @@ const cors = require("cors");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
-const multer = require("multer");
+// const multer = require("multer");
+// const Grid = require("gridfs-stream");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "neverTell" } = process.env;
-const uuidv4 = require("uuid").v4;
-let Image = require("./db/imageModel");
+// const uuidv4 = require("uuid").v4;
+// const upload = require("./routes/upload");
 app.enable("trust proxy");
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
+
+
 
 const env = "main";
 
@@ -28,6 +31,7 @@ console.log("connected to :", BASE);
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 const Feedback = require("./db/feedbackModel");
+
 
 app.use((_, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -507,76 +511,19 @@ app.post("/sendFeedback", async (req, res) => {
     res.status(500).json({ message: "Feedback failed on DB." });
   }
 });
-// IMAGE UPLOAD FUNCTIONS////////////////////////////////////////////////
 
-const DIR = "./uploads";
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, DIR);
-  },
-  filename: (req, file, cb) => {
-    const fileName = file.originalname.toLowerCase().split(" ").join("-");
-    cb(null, uuidv4() + "-" + fileName);
-  },
+app.post("/getImagesByGuideID", async (req, res) => {
+  try {
+    console.log("this is req.body:", req.body);
+    const filter = { guide_id: req.body.guide_id };
+    const guideImages = await guideImages1.find(filter);
+    console.log("found image: ", guideImages);
+    res.status(200).json({ message: "Images found.", guideImages });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to get image." });
+  }
 });
 
-var upload = multer({
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (
-      file.minetype == "image/png" ||
-      file.minetype == "image/jpg" ||
-      file.mimetype == "image/jpeg"
-    ) {
-      cb(null, true);
-    } else {
-      cb(null, false);
-      return cb(new Error("Only .png, .jpg and .jpeg format allowed!"));
-    }
-  },
-});
-
-app.post("/uploadImage", upload.single("image"), async (req, res) => {
-  // pass in guide ID and step index
-  console.log("this is req:", req.body);
-  const url = req.protocol + "://" + req.get("host");
-  const image = new Image({
-    image: url + "/uploads/" + req.file.filename,
-    step_index: req.body.step_index,
-    guide_id: req.body.guide_id,
-  });
-  image
-    .save()
-    .then((result) => {
-      res.status(200).json({ message: "Image uploaded successfully!", result });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ message: "Failed to upload image." });
-    });
-});
-
-// app.post("/uploadImageDetails", async (req, res) => {
-//   try {
-//     const filter = { _id: req.body._id };
-//     const update = { guide_id: req.body.id, step_index: req.body.step_index };
-//     const imageDetails = await Image.updateOne(filter, update, {
-//       new: true,
-//     });
-//     if (imageDetails) {
-//       res
-//         .status(200)
-//         .json({
-//           message: "Image details uploaded successfully!",
-//           imageDetails,
-//         });
-//     } else {
-//       res.status(500).json({ message: "Failed to upload image details." });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ message: "failed to upload image." });
-//   }
-// });
 
 mongoose
   .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")

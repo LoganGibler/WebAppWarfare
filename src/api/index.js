@@ -276,26 +276,12 @@ export async function sendFeedbackToDB(submittedBy, subject, comment) {
 
 // IMAGE UPLOAD API CALLS
 
-export async function uploadImage(image) {
+export async function getImagesByGuideID(guide_id){
   try {
-    console.log(image)
-    const imgUpload = await axios.post(`${BASE}/uploadImage`, {
-      image: image,
+    const { data } = await axios.post(`${BASE}/getImagesByGuideID`, {
+      guide_id: guide_id,
     })
-    return imgUpload;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function uploadImageDetails(image_id, id, index){
-  try {
-    const {details} = await axios.post(`${BASE}/uploadImageDetails`, {
-      _id: image_id,
-      id: id,
-      step_index: index
-    })
-    return details
+    return data
   } catch (error) {
     throw error
   }

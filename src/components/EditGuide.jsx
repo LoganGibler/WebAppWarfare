@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
+import { storage } from "../firebase.js";
+import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import {
   addStep,
-  getBlogsByUsername,
   updateDescription,
   updateSteppie,
   unpublishGuide,
@@ -11,12 +13,9 @@ import {
   getBlogById,
   deleteGuide,
   deleteStep,
-  uploadImage,
-  uploadImageDetails
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
-import FileUploadComponent from "./FileUpload";
 
 const EditGuide = () => {
   let history = useHistory();
@@ -28,12 +27,43 @@ const EditGuide = () => {
   let [showEditStepButton, setShowEditStepButton] = useState(true);
   let [showAddStepButton, setShowAddStepButton] = useState(true);
   let [userGuide, setUserGuide] = useState([]);
-  let [image, setImage] = useState({ image: "" });
+  // let [images, setImages] = useState([]);
+
+  let [imageUpload, setImageUpload] = useState({});
+  let [imageList, setImageList] = useState([]);
+  let inputed_img;
   let { id } = useParams();
   let counter = 0;
   const activeUser = getUser();
   let steppies = userGuide.steps;
   let stepCounter = 0;
+  const metadata = {
+    contentType: "image/jpg",
+  };
+
+  const handleImageChange = (e) => {
+    inputed_img = e.target.files[0];
+  };
+
+  const imageListReg = ref(storage, id);
+  function uploadImage(id, index) {
+    console.log(
+      inputed_img,
+      "this is image upload passed into upload img func"
+    );
+    if (inputed_img === null) {
+      console.log("IMAGE NULL");
+      return;
+    }
+    // console.log("this is image upload", imageUpload)
+    const imageRef = ref(storage, `${id + "/" + index}`);
+    // console.log("this is imageRef",imageRef)
+    uploadBytes(imageRef, inputed_img, metadata).then((snapshot) => {
+      alert(
+        "Image uploaded successfully. Once you submit the step, this image will appear below your Text."
+      );
+    });
+  }
 
   async function fetchUserGuide(id) {
     let guide = await getBlogById(id);
@@ -43,15 +73,16 @@ const EditGuide = () => {
 
   useEffect(() => {
     fetchUserGuide(id);
-  }, [id]);
+    listAll(imageListReg).then((res) => {
+      res.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageList((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
-  // async function imageUploadChange(e) {
-  //   setImage(e.target.files[0]);
-  //   console.log("This is image uploaded",image)
-  //   await uploadImage(image)
-  // }
-
-  function renderStepBox(id, stepCounter) {
+  function renderStepBox(id, stepIndex) {
     try {
       async function getStepData() {
         let newStepData = document.getElementById("step-area").value;
@@ -94,12 +125,19 @@ const EditGuide = () => {
               >
                 Submit Step
               </button>
-{/*       
-              <form>
-                <input type="file"></input>
-                <button type="submit">Upload Img</button>
-              </form> */}
-              <FileUploadComponent id={id} stepCounter={stepCounter}/>
+              <input
+                type="file"
+                accept="image/jpg, image/jpeg, image/png"
+                onChange={handleImageChange}
+              ></input>
+              <button
+                onClick={() => {
+                  uploadImage(id, stepIndex);
+                  console.log("click");
+                }}
+              >
+                Upload Img
+              </button>
             </div>
           </div>
         </div>
@@ -136,9 +174,9 @@ const EditGuide = () => {
           </textarea>
           <p
             className="editguide-description-update-p"
-            onClick={() => {
+            onClick={async () => {
               // console.log("This is blog_id, passed to db", blog._id);
-              getDescriptionData();
+              await getDescriptionData();
               location.reload();
             }}
           >
@@ -225,15 +263,18 @@ const EditGuide = () => {
         {steppies ? (
           steppies.map((step) => {
             // console.log(step);
+
             if (step.step === null) {
               stepCounter += 1;
               var stepCounterIndex = stepCounter - 1;
               return;
             }
+
             counter = counter + 1;
             var index = counter - 1;
             var stepCounterIndex = stepCounter;
             stepCounter += 1;
+            // console.log(stepCounterIndex)
             return (
               <div className="editstep-outside-div" key={counter}>
                 <div className="editguide-step-div">
@@ -241,6 +282,21 @@ const EditGuide = () => {
                     Step {counter}: {step.step}
                   </p>
                 </div>
+                {
+                  // imageList.map((image) => {}
+                  imageList.length &&
+                    imageList.map((image) => {
+                      // console.log("This is image.name", image.name)
+                      let index = image.split("?")[0];
+                      // how to get last character of string
+                      index = index[index.length - 1];
+                      console.log("This is index", index);
+                      console.log("This is image url", image);
+                      if (index === stepCounterIndex.toString()) {
+                        return <img src={image} />;
+                      }
+                    })
+                }
                 {showEditStepButton && (
                   <p
                     className="editguide-p-button"
