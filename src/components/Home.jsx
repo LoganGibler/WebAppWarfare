@@ -105,7 +105,7 @@ const Home = () => {
                     >
                       <div className="home-guide-preview-div">
                         <div className="home-pfp-image-div">
-                          {imageDirectoryList.length &&
+                          {imageDirectoryList.length ? (
                             imageDirectoryList.map((image) => {
                               console.log("this is image", image);
                               let guide_id = image.split("_")[1];
@@ -117,7 +117,17 @@ const Home = () => {
                                   </div>
                                 );
                               }
-                            })}
+                            })
+                          ) : (
+                            <div className="home-img-div">
+                              <img
+                                className="home-img"
+                                src={
+                                  "https://www.ecpi.edu/sites/default/files/whitehat.png"
+                                }
+                              ></img>
+                            </div>
+                          )}
                         </div>
                         <div className="home-guide-summary">
                           <h4 className="home-guide-title">{guide.vmtitle}</h4>

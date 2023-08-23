@@ -11,6 +11,7 @@ import {
   getBlogById,
   deleteGuide,
   deleteStep,
+  deleteImg,
 } from "../api";
 import { getUser } from "../auth";
 import "../css/editguide.css";
@@ -40,7 +41,7 @@ const EditGuide = () => {
   };
 
   const handleImageChange = (e) => {
-    console.log(e.target.files[0].name);
+    // console.log(e.target.files[0].name);
     if (e.target.files[0] === null) {
     } else {
       inputed_img = e.target.files[0];
@@ -79,7 +80,7 @@ const EditGuide = () => {
     const imageRef = ref(storage, `${"guidepfp/" + "_" + id + "_"}`);
     // console.log("this is imageRef",imageRef)
     uploadBytes(imageRef, inputed_img, metadata).then((snapshot) => {
-      alert("Guide PFP uploaded.");
+      // alert("Guide PFP uploaded.");
       location.reload();
     });
   }
@@ -219,12 +220,11 @@ const EditGuide = () => {
     // console.log("index:", index);
     try {
       async function getNewStepData() {
-        let newStepData = document.getElementById(
-          "editguide-step-textarea"
-        ).value;
+        let newStepData = document.getElementById("editguide-step-textarea")
+          .value;
         console.log("This should be new typed in step data: ", newStepData);
         // console.log("this should be new step data:", newStepData);
-        let newStep = await updateSteppie(id, index, newStepData);
+        let newStep = await updateSteppie(id, stepCounterIndex, newStepData);
         console.log("This is new step", newStep);
         return newStep;
       }
@@ -232,7 +232,7 @@ const EditGuide = () => {
       return (
         <div className="update-editstep-main-div">
           <textarea id="editguide-step-textarea">
-            {userGuide.steps[index].step}
+            {userGuide.steps[stepCounterIndex].step}
           </textarea>
           <div className="updatestep-deletestep-div">
             <p
@@ -249,6 +249,7 @@ const EditGuide = () => {
               className="delete-step-p"
               onClick={async () => {
                 await deleteStep(id, stepCounterIndex);
+                await deleteImg(id, stepCounterIndex);
                 alert("Step deleted.");
                 location.reload();
               }}
@@ -273,7 +274,7 @@ const EditGuide = () => {
               imageList.map((image) => {
                 let index = image.split("?")[0];
                 index = index.split("_")[1];
-                console.log("This is image.split", index);
+                // console.log("This is image.split", index);
                 if (index === "main") {
                   return (
                     <div className="editguide-headers-title-pfp-div">
@@ -390,14 +391,18 @@ const EditGuide = () => {
                         let index = image.split("?")[0];
                         // how to get last character of string
                         index = index[index.length - 1];
-                        // console.log("This is index", index);
-                        // console.log("This is image url", image);
+                        console.log("This is index parsed out of url", index);
+                        console.log(
+                          "This is image stepCounterIndex",
+                          stepCounterIndex
+                        );
                         if (index === stepCounterIndex.toString()) {
                           return (
                             <div className="editguide-uploaded-img-div">
                               <img
                                 className="editguide-uploaded-img"
                                 src={image}
+                                alt=""
                               />
                             </div>
                           );
