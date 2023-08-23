@@ -55,7 +55,7 @@ export async function getAllBlogs() {
   }
 }
 
-export async function getAllPublishedBlogs() {
+export async function getAllPublishedGuides() {
   try {
     const allBlogs = await axios.get(`${BASE}/allPublishedBlogs`);
     if (!allBlogs) {
@@ -276,13 +276,13 @@ export async function sendFeedbackToDB(submittedBy, subject, comment) {
 
 // IMAGE UPLOAD API CALLS
 
-export async function getImagesByGuideID(guide_id){
+export async function getImagesByGuideID(guide_id) {
   try {
     const { data } = await axios.post(`${BASE}/getImagesByGuideID`, {
       guide_id: guide_id,
-    })
-    return data
+    });
+    return data;
   } catch (error) {
-    throw error
+    throw error;
   }
 }

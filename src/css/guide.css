@@ -78,7 +78,8 @@
 }
 
 .guide-description-div {
-  /* border-bottom: 1px solid #282828; */
+ margin-top: 2%;
+ margin-left: 2%;
 }
 
 .guide-hostedby {

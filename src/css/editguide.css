@@ -30,6 +30,13 @@ text-color: #B8B8B8; */
     border-right: 2px solid #282828; */
 }
 
+.editguide-headers-title-pfp-div{
+  display: flex;
+}
+.editguide-subinfo-div{
+  margin-left: 5%;
+  margin-top: 3%;
+}
 .editguide-title {
   color: white;
 }
@@ -97,7 +104,12 @@ text-color: #B8B8B8; */
 }
 
 .editguide-description-p {
+  margin-top: 3%;
+  margin-left: 1%;
   word-wrap: break-word;
+}
+.editguide-hostedby{
+  margin-top: 15%;
 }
 
 .update-editstep-main-div {
@@ -332,18 +344,28 @@ text-color: #B8B8B8; */
 
 .editguide-uploaded-img-div {
   margin-top: 3%;
-  display: flex;
-  padding: 10px;
-
-  width: 70vh;
+  /* display: flex; */
+  padding: 0px;
+  /* border-radius: 5px; */
+  width: 23vh;
+}
+.editguide-default-pic-info{
+  margin-top: 2%;
+  margin-left: 5%;
+  font-size: 10px;
 }
 
 .editguide-uploaded-img {
   /* margin-left: 50%;
     margin: auto; */
-  max-width: 85vh;
-  max-height: 70vh;
+  margin-left: 15%;
+  max-width: 80vh;
+  max-height: 80vh;
   border: 1px solid white;
+}
+.editguide-headers-div{
+  margin-left: 5%;
+  margin-top: 2%;
 }
 .editguide-image-input-div {
   display: flex;
@@ -399,4 +421,24 @@ text-color: #B8B8B8; */
   width: 25vh;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+.editguide-image-pfp{
+  margin-left: 5%;
+  max-width: 24vh;
+  max-height: 24vh;
+  min-width: 18vh;
+  min-height: 18vh;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.editguide-image-pfp-default{
+  margin-left: 5%;
+  max-width: 22vh;
+  max-height: 22vh;
+  border: 1px solid white;
+}
+.editguide-title-nopfp{
+  color: white;
 }

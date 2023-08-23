@@ -47,23 +47,18 @@ const EditGuide = () => {
     }
   };
 
-  const imageListReg = ref(storage, id);
+  const imageListReg = ref(storage, `${"images/" + id}`);
   function uploadImage(id, index) {
-    // console.log(
-    //   inputed_img,
-    //   "this is image upload passed into upload img func"
-    // );
-    // console.log(inputed_img);
     if (inputed_img === undefined) {
       console.log("IMAGE NULL");
       alert("Please select an image to upload.");
       return;
     }
     // console.log("this is image upload", imageUpload)
-    const imageRef = ref(storage, `${id + "/" + index}`);
+    const imageRef = ref(storage, `${"images/" + id + "/" + index}`);
     // console.log("this is imageRef",imageRef)
     uploadBytes(imageRef, inputed_img, metadata).then((snapshot) => {
-      if (index === "main-guide-img") {
+      if (index === "_main") {
         alert("Guide PFP uploaded.");
         location.reload();
       } else {
@@ -71,6 +66,21 @@ const EditGuide = () => {
           "Image uploaded successfully. Once you submit the step, this image will appear below your Text."
         );
       }
+    });
+  }
+
+  function uploadImagePFP(id) {
+    if (inputed_img === undefined) {
+      console.log("IMAGE NULL");
+      alert("Please select an image to upload.");
+      return;
+    }
+    // console.log("this is image upload", imageUpload)
+    const imageRef = ref(storage, `${"guidepfp/" + "_" + id + "_"}`);
+    // console.log("this is imageRef",imageRef)
+    uploadBytes(imageRef, inputed_img, metadata).then((snapshot) => {
+      alert("Guide PFP uploaded.");
+      location.reload();
     });
   }
 
@@ -256,31 +266,66 @@ const EditGuide = () => {
   return (
     <div className="editguide-main-div">
       <div className="editguide-main-container">
-        {
-          // imageList.map((image) => {}
-          imageList.length &&
-            imageList.map((image) => {
-              // console.log("This is image.name", image.name)
-              // how to get last 4 characters of string from index
-              let index = image.split("?");
-              // how to get last character of string
-              // console.log("This is image.split", index);
-              // // index = index[index.length - 1];
-              // // console.log("This is index", index);
-              // console.log("This is image url", image);
-              if (index === "main") {
-                return (
-                  <div className="editguide-uploaded-img-div">
-                    <img className="editguide-uploaded-img-PFP" src={image} />
-                  </div>
-                );
-              }
-            })
-        }
-        <h3 className="editguide-title">{userGuide.vmtitle}</h3>
-        <p className="author-guide">Created By: {userGuide.author}</p>
-        <p className="date-guide">Published on: {userGuide.date}</p>
-        <p>{userGuide.hostedby}</p>
+        <div className="editguide-intro-header-div">
+          {
+            // imageList.map((image) => {}
+            imageList.length ? (
+              imageList.map((image) => {
+                let index = image.split("?")[0];
+                index = index.split("_")[1];
+                console.log("This is image.split", index);
+                if (index === "main") {
+                  return (
+                    <div className="editguide-headers-title-pfp-div">
+                      <div className="editguide-uploaded-img-div">
+                        <img
+                          className="editguide-image-pfp"
+                          src={image}
+                          alt=""
+                        />
+                      </div>
+                      <div className="editguide-subinfo-div">
+                        <h2 className="editguide-title">{userGuide.vmtitle}</h2>
+                        <p className="editguide-hostedby">
+                          {userGuide.hostedby}
+                        </p>
+                        <p className="author-guide">
+                          Created By: {userGuide.author}
+                        </p>
+                        <p className="date-guide">
+                          Published on: {userGuide.date}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                }
+              })
+            ) : (
+              <div className="editguide-headers-title-pfp-div">
+                <div className="editguide-uploaded-img-div">
+                  <img
+                    className="editguide-image-pfp-default"
+                    src={
+                      "https://www.ecpi.edu/sites/default/files/whitehat.png"
+                    }
+                    alt=""
+                  />
+                  <p className="editguide-default-pic-info">
+                    {" "}
+                    ↑ &nbsp; This is default. Please upload a PFP.
+                  </p>
+                </div>
+                <div className="editguide-subinfo-div">
+                  <h2 className="editguide-title">{userGuide.vmtitle}</h2>
+                  <p className="editguide-hostedby">{userGuide.hostedby}</p>
+                  <p className="author-guide">Created By: {userGuide.author}</p>
+                  <p className="date-guide">Published on: {userGuide.date}</p>
+                </div>
+              </div>
+            )
+          }
+        </div>
+
         <p className="editguide-description-p">{userGuide.description}</p>
         {description_html}
 
@@ -299,7 +344,9 @@ const EditGuide = () => {
           <button
             className="editguide-imageupload-button-PFP"
             onClick={() => {
-              uploadImage(id, "main");
+              uploadImage(id, "_main");
+              uploadImagePFP(id);
+              // location.reload();
             }}
           >
             Upload Guide PFP
@@ -349,7 +396,7 @@ const EditGuide = () => {
                           return (
                             <div className="editguide-uploaded-img-div">
                               <img
-                                className="editguide_uploaded_img"
+                                className="editguide-uploaded-img"
                                 src={image}
                               />
                             </div>

@@ -5,13 +5,11 @@ import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebase.js";
 import "../css/guide.css";
 
-
-
 const Guide = () => {
   const [guide, setGuide] = useState([]);
   let { id } = useParams();
   let [imageList, setImageList] = useState([]);
-  let imageListReg = ref(storage, id);
+  let imageListReg = ref(storage, `images/` + id);
   // console.log("id:", id);
   let counter = 0;
   let stepCounter = 0;
@@ -21,7 +19,7 @@ const Guide = () => {
     setGuide(fetchedGuide.blog);
   }
 
-  async function fetchGuidePictures(imageListReg){
+  async function fetchGuidePictures(imageListReg) {
     listAll(imageListReg).then((res) => {
       res.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
@@ -31,10 +29,9 @@ const Guide = () => {
     });
   }
 
-
   useEffect(() => {
     fetchGuide(id);
-    fetchGuidePictures(imageListReg)
+    fetchGuidePictures(imageListReg);
   }, []);
 
   let steppies = guide.steps;
@@ -42,15 +39,53 @@ const Guide = () => {
   return (
     <div className="main-individual-blog-div">
       <div className="main-blog-container1">
-        <h2 className="guide-title">{guide.vmtitle}</h2>
-        <p className="author-guide">Created By: {guide.author}</p>
-        <p className="date-guide">Published on: {guide.date}</p>
-        <div className="hostedby-difficulty-div-guide">
-          <p className="guide-hostedby">{guide.hostedby}</p>
-          <p className="difficulty-guide">Rating: {guide.difficulty}</p>
-        </div>
+        {
+          // imageList.map((image) => {}
+          imageList.length ? (
+            imageList.map((image) => {
+              let index = image.split("?")[0];
+              index = index.split("_")[1];
+              console.log("This is image.split", index);
+              if (index === "main") {
+                return (
+                  <div className="editguide-headers-title-pfp-div">
+                    <div className="editguide-uploaded-img-div">
+                      <img className="editguide-image-pfp" src={image} alt="" />
+                    </div>
+                    <div className="editguide-subinfo-div">
+                      <h2 className="editguide-title">{guide.vmtitle}</h2>
+                      <p className="editguide-hostedby">{guide.hostedby}</p>
+                      <p className="author-guide">Created By: {guide.author}</p>
+                      <p className="date-guide">Published on: {guide.date}</p>
+                    </div>
+                  </div>
+                );
+              }
+            })
+          ) : (
+            <div className="editguide-headers-title-pfp-div">
+              <div className="editguide-uploaded-img-div">
+                <img
+                  className="editguide-image-pfp-default"
+                  src={"https://www.ecpi.edu/sites/default/files/whitehat.png"}
+                  alt=""
+                />
+                <p className="editguide-default-pic-info">
+                  {" "}
+                  ↑ &nbsp; This is default. Please upload a PFP.
+                </p>
+              </div>
+              <div className="editguide-subinfo-div">
+                <h2 className="editguide-title">{guide.vmtitle}</h2>
+                <p className="editguide-hostedby">{guide.hostedby}</p>
+                <p className="author-guide">Created By: {guide.author}</p>
+                <p className="date-guide">Published on: {guide.date}</p>
+              </div>
+            </div>
+          )
+        }
         <div className="guide-description-div">
-          <p className="guide-description-p">{guide.description}</p>
+          <p>{guide.description}</p>
         </div>
         <div className="guide-main-step-div">
           {steppies ? (

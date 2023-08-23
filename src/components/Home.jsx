@@ -1,27 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "../css/home.css";
 import { useHistory } from "react-router-dom";
-import { getAllPublishedBlogs, getGuidesBySearch } from "../api";
-
+import { getAllPublishedGuides, getGuidesBySearch } from "../api";
+import { storage } from "../firebase.js";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
+let imageListReg = ref(storage, "/guidepfp/");
 
 const Home = () => {
-  let [publicBlogs, setPublicBlogs] = useState([]);
+  let [publicGuides, setPublicGuides] = useState([]);
   let [search, setSearch] = useState("");
   let [searchedGuides, setSearchedGuides] = useState([]);
   let [active, setActive] = useState(false);
+  let [imageDirectoryList, setImageDirectoryList] = useState([]);
   let [imageList, setImageList] = useState([]);
   const history = useHistory();
+  // need to loop through every published blog, get ID,
+  // console.log("this is imageDirectoryList length", imageDirectoryList.length);
 
-  async function fetchPublicBlogs() {
-    const blogs = await getAllPublishedBlogs();
-    setPublicBlogs(blogs.data.allPublishedBlogs);
+  async function fetchPublicGuides() {
+    const blogs = await getAllPublishedGuides();
+    setPublicGuides(blogs.data.allPublishedBlogs);
   }
 
+  // in loop of guide, get id, then loop through parsed images that have the
+  //  same id, then loop through those images that have "_main"
+
   useEffect(() => {
-    fetchPublicBlogs();
+    fetchPublicGuides();
+    listAll(imageListReg).then((res) => {
+      // console.log("this is res.items", res.items);
+      res.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageDirectoryList((prev) => [...prev, url]);
+        });
+      });
+    });
   }, []);
 
-  // console.log(publicBlogs);
   return (
     <div className="main-blogs-div">
       <div className="center-me-div">
@@ -52,9 +67,9 @@ const Home = () => {
                             sortedGuides.push(guide);
                           }
                         });
-                        console.log("THIS IS sortedGuides", sortedGuides);
-                        setPublicBlogs(sortedGuides);
-                        console.log("This is now public blogs", publicBlogs);
+                        // console.log("THIS IS sortedGuides", sortedGuides);
+                        setPublicGuides(sortedGuides);
+                        // console.log("This is now public blogs", publicGuides);
                         if (searchedGuides) {
                           setActive(true);
                         }
@@ -74,63 +89,54 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* {active && */}
-        {/* searchedGuides.map((blog) => {
-            return (
-              <div
-                className="blog-div"
-                id="blog-d"
-                key={blog._id}
-                onClick={() => {
-                  history.push(`/blog/${blog._id}`);
-                }}
-              >
-                <h4 className="home-guide-title">{blog.vmtitle}</h4>
-                <div className="hostedby-difficulty-div">
-                  <p>{blog.hostedby}</p>
-                  <p className="blog-difficulty-home">
-                    Difficulty: {blog.difficulty}
-                  </p>
-                </div>
-                <p className="blog-description-home-p">{blog.description}</p>
-                <div className="date-createdby-div">
-                  <p className="createdby-home">Created By: {blog.author}</p>
-                  <p className="date-home">On: {blog.date}</p>
-                </div>
-              </div>
-            );
-          })} */}
         <div className="middle-content-div">
           <div className="main-blog-div">
             <div className="blog-container">
-              {publicBlogs.length ? (
-                publicBlogs.map((blog) => {
-                  // console.log(blog);
+              {publicGuides.length ? (
+                publicGuides.map((guide) => {
                   return (
                     <div
                       className="blog-div"
                       id="blog-d"
-                      key={blog._id}
+                      key={guide._id}
                       onClick={() => {
-                        history.push(`/blog/${blog._id}`);
+                        history.push(`/blog/${guide._id}`);
                       }}
                     >
-                      <h4 className="home-guide-title">{blog.vmtitle}</h4>
-                      <div className="hostedby-difficulty-div">
-                        <p>{blog.hostedby}</p>
-                        <p className="blog-difficulty-home">
-                          Difficulty: {blog.difficulty}
-                        </p>
-                      </div>
-                      <p className="blog-description-home-p">
-                        {blog.description}
-                      </p>
-                      <div className="date-createdby-div">
-                        <p className="createdby-home">
-                          Created By: {blog.author}
-                        </p>
-                        <p className="date-home">On: {blog.date}</p>
+                      <div className="home-guide-preview-div">
+                        <div className="home-pfp-image-div">
+                          {imageDirectoryList.length &&
+                            imageDirectoryList.map((image) => {
+                              console.log("this is image", image);
+                              let guide_id = image.split("_")[1];
+                              console.log("this is guide_id", guide_id);
+                              if (guide_id === guide._id) {
+                                return (
+                                  <div className="home-img-div">
+                                    <img className="home-img" src={image} />
+                                  </div>
+                                );
+                              }
+                            })}
+                        </div>
+                        <div className="home-guide-summary">
+                          <h4 className="home-guide-title">{guide.vmtitle}</h4>
+                          <div className="hostedby-difficulty-div">
+                            <p>{guide.hostedby}</p>
+                            <p className="blog-difficulty-home">
+                              Difficulty: {guide.difficulty}
+                            </p>
+                          </div>
+                          <p className="blog-description-home-p">
+                            {guide.description}
+                          </p>
+                          <div className="createdby-date-div">
+                            <p className="createdby-home">
+                              Created By: {guide.author}
+                            </p>
+                            <p className="date-home">On: {guide.date}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   );
