@@ -3,7 +3,7 @@ import { storage } from "../firebase.js";
 import { ref, } from "firebase/storage";
 require("dotenv").config();
 
-const env = "main";
+const env = "QA";
 if (env === "main") {
   var BASE = "https://webappwarfare-api.onrender.com";
 } else {

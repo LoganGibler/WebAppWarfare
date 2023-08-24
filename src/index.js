@@ -16,6 +16,7 @@ import {
   Sample,
   ContactMe,
   HomeLab,
+  SampleHome
 } from "./components";
 import {
   BrowserRouter as Router,
@@ -84,6 +85,9 @@ const App = () => {
           </Route>
           <Route path="/HomeLab">
             <HomeLab />
+          </Route>
+          <Route path="/SampleHome">
+            <SampleHome />
           </Route>
         </Switch>
       </div>

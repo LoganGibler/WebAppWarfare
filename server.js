@@ -526,7 +526,7 @@ app.post("/getImagesByGuideID", async (req, res) => {
 
 
 mongoose
-  .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
+  .connect("mongodb://localhost:27017")
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
       console.log("connected to mongodb");

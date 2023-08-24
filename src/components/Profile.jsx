@@ -134,7 +134,7 @@ const Profile = ({ userBlogs }) => {
                 ) : (
                   <div className="no-guides-approval-div">
                     <h7 className="no-guides-approval">
-                      All Dev tasks have been completed. 
+                      All Dev tasks have been completed.
                     </h7>
                   </div>
                 )}

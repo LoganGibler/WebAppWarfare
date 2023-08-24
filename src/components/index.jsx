@@ -11,3 +11,4 @@ export { default as EditGuide } from "./EditGuide";
 export { default as Sample } from "./Sample";
 export { default as ContactMe } from "./ContactMe";
 export { default as HomeLab } from "./HomeLab";
+export { default as SampleHome } from "./SampleHome";

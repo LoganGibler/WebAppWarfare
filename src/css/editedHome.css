@@ -1,0 +1,78 @@
+.editedHome-container-div {
+    display: flex;
+}
+
+.editedHome-main-div {
+    margin-left: 50%;
+    margin: auto;
+    /* width: 50vh; */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.editedhome-guide-div {
+    /* border: 1px solid white; */
+    padding: 30px;
+    transition: all 0.2s ease-in-out;
+}
+
+.editedhome-guide-div:hover {
+    transform: scale(105%);
+    cursor: pointer;
+}
+
+.editedhome-main-details-div {
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 10px;
+}
+
+.editedhome-guidetitle {
+    font-size: 18px;
+}
+
+.editedhome-difficulty {
+    font-size: 14px;
+}
+
+.editedhome-createdby {
+    font-size: 14px;
+}
+
+/* images */
+
+.editedhome-img-div-null {}
+
+.editedhome-img-null {
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    max-width: 14vh;
+    min-width: 14vh;
+
+    max-height: 14vh;
+    min-height: 14vh;
+}
+
+.editedhome-img-div {}
+
+.editedhome-img {
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid grey;
+    max-width: 14vh;
+    min-width: 14vh;
+
+    max-height: 14vh;
+    min-height: 14vh;
+}

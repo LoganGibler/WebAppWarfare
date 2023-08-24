@@ -55,22 +55,20 @@ text-color: #B8B8B8; */
 
 .blog-div {
   font-size: 14px;
-
   margin-left: 50%;
   margin: auto;
   margin-top: 2%;
   width: 95vh;
   color: #c0c0c0;
-
-  border: 1px solid #263143;
-
+  border: 2px solid #263143;
   padding-left: 17px;
   padding-right: 11px;
   word-wrap: break-word;
-  border-left: 5px solid white;
+  border-left: 6px solid #263143;
   border-top-left-radius: 2px;
   border-bottom-left-radius: 30px;
   border-top-right-radius: 30px;
+  transition: all .2s ease-in-out;
 }
 
 .home-guide-preview-div {
@@ -86,8 +84,9 @@ text-color: #B8B8B8; */
 }
 
 .blog-div:hover {
-  border: 1px solid white;
-  border-left: 5px solid white;
+  transform: scale(102%);
+  border: 2px solid white;
+  border-left: 6px solid white;
   /* border-radius: 35px; */
   cursor: pointer;
   /* background-color: #1a2332; */
@@ -109,6 +108,7 @@ text-color: #B8B8B8; */
   /* margin-left: 1%; */
   margin-left: 3%;
 }
+
 .home-guide-hostedby {
   margin-left: 6%;
 }
@@ -235,7 +235,7 @@ text-color: #B8B8B8; */
   max-height: 10vh;
   min-width: 10vh;
   min-height: 10vh;
-  border: 1px solid white;
+  border: 1px solid #b8b8b8;
   border-radius: 20px;
 }
 
@@ -244,10 +244,11 @@ text-color: #B8B8B8; */
   max-height: 10vh;
   min-width: 10vh;
   min-height: 10vh;
-  border: 1px solid white;
+  border: 1px solid #b8b8b8;
   border-radius: 20px;
   margin-bottom: 1.2%;
 }
+
 .home-img-div-null {
   margin-top: 1.2%;
 }
