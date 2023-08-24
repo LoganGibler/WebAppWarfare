@@ -1,7 +1,6 @@
 import axios from "axios";
 import { storage } from "../firebase.js";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
-import { deleteDoc } from "firebase/firestore";
+import { ref, } from "firebase/storage";
 require("dotenv").config();
 
 const env = "main";
