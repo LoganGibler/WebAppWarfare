@@ -91,6 +91,8 @@ const Guide = () => {
           {steppies ? (
             steppies.map((step) => {
               if (step.step === null) {
+                stepCounter += 1;
+                var stepCounterIndex = stepCounter - 1;
                 return;
               }
               counter = counter + 1;

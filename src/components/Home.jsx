@@ -14,6 +14,7 @@ const Home = () => {
   let [imageDirectoryList, setImageDirectoryList] = useState([]);
   let [imageList, setImageList] = useState([]);
   const history = useHistory();
+  let list = [];
   // need to loop through every published blog, get ID,
   // console.log("this is imageDirectoryList length", imageDirectoryList.length);
 
@@ -105,46 +106,45 @@ const Home = () => {
                     >
                       <div className="home-guide-preview-div">
                         <div className="home-pfp-image-div">
-                          {imageDirectoryList.length ? (
+                          {imageDirectoryList.length &&
                             imageDirectoryList.map((image) => {
                               console.log("this is image", image);
                               let guide_id = image.split("_")[1];
-                              console.log("this is guide_id", guide_id);
+                              list.push(guide_id);
+                              console.log("this is list", list);
                               if (guide_id === guide._id) {
                                 return (
                                   <div className="home-img-div">
-                                    <img className="home-img" src={image} />
+                                    <img className="home-img" src={image}></img>
                                   </div>
                                 );
                               }
-                            })
-                          ) : (
-                            <div className="home-img-div">
-                              <img
-                                className="home-img"
-                                src={
-                                  "https://www.ecpi.edu/sites/default/files/whitehat.png"
-                                }
-                              ></img>
-                            </div>
-                          )}
+                            })}
                         </div>
+                        {!list.includes(guide._id) && (
+                          <div className="home-img-div-null">
+                            <img
+                              src="https://www.ecpi.edu/sites/default/files/whitehat.png"
+                              className="home-img-null"
+                            ></img>
+                          </div>
+                        )}
                         <div className="home-guide-summary">
-                          <h4 className="home-guide-title">{guide.vmtitle}</h4>
-                          <div className="hostedby-difficulty-div">
-                            <p>{guide.hostedby}</p>
+                          <h5 className="home-guide-title">{guide.vmtitle}</h5>
+                          <p className="home-guide-description">
+                            {guide.description}
+                          </p>
+                          <div className="home-guide-details-div">
                             <p className="blog-difficulty-home">
                               Difficulty: {guide.difficulty}
                             </p>
-                          </div>
-                          <p className="blog-description-home-p">
-                            {guide.description}
-                          </p>
-                          <div className="createdby-date-div">
+                            <p className="home-guide-hostedby">
+                              Hosted By: {guide.hostedby}
+                            </p>
+
                             <p className="createdby-home">
                               Created By: {guide.author}
                             </p>
-                            <p className="date-home">On: {guide.date}</p>
                           </div>
                         </div>
                       </div>

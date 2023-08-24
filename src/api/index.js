@@ -4,7 +4,7 @@ import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import { deleteDoc } from "firebase/firestore";
 require("dotenv").config();
 
-const env = "QA";
+const env = "main";
 if (env === "main") {
   var BASE = "https://webappwarfare-api.onrender.com";
 } else {
