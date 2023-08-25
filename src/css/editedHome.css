@@ -12,37 +12,47 @@
     display: flex;
     flex-wrap: wrap;
     /* flex-direction: column; */
-    width: 70vmin;
+    width: 55vmin;
     padding: 15px;
 }
 
 .editedhome-guide-div {
     /* border: 1px solid white; */
-    padding: 13px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 30px;
+    border: 1px solid #263143;
     transition: all 0.2s ease-in-out;
-    
+    margin: 2.5%;
+
 }
 
 .editedhome-guide-div:hover {
     transform: scale(105%);
     cursor: pointer;
+    border: 1px solid white;
 }
 
 .editedhome-main-details-div {
-    border-bottom-right-radius: 2px;
-    border-bottom-left-radius: 30px;
-    border-left: 2px solid #263143;
+    /* border-left: 2px solid #263143;
     border-right: 2px solid #263143;
-    border-bottom: 2px solid #263143;
+    border-bottom: 2px solid #263143; */
     color: white;
     padding: 10px;
-    word-wrap: ellipsis;
+    /* text-overflow: ellipsis;
+    white-space: nowrap; */
     min-width: 2vh;
-    max-width: 16vh;
+    max-width: 14vh;
 }
 
+.editedhome-main-details-div:hover {}
+
 .editedhome-guidetitle {
-    font-size: 18px;
+    font-size: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .editedhome-difficulty {
@@ -53,6 +63,9 @@
 .editedhome-createdby {
     font-size: 14px;
     color: #c0c0c0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* images */

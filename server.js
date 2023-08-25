@@ -16,8 +16,6 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 
-
-
 const env = "QA";
 
 if (env === "main") {
@@ -31,7 +29,6 @@ console.log("connected to :", BASE);
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
 const Feedback = require("./db/feedbackModel");
-
 
 app.use((_, res, next) => {
   res.set("Access-Control-Allow-Origin", "*");
@@ -104,6 +101,7 @@ app.get("/allPublishedBlogs", async (req, res) => {
     const allPublishedBlogs = await Post.find({
       published: true,
       approved: true,
+      featured: false
     });
 
     if (allPublishedBlogs) {
@@ -372,6 +370,42 @@ app.post("/approveGuide", async (req, res) => {
   }
 });
 
+app.post("/featureGuide", async (req, res) => {
+  try {
+    const filter = { _id: req.body._id };
+    const update = { featured: true };
+    const updatedGuide = await Post.updateOne(filter, update, {
+      new: true,
+    });
+    if (updatedGuide) {
+      res
+        .status(200)
+        .json({ message: "updated Guide successfully.", updatedGuide });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Failed featuring guide." });
+  }
+});
+
+app.get("/getFeaturedGuides", async (req, res) => {
+  try {
+    const featuredGuides = await Post.find({
+      published: true,
+      featured: true,
+      approved: true,
+    });
+    if (featuredGuides) {
+      res
+        .status(200)
+        .json({ message: "/get featuredGuides successful.", featuredGuides });
+    } else {
+      res.status(500).json({ message: "/getFeaturedGuides has failed." });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "/getFeaturedGuides has failed.", error });
+  }
+});
+
 ///////////////USER DB//////////////////////////////////////////////////////////////////////////////////////////
 app.post("/Register", async (req, res) => {
   let fail = "fail";
@@ -524,9 +558,8 @@ app.post("/getImagesByGuideID", async (req, res) => {
   }
 });
 
-
 mongoose
-  .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
+  .connect("mongodb://localhost:27017")
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
       console.log("connected to mongodb");

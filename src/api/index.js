@@ -19,12 +19,13 @@ export async function createGuide(
   difficulty
 ) {
   let published = false;
+  let featured = false;
+  let approved = false;
   let preformattedDate = new Date();
   let day = preformattedDate.getDate();
   let month = preformattedDate.getMonth() + 1;
   let year = preformattedDate.getFullYear();
   let date = `${month}-${day}-${year}`;
-  let approved = false;
 
   try {
     const { data } = await axios.post(`${BASE}/createPost`, {
@@ -36,6 +37,7 @@ export async function createGuide(
       date: date,
       difficulty: difficulty,
       approved: approved,
+      featured: featured,
     });
 
     // console.log("this is data after frontend api", data);
@@ -208,6 +210,15 @@ export async function deleteStep(_id, index) {
     });
 
     return deletedStep;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getFeaturedGuides() {
+  try {
+    const { data } = await axios.get(`${BASE}/getFeaturedGuides`);
+    return data;
   } catch (error) {
     throw error;
   }

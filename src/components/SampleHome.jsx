@@ -7,30 +7,13 @@ import { getAllPublishedGuides, getGuidesBySearch } from "../api";
 import { storage } from "../firebase.js";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
-const SampleHome = ({publicGuides, imageDirectoryList}) => {
+const SampleHome = ({ publicGuides, imageDirectoryList }) => {
   // let [publicGuides, setPublicGuides] = useState([]);
   // let [imageDirectoryList, setImageDirectoryList] = useState([]);
-  console.log("publicGuides: ",publicGuides)
-  console.log("imageDirectoryList: ",imageDirectoryList)
+  // console.log("publicGuides: ", publicGuides);
+  // console.log("imageDirectoryList: ", imageDirectoryList);
   const history = useHistory();
   let list = [];
-
-  // async function fetchPublicGuides() {
-  //   const blogs = await getAllPublishedGuides();
-  //   setPublicGuides(blogs.data.allPublishedBlogs);
-  // }
-
-  // useEffect(() => {
-  //   fetchPublicGuides();
-  //   listAll(imageListReg).then((res) => {
-  //     // console.log("this is res.items", res.items);
-  //     res.items.forEach((item) => {
-  //       getDownloadURL(item).then((url) => {
-  //         setImageDirectoryList((prev) => [...prev, url]);
-  //       });
-  //     });
-  //   });
-  // }, []);
 
   return (
     <div className="editedHome-container-div">
@@ -74,9 +57,9 @@ const SampleHome = ({publicGuides, imageDirectoryList}) => {
                 </div>
                 <div className="editedhome-main-details-div">
                   <h5 className="editedhome-guidetitle">{guide.vmtitle}</h5>
-                  <h8 className="editedhome-difficulty">
+                  <h6 className="editedhome-difficulty">
                     Rating: {guide.difficulty}
-                  </h8>
+                  </h6>
                   <p className="editedhome-createdby">By: {guide.author}</p>
                 </div>
                 {/* <SampleHome /> */}

@@ -65,7 +65,7 @@ const Postform = () => {
               <input
                 className="create-post-title"
                 placeholder="Enter VM name"
-                maxLength="40"
+                maxLength="15"
                 value={vmtitle}
                 type="text"
                 onChange={(e) => {
@@ -77,7 +77,7 @@ const Postform = () => {
               <input
                 className="host-title"
                 placeholder="Where did you find this VM? ex: TryHackMe"
-                maxLength="45"
+                maxLength="15"
                 value={hostedby}
                 type="text"
                 onChange={(e) => {
