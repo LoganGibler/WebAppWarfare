@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { getAllPublishedGuides, getGuidesBySearch } from "../api";
 import { storage } from "../firebase.js";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
+import SampleHome from "./SampleHome";
 let imageListReg = ref(storage, "/guidepfp/");
 
 const Home = () => {
@@ -40,8 +41,10 @@ const Home = () => {
 
   return (
     <div className="main-blogs-div">
+      <div className="both-comps">
       <div className="center-me-div">
         <div className="home-searchbar-main-container">
+        <h4 className="home-title">Featured Guides</h4>
           <div className="home-searchbar-form">
             <div className="searchbar-button-input-div">
               <input
@@ -108,10 +111,10 @@ const Home = () => {
                         <div className="home-pfp-image-div">
                           {imageDirectoryList.length &&
                             imageDirectoryList.map((image) => {
-                              console.log("this is image", image);
+                              // console.log("this is image", image);
                               let guide_id = image.split("_")[1];
                               list.push(guide_id);
-                              console.log("this is list", list);
+                              // console.log("this is list", list);
                               if (guide_id === guide._id) {
                                 return (
                                   <div className="home-img-div">
@@ -157,6 +160,13 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* <div className="sample-home-div"> */}
+        <SampleHome
+          publicGuides={publicGuides}
+          imageDirectoryList={imageDirectoryList}
+        />
+      {/* </div> */}
       </div>
     </div>
   );

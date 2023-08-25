@@ -1,6 +1,6 @@
 import axios from "axios";
 import { storage } from "../firebase.js";
-import { ref, } from "firebase/storage";
+import { ref } from "firebase/storage";
 require("dotenv").config();
 
 const env = "QA";
@@ -292,18 +292,17 @@ export async function getImagesByGuideID(guide_id) {
 export async function deleteImg(id, index) {
   try {
     const fileRef = ref(storage, `images/${id}/` + index);
-    console.log("this is fileref on api:", fileRef)
+    console.log("this is fileref on api:", fileRef);
     // await deleteDoc(fileRef);
-    return fileRef
+    return fileRef;
   } catch (error) {
     throw error;
   }
 }
 
-export async function deleteGuideImages(id){
+export async function deleteGuideImages(id) {
   try {
-    
   } catch (error) {
-    throw error
+    throw error;
   }
 }

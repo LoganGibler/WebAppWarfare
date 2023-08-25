@@ -1,20 +1,26 @@
 .editedHome-container-div {
+    margin-top: 3.5%;
+    margin-right: 5%;
+    /* width: 500px; */
     display: flex;
 }
 
 .editedHome-main-div {
-    margin-left: 50%;
-    margin: auto;
-    /* width: 50vh; */
+    /* margin-left: 50%;
+    margin: auto; */
+    /* min-width: 80vh; */
     display: flex;
     flex-wrap: wrap;
-    padding: 10px;
+    /* flex-direction: column; */
+    width: 70vmin;
+    padding: 15px;
 }
 
 .editedhome-guide-div {
     /* border: 1px solid white; */
-    padding: 30px;
+    padding: 13px;
     transition: all 0.2s ease-in-out;
+    
 }
 
 .editedhome-guide-div:hover {
@@ -23,13 +29,16 @@
 }
 
 .editedhome-main-details-div {
-    border-bottom-right-radius: 30px;
+    border-bottom-right-radius: 2px;
     border-bottom-left-radius: 30px;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    border-bottom: 1px solid white;
+    border-left: 2px solid #263143;
+    border-right: 2px solid #263143;
+    border-bottom: 2px solid #263143;
     color: white;
     padding: 10px;
+    word-wrap: ellipsis;
+    min-width: 2vh;
+    max-width: 16vh;
 }
 
 .editedhome-guidetitle {
@@ -38,10 +47,12 @@
 
 .editedhome-difficulty {
     font-size: 14px;
+    color: #c0c0c0;
 }
 
 .editedhome-createdby {
     font-size: 14px;
+    color: #c0c0c0;
 }
 
 /* images */
@@ -50,10 +61,10 @@
 
 .editedhome-img-null {
     border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border-top-left-radius: 2px;
+    border-top: 1px solid #263143;
+    border-left: 1px solid #263143;
+    border-right: 1px solid #263143;
     max-width: 14vh;
     min-width: 14vh;
 
@@ -65,11 +76,11 @@
 
 .editedhome-img {
     border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    border-bottom: 1px solid grey;
+    border-top-left-radius: 2px;
+    border-top: 1px solid #263143;
+    border-left: 1px solid #263143;
+    border-right: 1px solid #263143;
+    border-bottom: 1px solid #263143;
     max-width: 14vh;
     min-width: 14vh;
 
