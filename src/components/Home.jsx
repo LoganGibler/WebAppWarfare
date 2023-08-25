@@ -66,11 +66,11 @@ const Home = () => {
                     try {
                       if (search.length > 0) {
                         let foundGuides = await getGuidesBySearch(search);
-                        console.log(
-                          (foundGuides = foundGuides.allFoundGuides[0])
-                        );
+                        // console.log(
+                        //   (foundGuides = foundGuides.allFoundGuides[0])
+                        // );
                         if (foundGuides != undefined) {
-                          console.log(foundGuides);
+                          // console.log(foundGuides);
                           let sortedGuides = [];
                           const filteredGuides = foundGuides.map((guide) => {
                             if (guide.published === true) {

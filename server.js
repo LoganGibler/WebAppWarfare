@@ -24,7 +24,7 @@ if (env === "main") {
   var BASE = process.env.MONGO_URI_QA;
 }
 
-console.log("connected to :", BASE);
+// console.log("connected to :", BASE);
 
 const User = require("./db/userModel");
 const Post = require("./db/postModel");
@@ -59,7 +59,7 @@ app.post("/createPost", async (req, res) => {
 });
 
 app.post("/addstep", async (req, res) => {
-  console.log("this is req.body:", req.body);
+  // console.log("this is req.body:", req.body);
   // let step_string = req.body;
   // let step_id = "64b284c5c74fcec8a26cce6e";
   try {
@@ -266,7 +266,7 @@ app.post(`${process.env.REMOVE_GUIDE_ENDPOINT}`, async (req, res) => {
     const deleted_guide = await Post.findOneAndDelete(filter, {
       new: true,
     });
-    console.log(deleted_guide);
+    // console.log(deleted_guide);
     res.status(200).json({ message: "guide successfully deleted." });
   } catch (error) {
     res.status(500).json({ message: "failed deleting guide" });
@@ -322,7 +322,7 @@ app.post("/getGuidesBySearch", async (req, res) => {
       allFoundGuides.push(emptySearch);
     }
 
-    console.log("here are found guides", allFoundGuides);
+    // console.log("here are found guides", allFoundGuides);
     if (allFoundGuides) {
       res.status(200).json({ allFoundGuides });
     } else {
@@ -337,7 +337,7 @@ app.get("/getPublishedUnapprovedGuides", async (req, res) => {
   try {
     const filter = { approved: false, published: true };
     const guides = await Post.find(filter);
-    console.log(guides);
+    // console.log(guides);
     if (guides) {
       res.status(200).json({
         message: "/getPublishedUnapprovedGuides request successful.",
@@ -481,9 +481,9 @@ app.post("/getUserIDByUsername", async (req, res) => {
 app.post("/getUserByID", async (req, res) => {
   try {
     let filter = { _id: req.body._id };
-    console.log("this is filter", filter);
+    // console.log("this is filter", filter);
     let user = await User.find(filter);
-    console.log(user);
+    // console.log(user);
     if (user[0].username) {
       res.status(200).json({ message: "getUserByID successful.", user });
     } else {
@@ -548,10 +548,10 @@ app.post("/sendFeedback", async (req, res) => {
 
 app.post("/getImagesByGuideID", async (req, res) => {
   try {
-    console.log("this is req.body:", req.body);
+    // console.log("this is req.body:", req.body);
     const filter = { guide_id: req.body.guide_id };
     const guideImages = await guideImages1.find(filter);
-    console.log("found image: ", guideImages);
+    // console.log("found image: ", guideImages);
     res.status(200).json({ message: "Images found.", guideImages });
   } catch (error) {
     res.status(500).json({ message: "Failed to get image." });
@@ -559,7 +559,7 @@ app.post("/getImagesByGuideID", async (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://localhost:27017")
+  .connect("mongodb+srv://baseUsers:z1x2c3v@webappwarfare.px8ftut.mongodb.net/")
   .then(() => {
     app.listen(process.env.PORT || 8000, () => {
       console.log("connected to mongodb");

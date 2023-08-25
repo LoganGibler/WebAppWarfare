@@ -3,7 +3,7 @@ import { storage } from "../firebase.js";
 import { ref } from "firebase/storage";
 require("dotenv").config();
 
-const env = "QA";
+const env = "main";
 if (env === "main") {
   var BASE = "https://webappwarfare-api.onrender.com";
 } else {
@@ -303,7 +303,7 @@ export async function getImagesByGuideID(guide_id) {
 export async function deleteImg(id, index) {
   try {
     const fileRef = ref(storage, `images/${id}/` + index);
-    console.log("this is fileref on api:", fileRef);
+    // console.log("this is fileref on api:", fileRef);
     // await deleteDoc(fileRef);
     return fileRef;
   } catch (error) {

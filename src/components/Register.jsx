@@ -22,10 +22,10 @@ const Register = () => {
 
             const { token } = await registerUser(username, hashedPassword);
             if (token) {
-              console.log("this is token", token);
+              // console.log("this is token", token);
               alert("Registration successful.");
               const activeUser = await loginUser(username, hashedPassword);
-              console.log("this is active user", activeUser);
+              // console.log("this is active user", activeUser);
               if (activeUser) {
                 window.localStorage.setItem("isLoggedin", true);
                 // console.log("this is active user", activeUser);

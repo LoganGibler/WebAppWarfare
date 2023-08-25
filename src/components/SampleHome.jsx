@@ -26,7 +26,7 @@ const SampleHome = ({ publicGuides, imageDirectoryList }) => {
                 key={guide.vmtitle}
                 className="editedhome-guide-div"
                 onClick={() => {
-                  console.log("publicGuides");
+                  // console.log("publicGuides");
                   history.push(`/blog/${guide._id}`);
                 }}
               >
